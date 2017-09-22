@@ -2,6 +2,9 @@ use std::cmp::PartialOrd;
 
 pub trait Organism
 {
+    /// Create an entirely random `Organism`
+    fn random_start() -> Self;
+
     /// Randomly mutate this organism
     fn mutate(&self) -> Self;
 
