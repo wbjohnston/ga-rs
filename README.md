@@ -1,6 +1,7 @@
 # Genetic Algorithm Toolkit
 TODO
 
+![Travis Status](https://travis-ci.org/wbjohnston/ge-rs.svg?branch=master)
 
 ## License (MIT)
 Copyright 2017 William Johnston
