@@ -1,4 +1,7 @@
-mod codon;
+//! Genetic algorithm tools
+
+mod organism;
+pub use self::organism::Organism;
 
 #[cfg(test)]
 mod tests {
