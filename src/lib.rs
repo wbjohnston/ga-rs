@@ -3,9 +3,6 @@
 extern crate rand;
 use rand::Rng;
 
-extern crate num;
-use num::traits::Float;
-
 mod genome;
 pub use self::genome::Genome;
 
@@ -22,17 +19,16 @@ pub use self::genome::Genome;
 /// # Return
 /// The final generation of `n_iter` iterations, zipped with its fitness, sorted
 /// by fitness
-pub fn genetic_algorithm<G, R, O, F>(
+pub fn genetic_algorithm<G, R, O>(
     pop_size:     usize,
     n_iter:       usize,
-    replace_rate: F,
-    mutate_rate:  F,
+    replace_rate: f32,
+    mutate_rate:  f32,
     mut rng:      R
     ) -> Vec<(G, O)>
 where G: Genome + Clone,
       R: Rng,
       O: Ord,
-      F: Float
 {
     // initial population, zipped with fitness and sorted
     let mut pop = init_generation(pop_size, &mut rng);
@@ -80,32 +76,49 @@ where G: Genome,
 ///
 /// # Return
 /// Successor generation to `gen, zipped with, and sorted by fitness
-fn next_generation<G, R, O, F>(
+fn next_generation<G, R, O>(
     gen:          Vec<(G, O)>,
-    replace_rate: F,
-    mutate_rate:  F,
-    rng:          R
+    replace_rate: f32,
+    mutate_rate:  f32,
+    rng:          &mut R
     ) -> Vec<(G, O)>
 where G: Genome + Clone,
       R: Rng,
       O: Ord,
-      F: Float
 {
     let mut new_gen: Vec<G> = Vec::with_capacity(gen.len());
 
-    // let highest_idx = ((1. - replace_rate) * new_gen.len()) as usize;
-    // for i in 0..highest_idx {
-    //     new_gen[i] = gen[i].0.clone();
-    // }
+    // Copy over the top performers
+    let highest_idx = ((1f32 - replace_rate) * new_gen.len() as f32) as usize;
+    for i in 0..highest_idx {
+        new_gen[i] = gen[i].0.clone();
+    }
     
-    // TODO: crossover
+    // create a mapping between candidates, this gaurentees no "self-love" will
+    // occur
+    let crosses = new_gen.len() - highest_idx;
+    let mut mapping: Vec<usize> = (0..crosses).collect();
+    rng.shuffle(&mut mapping);
 
-    // TODO: mutation
+    // cross over the top candidates with eachother
+    for (i, j) in mapping.into_iter().enumerate() {
+        // TODO: I would like this to not clone the two operands
+        let (a, b) = (new_gen[i].clone(), new_gen[j].clone());
+        new_gen.push(a.cross(&b, rng));
+    }
 
-    new_gen.into_iter()
+    // Mutate step
+    for e in new_gen.iter_mut() {
+        *e = e.mutate(mutate_rate, rng);
+    }
+
+    let mut zipped_with_fit: Vec<(G, O)> = new_gen.into_iter()
         .map(|x| {
             let fitness = x.fitness();
             (x, fitness)
-        }).collect()
+        }).collect();
+
+    zipped_with_fit.sort_by(|a, b| a.1.cmp(&b.1));
+    zipped_with_fit
 }
 

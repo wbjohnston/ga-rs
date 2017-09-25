@@ -12,14 +12,14 @@ pub trait Genome
         where R: Rng;
 
     /// Randomly mutate a single "gene" in the genome
-    fn mutate<R>(&self, rng: &mut R) -> Self
+    fn mutate<R>(&self, rate: f32, rng: &mut R) -> Self
         where R: Rng;
 
     /// Cross this orgnanism with another
     ///
     /// # Arguments
     /// * `other`: the "mate" of this organism that will cross genomes
-    fn cross<R>(&self, other: &Self, rng: &mut Rng) -> Self
+    fn cross<R>(&self, other: &Self, rng: &mut R) -> Self
         where R: Rng;
 
     /// Get the fitness of the organism
