@@ -33,6 +33,8 @@ pub trait Genome
     fn genesis<R>(rng: &mut R) -> Self
         where R: Rng;
 
+    // TODO: this can also have a default implementation because of the 
+    // codon iterator
     /// Randomly mutate a single "gene" in the genome
     fn mutate<R>(&self, rate: f32, rng: &mut R) -> Self
         where R: Rng;
