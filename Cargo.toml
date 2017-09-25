@@ -1,6 +1,6 @@
 [package]
 name        = "ga"
-version     = "0.2.0"
+version     = "0.1.1"
 description = "Genetic algorithm traits and algorithm"
 authors     = ["Will Johnston"]
 
