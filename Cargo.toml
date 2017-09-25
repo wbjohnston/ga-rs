@@ -1,12 +1,12 @@
 [package]
-name        = "ge"
+name        = "ga"
 version     = "0.2.0"
 description = "Genetic algorithm traits and algorithm"
 authors     = ["Will Johnston"]
 
 license     = "MIT"
 readme      = "README.md"
-repository  = "https://github.com/wbjohnston/ge-rs.git"
+repository  = "https://github.com/wbjohnston/ga-rs.git"
 
 [dependencies]
 rand = "0.3.16"
