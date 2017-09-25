@@ -1,7 +1,11 @@
 # Genetic Algorithm Toolkit
-TODO
+Genetic algorithm traits and algorithm
+
+Please read the [API documentation on docs.rs](https://docs.rs/ge)
 
 ![Travis Status](https://travis-ci.org/wbjohnston/ge-rs.svg?branch=master)
+[![Crates.io badge](https://img.shields.io/crates/v/ge.svg)](https://crates.io/crates/ge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## License (MIT)
 Copyright 2017 William Johnston

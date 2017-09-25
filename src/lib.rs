@@ -20,7 +20,8 @@ pub use self::genome::Genome;
 /// * `rng`: Random number generator that will be used to get randomness
 ///
 /// # Return
-/// TODO
+/// The final generation of `n_iter` iterations, zipped with its fitness, sorted
+/// by fitness
 pub fn genetic_algorithm<G, R, O, F>(
     pop_size:     usize,
     n_iter:       usize,
@@ -28,7 +29,7 @@ pub fn genetic_algorithm<G, R, O, F>(
     mutate_rate:  F,
     mut rng:      R
     ) -> Vec<(G, O)>
-where G: Genome + Clone, // TODO, see if `Clone` this is really necessary
+where G: Genome + Clone,
       R: Rng,
       O: Ord,
       F: Float
@@ -51,7 +52,7 @@ where G: Genome + Clone, // TODO, see if `Clone` this is really necessary
 /// * `rng`: Random number generator to pull randomness from
 ///
 /// # Return
-/// TODO
+/// An entirely random generation, sorted by fitness
 fn init_generation<G, R, O>(size: usize, rng: &mut R) -> Vec<(G, O)>
 where G: Genome,
       R: Rng,
@@ -71,13 +72,14 @@ where G: Genome,
 /// Create the next generation
 ///
 /// # Arguments
-/// * `gen`: TODO
-/// * `replace_rate`: TODO
-/// * `mutate_rate`: TODO
-/// * `rng`: TODO
+/// * `gen`: base generation
+/// * `replace_rate`: fraction of population that will be replaced by the
+///     results of cross-over
+/// * `mutate_rate`: Rate of mutation in individuals
+/// * `rng`: Random number generator to pull randomness from
 ///
 /// # Return
-/// TODO
+/// Successor generation to `gen, zipped with, and sorted by fitness
 fn next_generation<G, R, O, F>(
     gen:          Vec<(G, O)>,
     replace_rate: F,

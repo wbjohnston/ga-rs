@@ -10,9 +10,6 @@ pub trait Genome
         where R: Rng;
 
     /// Randomly mutate a single "gene" in the genome
-    ///
-    /// # Return
-    /// TODO
     fn mutate<R>(&self, rng: &mut R) -> Self
         where R: Rng;
 
