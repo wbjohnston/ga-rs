@@ -1,9 +1,9 @@
 use std::cmp::PartialOrd;
 
-pub trait Organism
+pub trait Genome
 {
     /// Create an entirely random `Organism`
-    fn random_start() -> Self;
+    fn genesis() -> Self;
 
     /// Randomly mutate this organism
     fn mutate(&self) -> Self;
