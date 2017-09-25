@@ -1,0 +1,380 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+AVAILABLE	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        static AVAILABLE: AtomicBool = ATOMIC_BOOL_INIT;$/;"	c
+AsciiGenerator	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub struct AsciiGenerator<'a, R:'a> {$/;"	s
+BOOLEAN	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    type BOOLEAN = u8;$/;"	T
+CHACHA_ROUNDS	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^const CHACHA_ROUNDS: u32 = 20; \/\/ Cryptographically secure from 8 upwards as of this writing$/;"	c
+CHAR_MASK	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^        const CHAR_MASK: u32 = 0x001f_ffff;$/;"	c
+CHECKER	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        static CHECKER: Once = ONCE_INIT;$/;"	c
+ChaChaRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^pub struct ChaChaRng {$/;"	s
+ChiSquared	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^pub struct ChiSquared {$/;"	s
+ChiSquaredRepr	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^enum ChiSquaredRepr {$/;"	g
+Closed01	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub struct Closed01<F>(pub F);$/;"	s
+ConstRand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    struct ConstRand(usize);$/;"	s
+ConstRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    struct ConstRng { i: u64 }$/;"	s
+ConstantRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    struct ConstantRng(u64);$/;"	s
+Counter	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    struct Counter {$/;"	s
+CountingRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    struct CountingRng { i: u32 }$/;"	s
+DEFAULT_GENERATION_THRESHOLD	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^const DEFAULT_GENERATION_THRESHOLD: u64 = 32 * 1024;$/;"	c
+EMPTY	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^static EMPTY: ChaChaRng = ChaChaRng {$/;"	c
+EMPTY	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^static EMPTY: IsaacRng = IsaacRng {$/;"	c
+EMPTY_64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^static EMPTY_64: Isaac64Rng = Isaac64Rng {$/;"	c
+Exp	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^pub struct Exp {$/;"	s
+Exp1	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^pub struct Exp1(pub f64);$/;"	s
+FILL_BYTES_V_LEN	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    const FILL_BYTES_V_LEN: usize = 13579;$/;"	c
+FisherF	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^pub struct FisherF {$/;"	s
+GEN_ASCII_STR_CHARSET	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        const GEN_ASCII_STR_CHARSET: &'static [u8] =$/;"	c
+Gamma	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^pub struct Gamma {$/;"	s
+GammaLargeShape	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^struct GammaLargeShape {$/;"	s
+GammaRepr	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^enum GammaRepr {$/;"	g
+GammaSmallShape	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^struct GammaSmallShape {$/;"	s
+Generator	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub struct Generator<'a, T, R:'a> {$/;"	s
+Genome	/home/wbj/Code/ge-rs/src/genome.rs	/^pub trait Genome$/;"	t
+INTERFACE	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    const INTERFACE: &'static [u8] = b"nacl-irt-random-0.1\\0";$/;"	c
+IndependentSample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^pub trait IndependentSample<Support>: Sample<Support> {$/;"	t
+Isaac64Rng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^pub struct Isaac64Rng {$/;"	s
+IsaacRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^pub struct IsaacRng {$/;"	s
+Item	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    type Item = T;$/;"	T
+Item	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    type Item = char;$/;"	T
+KEY_WORDS	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^const KEY_WORDS    : usize =  8; \/\/ 8 words for the 256-bit key$/;"	c
+LOWER_MASK	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        const LOWER_MASK: u32 = 0x7FFFFF;$/;"	c
+LOWER_MASK	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        const LOWER_MASK: u64 = 0xFFFFFFFFFFFFF;$/;"	c
+LogNormal	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^pub struct LogNormal {$/;"	s
+MIDPOINT	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^        const MIDPOINT: usize =  RAND_SIZE_64 \/ 2;$/;"	c
+MIDPOINT	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^        const MIDPOINT: usize = RAND_SIZE_USIZE \/ 2;$/;"	c
+MP_VEC	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^        const MP_VEC: [(usize, usize); 2] = [(0,MIDPOINT), (MIDPOINT, 0)];$/;"	c
+MyRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    pub struct MyRng<R> { inner: R }$/;"	s
+MyRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    type MyRng = ReseedingRng<Counter, ReseedWithDefault>;$/;"	T
+NR_GETRANDOM	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        const NR_GETRANDOM: libc::c_long = 278;$/;"	c
+NR_GETRANDOM	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        const NR_GETRANDOM: libc::c_long = 318;$/;"	c
+NR_GETRANDOM	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        const NR_GETRANDOM: libc::c_long = 355;$/;"	c
+NR_GETRANDOM	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        const NR_GETRANDOM: libc::c_long = 384;$/;"	c
+NaClIRTRandom	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    struct NaClIRTRandom {$/;"	s
+Normal	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^pub struct Normal {$/;"	s
+Open01	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub struct Open01<F>(pub F);$/;"	s
+OsRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    pub struct OsRng {$/;"	s
+OsRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    pub struct OsRng(extern fn(dest: *mut libc::c_void,$/;"	s
+OsRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    pub struct OsRng;$/;"	s
+OsRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^pub struct OsRng(imp::OsRng);$/;"	s
+OsRngInner	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    enum OsRngInner {$/;"	g
+RAND_SIZE	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^const RAND_SIZE: u32 = 1 << RAND_SIZE_LEN;$/;"	c
+RAND_SIZE_64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^const RAND_SIZE_64: usize = 1 << RAND_SIZE_64_LEN;$/;"	c
+RAND_SIZE_64_LEN	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^const RAND_SIZE_64_LEN: usize = 8;$/;"	c
+RAND_SIZE_LEN	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^const RAND_SIZE_LEN: usize = 8;$/;"	c
+RAND_SIZE_USIZE	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^const RAND_SIZE_USIZE: usize = 1 << RAND_SIZE_LEN;$/;"	c
+Rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub trait Rand : Sized {$/;"	t
+RandSample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^pub struct RandSample<Sup> {$/;"	s
+Range	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^pub struct Range<X> {$/;"	s
+ReadRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^pub struct ReadRng<R> {$/;"	s
+ReseedWithDefault	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^pub struct ReseedWithDefault;$/;"	s
+Reseeder	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^pub trait Reseeder<R> {$/;"	t
+ReseedingRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^pub struct ReseedingRng<R, Rsdr> {$/;"	s
+Rng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub trait Rng {$/;"	t
+SCALE	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    const SCALE: f64 = (1u64 << 53) as f64;$/;"	c
+SCALE	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^            const SCALE: $ty = (1u64 << $mantissa_bits) as $ty;$/;"	c
+STATE_WORDS	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^const STATE_WORDS  : usize = 16;$/;"	c
+Sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^pub trait Sample<Support> {$/;"	t
+SampleRange	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^pub trait SampleRange : Sized {$/;"	t
+SecRandom	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    enum SecRandom {}$/;"	g
+SecRandomCopyBytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        fn SecRandomCopyBytes(rnd: *const SecRandom,$/;"	f
+SeedableRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub trait SeedableRng<Seed>: Rng {$/;"	t
+StandardNormal	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^pub struct StandardNormal(pub f64);$/;"	s
+StdRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub struct StdRng {$/;"	s
+StudentT	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^pub struct StudentT {$/;"	s
+SystemFunction036	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        fn SystemFunction036(RandomBuffer: *mut u8, RandomBufferLength: ULONG) -> BOOLEAN;$/;"	f
+THREAD_RNG_RESEED_THRESHOLD	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^const THREAD_RNG_RESEED_THRESHOLD: u64 = 32_768;$/;"	c
+ThreadRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub struct ThreadRng {$/;"	s
+ThreadRngInner	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^type ThreadRngInner = reseeding::ReseedingRng<StdRng, ThreadRngReseeder>;$/;"	T
+ThreadRngReseeder	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^struct ThreadRngReseeder;$/;"	s
+ULONG	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    type ULONG = u32;$/;"	T
+UPPER_MASK	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        const UPPER_MASK: u32 = 0x3F800000;$/;"	c
+UPPER_MASK	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        const UPPER_MASK: u64 = 0x3FF0000000000000;$/;"	c
+Weighted	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^pub struct Weighted<T> {$/;"	s
+WeightedChoice	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^pub struct WeightedChoice<'a, T:'a> {$/;"	s
+XorShiftRng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub struct XorShiftRng {$/;"	s
+ZIG_EXP_F	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/ziggurat_tables.rs	/^pub static ZIG_EXP_F: [f64; 257] =$/;"	c
+ZIG_EXP_R	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/ziggurat_tables.rs	/^pub const ZIG_EXP_R: f64 = 7.697117470131050077;$/;"	c
+ZIG_EXP_X	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/ziggurat_tables.rs	/^pub static ZIG_EXP_X: [f64; 257] =$/;"	c
+ZIG_NORM_F	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/ziggurat_tables.rs	/^pub static ZIG_NORM_F: [f64; 257] =$/;"	c
+ZIG_NORM_R	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/ziggurat_tables.rs	/^pub const ZIG_NORM_R: f64 = 3.654152885361008796;$/;"	c
+ZIG_NORM_X	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/ziggurat_tables.rs	/^pub static ZIG_NORM_X: [f64; 257] =$/;"	c
+ZigTable	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/ziggurat_tables.rs	/^pub type ZigTable = &'static [f64; 257];$/;"	T
+array_impl	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^macro_rules! array_impl {$/;"	d
+bigint	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/num-0.1.40/src/lib.rs	/^pub mod bigint {$/;"	m
+choose	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn choose<'a, T>(&mut self, values: &'a [T]) -> Option<&'a T> where Self: Sized {$/;"	f
+choose_mut	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn choose_mut<'a, T>(&mut self, values: &'a mut [T]) -> Option<&'a mut T> where Self: Sized {$/;"	f
+clone	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn clone(&self) -> Self { *self }$/;"	f
+clone	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn clone(&self) -> Isaac64Rng {$/;"	f
+clone	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn clone(&self) -> IsaacRng {$/;"	f
+complex	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/num-0.1.40/src/lib.rs	/^pub mod complex {$/;"	m
+construct_range	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^            fn construct_range(low: $ty, high: $ty) -> Range<$ty> {$/;"	f
+construct_range	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn construct_range(low: Self, high: Self) -> Range<Self>;$/;"	f
+core	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^fn core(output: &mut [w32; STATE_WORDS], input: &[w32; STATE_WORDS]) {$/;"	f
+cross	/home/wbj/Code/ge-rs/src/genome.rs	/^    fn cross<R>(&self, other: &Self, rng: &mut Rng) -> Self$/;"	f
+default	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^        fn default() -> Counter {$/;"	f
+default	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn default() -> ReseedWithDefault { ReseedWithDefault }$/;"	f
+double_round	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^macro_rules! double_round{$/;"	d
+fill	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^fn fill(r: &mut Read, mut buf: &mut [u8]) -> io::Result<()> {$/;"	f
+fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn fill_bytes(&mut self, bytes: &mut [u8]) {$/;"	f
+fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn fill_bytes(&mut self, dest: &mut [u8]) {$/;"	f
+fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        fn fill_bytes(&mut self, v: &mut [u8]) {$/;"	f
+fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn fill_bytes(&mut self, v: &mut [u8]) { self.0.fill_bytes(v) }$/;"	f
+fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    fn fill_bytes(&mut self, v: &mut [u8]) {$/;"	f
+fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn fill_bytes(&mut self, dest: &mut [u8]) {$/;"	f
+fitness	/home/wbj/Code/ge-rs/src/genome.rs	/^    fn fitness<T>(&self) -> T$/;"	f
+float_impl	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^macro_rules! float_impl {$/;"	d
+float_impls	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^macro_rules! float_impls {$/;"	d
+floating_point_edge_cases	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn floating_point_edge_cases() {$/;"	f
+fmt	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+fmt	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn from_seed(seed: &'a [u32]) -> ChaChaRng {$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn from_seed(seed: &'a [u32]) -> IsaacRng {$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn from_seed(seed: &'a [u64]) -> Isaac64Rng {$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn from_seed(seed: &'a [usize]) -> StdRng {$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn from_seed(seed: Seed) -> Self;$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn from_seed(seed: [u32; 4]) -> XorShiftRng {$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^        fn from_seed(seed: u32) -> Counter {$/;"	f
+from_seed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn from_seed((rsdr, seed): (Rsdr, S)) -> ReseedingRng<R, Rsdr> {$/;"	f
+gen	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn gen<T: Rand>(&mut self) -> T where Self: Sized {$/;"	f
+gen_ascii_chars	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn gen_ascii_chars<'a>(&'a mut self) -> AsciiGenerator<'a, Self> where Self: Sized {$/;"	f
+gen_iter	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn gen_iter<'a, T: Rand>(&'a mut self) -> Generator<'a, T, Self> where Self: Sized {$/;"	f
+gen_range	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn gen_range<T: PartialOrd + SampleRange>(&mut self, low: T, high: T) -> T where Self: Sized {$/;"	f
+gen_weighted_bool	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn gen_weighted_bool(&mut self, n: u32) -> bool where Self: Sized {$/;"	f
+genesis	/home/wbj/Code/ge-rs/src/genome.rs	/^    fn genesis<R>(rng: &mut R) -> Self$/;"	f
+genetic_algorithm	/home/wbj/Code/ge-rs/src/lib.rs	/^pub fn genetic_algorithm<G, R, O, F>($/;"	f
+getrandom	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn getrandom(_buf: &mut [u8]) -> libc::c_long { -1 }$/;"	f
+getrandom	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn getrandom(buf: &mut [u8]) -> libc::c_long {$/;"	f
+getrandom_fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn getrandom_fill_bytes(v: &mut [u8]) {$/;"	f
+imp	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^mod imp {$/;"	m
+ind	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^        macro_rules! ind {$/;"	d
+ind_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^    fn ind_sample<R: Rng>(&self, rng: &mut R) -> f64 {$/;"	f
+ind_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn ind_sample<R: Rng>(&self, rng: &mut R) -> f64 {$/;"	f
+ind_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn ind_sample<R: Rng>(&self, &mut R) -> Support;$/;"	f
+ind_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn ind_sample<R: Rng>(&self, rng: &mut R) -> Sup {$/;"	f
+ind_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn ind_sample<R: Rng>(&self, rng: &mut R) -> T {$/;"	f
+ind_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    fn ind_sample<R: Rng>(&self, rng: &mut R) -> f64 {$/;"	f
+ind_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn ind_sample<R: Rng>(&self, rng: &mut R) -> Sup {$/;"	f
+init	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn init(&mut self, key: &[u32; KEY_WORDS]) {$/;"	f
+init	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^        macro_rules! init {$/;"	d
+init	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn init(&mut self, use_rsl: bool) {$/;"	f
+init_generation	/home/wbj/Code/ge-rs/src/lib.rs	/^fn init_generation<G, R, O>(size: usize, rng: &mut R) -> Vec<(G, O)>$/;"	f
+integer	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/num-0.1.40/src/lib.rs	/^pub mod integer {$/;"	m
+integer_impl	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^macro_rules! integer_impl {$/;"	d
+is_getrandom_available	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn is_getrandom_available() -> bool { false }$/;"	f
+is_getrandom_available	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn is_getrandom_available() -> bool {$/;"	f
+isaac	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn isaac(&mut self) {$/;"	f
+isaac64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn isaac64(&mut self) {$/;"	f
+iter	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/num-0.1.40/src/lib.rs	/^pub mod iter {$/;"	m
+iter_eq	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    pub fn iter_eq<I, J>(i: I, j: J) -> bool$/;"	f
+kSecRandomDefault	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    const kSecRandomDefault: *const SecRandom = 0 as *const SecRandom;$/;"	c
+memloop	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^            macro_rules! memloop {$/;"	d
+mix	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^        macro_rules! mix {$/;"	d
+mutate	/home/wbj/Code/ge-rs/src/genome.rs	/^    fn mutate<R>(&self, rng: &mut R) -> Self$/;"	f
+nacl_interface_query	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        fn nacl_interface_query(name: *const libc::c_char,$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^    pub fn new(lambda: f64) -> Exp {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    pub fn new(k: f64) -> ChiSquared {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    pub fn new(m: f64, n: f64) -> FisherF {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    pub fn new(n: f64) -> StudentT {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    pub fn new(shape: f64, scale: f64) -> Gamma {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    pub fn new() -> RandSample<Sup> {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    pub fn new(items: &'a mut [Weighted<T>]) -> WeightedChoice<'a, T> {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    pub fn new(mean: f64, std_dev: f64) -> LogNormal {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    pub fn new(mean: f64, std_dev: f64) -> Normal {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    pub fn new(low: X, high: X) -> Range<X> {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    pub fn new() -> io::Result<StdRng> {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        pub fn new() -> io::Result<OsRng> {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    pub fn new() -> io::Result<OsRng> {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    pub fn new(r: R) -> ReadRng<R> {$/;"	f
+new	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    pub fn new(rng: R, generation_threshold: u64, reseeder: Rsdr) -> ReseedingRng<R,Rsdr> {$/;"	f
+new_raw	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn new_raw(shape: f64, scale: f64) -> GammaLargeShape {$/;"	f
+new_raw	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn new_raw(shape: f64, scale: f64) -> GammaSmallShape {$/;"	f
+new_unseeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    pub fn new_unseeded() -> ChaChaRng {$/;"	f
+new_unseeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    pub fn new_unseeded() -> Isaac64Rng {$/;"	f
+new_unseeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    pub fn new_unseeded() -> IsaacRng {$/;"	f
+new_unseeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    pub fn new_unseeded() -> XorShiftRng {$/;"	f
+next	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^            fn next<T: Rng>(t: &mut T) -> u32 {$/;"	f
+next	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn next(&mut self) -> Option<T> {$/;"	f
+next	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn next(&mut self) -> Option<char> {$/;"	f
+next_f32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn next_f32(&mut self) -> f32 {$/;"	f
+next_f64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn next_f64(&mut self) -> f64 {$/;"	f
+next_generation	/home/wbj/Code/ge-rs/src/lib.rs	/^fn next_generation<G, R, O, F>($/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^        fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        fn next_u32(&mut self) -> u32 { self.i as u32 }$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn next_u32(&mut self) -> u32;$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn next_u32(&mut self) -> u32 { self.0.next_u32() }$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^fn next_u32(mut fill_buf: &mut FnMut(&mut [u8])) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^        fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^        fn next_u32(&mut self) -> u32 {$/;"	f
+next_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn next_u32(&mut self) -> u32 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^        fn next_u64(&mut self) -> u64 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn next_u64(&mut self) -> u64 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^        fn next_u64(&mut self) -> u64 { self.i }$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn next_u64(&mut self) -> u64 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^        fn next_u64(&mut self) -> u64 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn next_u64(&mut self) -> u64 { self.0.next_u64() }$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^fn next_u64(mut fill_buf: &mut FnMut(&mut [u8])) -> u64 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^        fn next_u64(&mut self) -> u64 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    fn next_u64(&mut self) -> u64 {$/;"	f
+next_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn next_u64(&mut self) -> u64 {$/;"	f
+pdf	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^        fn pdf(x: f64) -> f64 {$/;"	f
+pdf	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^        fn pdf(x: f64) -> f64 {$/;"	f
+quarter_round	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^macro_rules! quarter_round{$/;"	d
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn rand<R: Rng>(other: &mut R) -> ChaChaRng {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^    fn rand<R:Rng>(rng: &mut R) -> Exp1 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^        fn rand<R: Rng>(_: &mut R) -> ConstRand {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    fn rand<R:Rng>(rng: &mut R) -> StandardNormal {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn rand<R: Rng>(other: &mut R) -> Isaac64Rng {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn rand<R: Rng>(other: &mut R) -> IsaacRng {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn rand<R: Rng>(rng: &mut R) -> Self;$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn rand<R: Rng>(rng: &mut R) -> XorShiftRng {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^                fn rand<R: Rng>(rng: &mut R) -> $ty {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^                fn rand<R: Rng>(rng: &mut R) -> Closed01<$ty> {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^                fn rand<R: Rng>(rng: &mut R) -> Open01<$ty> {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^            fn rand<R: Rng>(_rng: &mut R) -> ( $( $tyvar ),* , ) {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^            fn rand<R: Rng>(_rng: &mut R) -> [T; $n] { [] }$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^            fn rand<R: Rng>(_rng: &mut R) -> [T; $n] {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(_: &mut R) -> () { () }$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> Option<T> {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> bool {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> char {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> i128 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> i16 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> i32 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> i64 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> i8 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> isize {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> u128 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> u16 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> u32 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> u64 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> u8 {$/;"	f
+rand	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand<R: Rng>(rng: &mut R) -> usize {$/;"	f
+rand_closed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand_closed() {$/;"	f
+rand_open	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^    fn rand_open() {$/;"	f
+random	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub fn random<T: Rand>() -> T {$/;"	f
+rational	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/num-0.1.40/src/lib.rs	/^pub mod rational {$/;"	m
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn reseed(&mut self, seed: &'a [u32]) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn reseed(&mut self, seed: &'a [u32]) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn reseed(&mut self, seed: &'a [u64]) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn reseed(&mut self, Seed);$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn reseed(&mut self, rng: &mut StdRng) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn reseed(&mut self, seed: &'a [usize]) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn reseed(&mut self, seed: [u32; 4]) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^        fn reseed(&mut self, seed: u32) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn reseed(&mut self, (rsdr, seed): (Rsdr, S)) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn reseed(&mut self, rng: &mut R) {$/;"	f
+reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn reseed(&mut self, rng: &mut R);$/;"	f
+reseed_if_necessary	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    pub fn reseed_if_necessary(&mut self) {$/;"	f
+rng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    pub fn rng() -> MyRng<::ThreadRng> {$/;"	f
+rngstepn	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^                macro_rules! rngstepn {$/;"	d
+rngstepn	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^            macro_rules! rngstepn {$/;"	d
+rngstepp	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^                macro_rules! rngstepp {$/;"	d
+rngstepp	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^            macro_rules! rngstepp {$/;"	d
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^    fn sample<R: Rng>(&mut self, rng: &mut R) -> f64 { self.ind_sample(rng) }$/;"	f
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn sample<R: Rng>(&mut self, rng: &mut R) -> f64 { self.ind_sample(rng) }$/;"	f
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn sample<R: Rng>(&mut self, rng: &mut R) -> Sup { self.ind_sample(rng) }$/;"	f
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn sample<R: Rng>(&mut self, rng: &mut R) -> Support;$/;"	f
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn sample<R: Rng>(&mut self, rng: &mut R) -> T { self.ind_sample(rng) }$/;"	f
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    fn sample<R: Rng>(&mut self, rng: &mut R) -> f64 { self.ind_sample(rng) }$/;"	f
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn sample<R: Rng>(&mut self, rng: &mut R) -> Sup { self.ind_sample(rng) }$/;"	f
+sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub fn sample<T, I, R>(rng: &mut R, iterable: I, amount: usize) -> Vec<T>$/;"	f
+sample_range	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^            fn sample_range<R: Rng>(r: &Range<$ty>, rng: &mut R) -> $ty {$/;"	f
+sample_range	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn sample_range<R: Rng>(r: &Range<Self>, rng: &mut R) -> Self;$/;"	f
+set_counter	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    pub fn set_counter(&mut self, counter_low: u64, counter_high: u64) {$/;"	f
+shuffle	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn shuffle<T>(&mut self, values: &mut [T]) where Self: Sized {$/;"	f
+syscall	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^            fn syscall(number: libc::c_long, ...) -> libc::c_long;$/;"	f
+t	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^        macro_rules! t {$/;"	d
+t	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^        macro_rules! t {$/;"	d
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^mod test {$/;"	m
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^mod test {$/;"	m
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^mod test {$/;"	m
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^mod test {$/;"	m
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^mod test {$/;"	m
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^mod test {$/;"	m
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^mod test {$/;"	m
+test	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^mod test {$/;"	m
+test_chi_squared_invalid_dof	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn test_chi_squared_invalid_dof() {$/;"	f
+test_chi_squared_large	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn test_chi_squared_large() {$/;"	f
+test_chi_squared_one	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn test_chi_squared_one() {$/;"	f
+test_chi_squared_small	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn test_chi_squared_small() {$/;"	f
+test_choose	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_choose() {$/;"	f
+test_exp	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^    fn test_exp() {$/;"	f
+test_exp_invalid_lambda_neg	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^    fn test_exp_invalid_lambda_neg() {$/;"	f
+test_exp_invalid_lambda_zero	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^    fn test_exp_invalid_lambda_zero() {$/;"	f
+test_f	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn test_f() {$/;"	f
+test_fill_bytes_default	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_fill_bytes_default() {$/;"	f
+test_floats	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn test_floats() {$/;"	f
+test_gen_ascii_str	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_gen_ascii_str() {$/;"	f
+test_gen_f64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_gen_f64() {$/;"	f
+test_gen_range	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_gen_range() {$/;"	f
+test_gen_range_panic_int	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_gen_range_panic_int() {$/;"	f
+test_gen_range_panic_usize	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_gen_range_panic_usize() {$/;"	f
+test_gen_vec	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_gen_vec() {$/;"	f
+test_gen_weighted_bool	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_gen_weighted_bool() {$/;"	f
+test_integers	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn test_integers() {$/;"	f
+test_log_normal	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    fn test_log_normal() {$/;"	f
+test_log_normal_invalid_sd	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    fn test_log_normal_invalid_sd() {$/;"	f
+test_normal	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    fn test_normal() {$/;"	f
+test_normal_invalid_sd	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^    fn test_normal_invalid_sd() {$/;"	f
+test_os_rng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn test_os_rng() {$/;"	f
+test_os_rng_tasks	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/os.rs	/^    fn test_os_rng_tasks() {$/;"	f
+test_rand_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_rand_sample() {$/;"	f
+test_random	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_random() {$/;"	f
+test_range_bad_limits_equal	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn test_range_bad_limits_equal() {$/;"	f
+test_range_bad_limits_flipped	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^    fn test_range_bad_limits_flipped() {$/;"	f
+test_reader_rng_fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    fn test_reader_rng_fill_bytes() {$/;"	f
+test_reader_rng_insufficient_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    fn test_reader_rng_insufficient_bytes() {$/;"	f
+test_reader_rng_u32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    fn test_reader_rng_u32() {$/;"	f
+test_reader_rng_u64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/read.rs	/^    fn test_reader_rng_u64() {$/;"	f
+test_reseeding	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn test_reseeding() {$/;"	f
+test_rng_32_rand_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_32_rand_seeded() {$/;"	f
+test_rng_32_reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_32_reseed() {$/;"	f
+test_rng_32_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_32_seeded() {$/;"	f
+test_rng_32_true_values	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_32_true_values() {$/;"	f
+test_rng_64_rand_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_64_rand_seeded() {$/;"	f
+test_rng_64_reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_64_reseed() {$/;"	f
+test_rng_64_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_64_seeded() {$/;"	f
+test_rng_64_true_values	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_64_true_values() {$/;"	f
+test_rng_clone	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn test_rng_clone() {$/;"	f
+test_rng_clone	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/isaac.rs	/^    fn test_rng_clone() {$/;"	f
+test_rng_fill_bytes	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn test_rng_fill_bytes() {$/;"	f
+test_rng_rand_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn test_rng_rand_seeded() {$/;"	f
+test_rng_reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn test_rng_reseed() {$/;"	f
+test_rng_reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn test_rng_reseed() {$/;"	f
+test_rng_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn test_rng_seeded() {$/;"	f
+test_rng_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/reseeding.rs	/^    fn test_rng_seeded() {$/;"	f
+test_rng_trait_object	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_rng_trait_object() {$/;"	f
+test_rng_true_values	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn test_rng_true_values() {$/;"	f
+test_sample	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_sample() {$/;"	f
+test_shuffle	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_shuffle() {$/;"	f
+test_std_rng_reseed	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_std_rng_reseed() {$/;"	f
+test_std_rng_seeded	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_std_rng_seeded() {$/;"	f
+test_t	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/gamma.rs	/^    fn test_t() {$/;"	f
+test_thread_rng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^    fn test_thread_rng() {$/;"	f
+test_weighted_choice	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_weighted_choice() {$/;"	f
+test_weighted_choice_no_items	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_weighted_choice_no_items() {$/;"	f
+test_weighted_choice_weight_overflows	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_weighted_choice_weight_overflows() {$/;"	f
+test_weighted_choice_zero_weight	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_weighted_choice_zero_weight() {$/;"	f
+test_weighted_clone_change_item	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_weighted_clone_change_item() {$/;"	f
+test_weighted_clone_change_weight	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_weighted_clone_change_weight() {$/;"	f
+test_weighted_clone_initialization	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^    fn test_weighted_clone_initialization() {$/;"	f
+tests	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^mod tests {$/;"	m
+tests	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^mod tests {$/;"	m
+tests	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/range.rs	/^mod tests {$/;"	m
+tests	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^mod tests {$/;"	m
+thread_rng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub fn thread_rng() -> ThreadRng {$/;"	f
+traits	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/num-0.1.40/src/lib.rs	/^pub mod traits {$/;"	m
+tuple_impl	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/rand_impls.rs	/^macro_rules! tuple_impl {$/;"	d
+update	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/chacha.rs	/^    fn update(&mut self) {$/;"	f
+w32	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^type w32 = w<u32>;$/;"	T
+w64	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^type w64 = w<u64>;$/;"	T
+weak_rng	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/lib.rs	/^pub fn weak_rng() -> XorShiftRng {$/;"	f
+zero_case	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/exponential.rs	/^        fn zero_case<R:Rng>(rng: &mut R, _u: f64) -> f64 {$/;"	f
+zero_case	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/normal.rs	/^        fn zero_case<R:Rng>(rng: &mut R, u: f64) -> f64 {$/;"	f
+ziggurat	/home/wbj/.cargo/registry/src/github.com-1ecc6299db9ec823/rand-0.3.16/src/distributions/mod.rs	/^fn ziggurat<R: Rng, P, Z>($/;"	f
