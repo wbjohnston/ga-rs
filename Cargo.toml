@@ -13,4 +13,3 @@ rand     = "0.3.16"
 petgraph = "0.4"
 ndarray  = "0.10.0"
 rayon    = "0.8.2"
-clippy   = { version = "*", optional = true }
