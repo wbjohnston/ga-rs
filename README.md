@@ -1,11 +1,25 @@
-# Genetic Algorithm Toolkit
-Genetic algorithm traits and algorithm
+# Genetic Programming Toolkit
+Genetic algorithm traits, primitives and algorithms
 
-Please read the [API documentation on docs.rs](https://docs.rs/ge)
+Please read the [API documentation on docs.rs](https://docs.rs/ga)
 
-![Travis Status](https://travis-ci.org/wbjohnston/ge-rs.svg?branch=master)
-[![Crates.io badge](https://img.shields.io/crates/v/ge.svg)](https://crates.io/crates/ge)
+![Travis Status](https://travis-ci.org/wbjohnston/ga-rs.svg?branch=master)
+[![Crates.io badge](https://img.shields.io/crates/v/ga.svg)](https://crates.io/crates/ge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Modules
+#### Algo
+Genetic algorithms to operate on structs implementing the `traits::Individual`
+trait
+
+#### Primitives
+Genetic algorithm primitives
+
+#### Traits
+Traits for defining new Genetic primitives
+
+## Contributing
+Please see [CONTRIBUTING.md](/CONTRIBUTING.md)
 
 ## License (MIT)
 Copyright 2017 William Johnston
