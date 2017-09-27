@@ -1,5 +1,3 @@
-//! A trait that lets us operate on structures, treating them like a "genome"
-//! so we can "mutate" and "cross" them with other structures
 
 use rand::Rng;
 
@@ -29,7 +27,7 @@ pub trait Individual {
     /// * `rng`: Random number generator to pull randomness from
     ///
     /// # Return
-    /// TODO
+    /// A randomly crossed genome
     fn cross(&self, other: &Self, rng: &mut Rng) -> Self;
 
     /// Get the fitness of the organism
