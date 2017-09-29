@@ -1,9 +1,10 @@
+//! A collection of chromosomes
 
 use rand::Rng;
 
 /// Interface for randomly mutating, crossing over, and creating a genome used
 /// in genetic algorithms
-pub trait Individual {
+pub trait Genome {
     /// Create an entirely random `Genome`
     ///
     /// # Arguments
