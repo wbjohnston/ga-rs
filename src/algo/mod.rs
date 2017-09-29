@@ -1,6 +1,6 @@
 
 use rand::Rng;
-use traits::Individual;
+use traits::Genome;
 
 /// Genetic algorithm
 ///
@@ -23,7 +23,7 @@ pub fn ga<G, R, O>(
     mut rng: R,
 ) -> Vec<(G, O)>
 where
-    G: Individual + Clone,
+    G: Genome + Clone,
     R: Rng,
     O: Ord,
 {
@@ -41,7 +41,7 @@ pub fn ga_with_pop<G, R, O>(
     mut rng: R,
 ) -> Vec<(G, O)>
 where
-    G: Individual + Clone,
+    G: Genome + Clone,
     R: Rng,
     O: Ord,
 {
@@ -63,7 +63,7 @@ where
 /// An entirely random generation, sorted by fitness
 fn init_generation<G, R, O>(size: usize, rng: &mut R) -> Vec<(G, O)>
 where
-    G: Individual,
+    G: Genome,
     R: Rng,
     O: Ord,
 {
@@ -96,7 +96,7 @@ fn next_generation<G, R, O>(
     rng: &mut R,
 ) -> Vec<(G, O)>
 where
-    G: Individual + Clone,
+    G: Genome + Clone,
     R: Rng,
     O: Ord,
 {
