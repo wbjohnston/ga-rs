@@ -9,15 +9,20 @@ use traits::{Chromosome, Genome};
 *   Possibly rewrite the `genome::genesis` and mutation function to take in a 
 *   "strategy" field instead of having multiple types sharing the same fields
 *******************************************************************************/
-/// Binary tree with fixed size
-pub struct FixedBinaryTree<C>
+
+struct BinaryTree<C>
 where
     C: Chromosome
 {
     value: C,
-    left: Option<Box<C>>,
+    left:  Option<Box<C>>,
     right: Option<Box<C>>
 }
+
+/// Binary tree with fixed size
+pub struct FixedBinaryTree<C>(BinaryTree<C>)
+where
+    C: Chromosome;
 
 impl<C> Genome for FixedBinaryTree<C>
 where
@@ -47,14 +52,9 @@ where
 }
 
 /// Binary tree with non-fixed size and non-fixed depth mutation strategy
-pub struct VariableBinaryTree<C>
+pub struct VariableBinaryTree<C>(BinaryTree<C>)
 where
-    C: Chromosome
-{
-    value: C,
-    left: Option<Box<C>>,
-    right: Option<Box<C>>
-}
+    C: Chromosome;
 
 impl<C> Genome for VariableBinaryTree<C>
 where
