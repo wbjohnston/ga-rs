@@ -1,9 +1,19 @@
 //! Genetic algorithm traits, primitives, and algorithms
 
-#![cfg_attr(feature="clippy", feature(plugin))]
-#![cfg_attr(feature="clippy", plugin(clippy))]
-
 extern crate rand;
+
+#[cfg(feature = "ga")]
+extern crate bit_vec;
+
+#[cfg(any(feature = "lgp", feature = "cgp"))]
+extern crate petgraph;
+
+// TODO: add in rayon dep for ga-par and gp-par
+#[cfg(any(feature = "gp-par", feature = "ga-par"))]
+extern crate rayon;
+
+#[cfg(feature = "serde-g")]
+extern crate serde;
 
 pub mod algo;
 

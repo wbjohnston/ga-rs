@@ -1,7 +1,13 @@
 //! Primitives for genetic programming algorithms
 
-pub mod linear;
+#[cfg(feature = "lgp")]
+pub mod lgp;
 
-pub mod cartesian;
+#[cfg(feature = "cgp")]
+pub mod cgp;
 
-pub mod tree;
+#[cfg(feature = "tgp")]
+pub mod tgp;
+
+#[cfg(feature = "ga")]
+pub mod ga;
