@@ -8,7 +8,6 @@ extern crate bit_vec;
 #[cfg(any(feature = "lgp", feature = "cgp"))]
 extern crate petgraph;
 
-// TODO: add in rayon dep for ga-par and gp-par
 #[cfg(any(feature = "gp-par", feature = "ga-par"))]
 extern crate rayon;
 

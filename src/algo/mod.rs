@@ -1,7 +1,4 @@
 
-use rand::Rng;
-use traits::Genome;
-
 pub mod initialization;
 
 pub mod crossover;

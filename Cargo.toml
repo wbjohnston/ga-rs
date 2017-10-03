@@ -10,7 +10,7 @@ repository  = "https://github.com/wbjohnston/ga-rs.git"
 
 [features]
 lgp     = ["petgraph"]
-tgp     = []
+tgp     = ["petgraph"]
 cgp     = ["petgraph"]
 
 gp      = ["lgp", "tgp", "cgp"]
