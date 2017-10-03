@@ -14,12 +14,10 @@ API is **not stable**.
 
 ## Modules
 #### Algo (_WIP_)
-Genetic algorithms to operate on structs implementing the `traits::Individual`
-trait
+Genetic algorithms to operate on structs implementing the `traits::Genome` trait
 
 #### Primitives (_WIP_)
 Genetic algorithm primitives
-
 
 #### Traits (_WIP_)
 Traits for defining new Genetic primitives
