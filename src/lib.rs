@@ -25,4 +25,3 @@ pub mod ga;
 
 #[cfg(feature = "cgp")]
 pub mod cgp;
-
