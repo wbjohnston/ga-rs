@@ -9,11 +9,11 @@ readme      = "README.md"
 repository  = "https://github.com/wbjohnston/ga-rs.git"
 
 [features]
-lgp     = ["petgraph"]
+lgp     = []
 tgp     = ["petgraph"]
 cgp     = ["petgraph"]
 
-gp      = ["lgp", "tgp", "cgp"]
+gp      = ["tgp"]
 gp-par  = ["gp", "rayon"]
 
 ga      = ["bit-vec"]

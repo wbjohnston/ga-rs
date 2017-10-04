@@ -14,8 +14,15 @@ extern crate rayon;
 #[cfg(feature = "serde-g")]
 extern crate serde;
 
-pub mod algo;
+#[cfg(feature = "tgp")]
+pub mod tgp;
 
-pub mod primitives;
+#[cfg(feature = "lgp")]
+pub mod lgp;
 
-pub mod traits;
+#[cfg(feature = "ga")]
+pub mod ga;
+
+#[cfg(feature = "cgp")]
+pub mod cgp;
+
