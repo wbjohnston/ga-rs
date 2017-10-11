@@ -20,8 +20,8 @@ pub trait Cross {
 
 /// Implement on structs representing a parameterized select operator
 pub trait Select {
-    /// Select `Genomes` from a population
-    fn select(population: &Population, rng: &mut Rng) -> Population;
+    /// Select k `Genomes` from a population
+    fn select(population: &Population, k: usize, rng: &mut Rng) -> Population;
 }
 
 /// Implement on structs representing a parameterized mutate operator
