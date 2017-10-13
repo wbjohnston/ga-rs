@@ -1,14 +1,16 @@
 //! Crossover operators for genetic algorithms
 
-use ga::traits::Cross;
 use rand::Rng;
+
+use ga::traits::Cross;
 use ga::primitives::Genome;
 
 /// Cross genomes at one point
 pub struct OnePoint;
 
 impl Cross for OnePoint {
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
@@ -17,20 +19,18 @@ impl Cross for OnePoint {
 pub struct TwoPoint;
 
 impl Cross for TwoPoint {
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
 
 /// Uniform cross-over
-pub struct Uniform
-{
-    pb_cx: f32
-}
+pub struct Uniform;
 
-impl Cross for Uniform
-{
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+impl Cross for Uniform {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
@@ -38,9 +38,9 @@ impl Cross for Uniform
 /// TODO
 pub struct PartialyMatched;
 
-impl Cross for PartialyMatched
-{
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+impl Cross for PartialyMatched {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
@@ -48,9 +48,9 @@ impl Cross for PartialyMatched
 /// TODO
 pub struct UniformPartialyMatched;
 
-impl Cross for UniformPartialyMatched
-{
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+impl Cross for UniformPartialyMatched {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
@@ -58,37 +58,29 @@ impl Cross for UniformPartialyMatched
 /// TODO
 pub struct Ordered;
 
-impl Cross for Ordered
-{
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+impl Cross for Ordered {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
 
 /// TODO
-pub struct Blend
-{
-    alpha: f32
-}
+pub struct Blend;
 
-impl Cross for Blend
-{
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+impl Cross for Blend {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
 
 /// TODO
-pub struct SimulatedBinaryBounded
-{
-    eta: f32,
-    low: f32,
-    up: f32
-}
+pub struct SimulatedBinaryBounded;
 
-impl Cross for SimulatedBinaryBounded
-{
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+impl Cross for SimulatedBinaryBounded {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
@@ -96,10 +88,9 @@ impl Cross for SimulatedBinaryBounded
 /// TODO
 pub struct MessyOnePoint;
 
-impl Cross for MessyOnePoint
-{
-    fn cross(g1: &Genome, g2: &Genome, rng: &mut Rng) -> Genome {
+impl Cross for MessyOnePoint {
+    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+        assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
-

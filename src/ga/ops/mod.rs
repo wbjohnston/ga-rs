@@ -1,4 +1,4 @@
-//! Operators and algorithms for genetic algorithms
+//! Operators for genetic algorithms
 
 pub mod selection;
 
