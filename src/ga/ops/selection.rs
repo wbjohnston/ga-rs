@@ -14,6 +14,7 @@ pub struct Tournament;
 
 impl Select for Tournament {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -30,6 +31,7 @@ pub struct Roulette;
 
 impl Select for Roulette {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -46,6 +48,7 @@ pub struct NSGA2;
 
 impl Select for NSGA2 {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -62,6 +65,7 @@ pub struct SPEA2;
 
 impl Select for SPEA2 {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -78,6 +82,7 @@ pub struct Random;
 
 impl Select for Random {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -94,6 +99,7 @@ pub struct Best;
 
 impl Select for Best {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -110,6 +116,7 @@ pub struct Worst;
 
 impl Select for Worst {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -126,6 +133,7 @@ pub struct DoubleTournament; // TODO
 
 impl Select for DoubleTournament {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -142,6 +150,7 @@ pub struct StochasticUniversalSampling;
 
 impl Select for StochasticUniversalSampling {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -158,6 +167,7 @@ pub struct TournamentDCD;
 
 impl Select for TournamentDCD {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -173,6 +183,7 @@ pub struct Lexicase;
 
 impl Select for Lexicase {
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         population: &Population,

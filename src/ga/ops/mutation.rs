@@ -10,6 +10,7 @@ pub struct Gaussian;
 
 impl Mutate for Gaussian {
     #[allow(unused_variables)]
+    #[inline]
     fn mutate<R: Rng>(&self, target: &mut Genome, rng: &mut R)
     {
         unimplemented!();
@@ -21,6 +22,7 @@ pub struct ShuffleIndexes;
 
 impl Mutate for ShuffleIndexes {
     #[allow(unused_variables)]
+    #[inline]
     fn mutate<R: Rng>(&self, target: &mut Genome, rng: &mut R)
     {
         unimplemented!();
@@ -32,6 +34,7 @@ pub struct FlipBit;
 
 impl Mutate for FlipBit {
     #[allow(unused_variables)]
+    #[inline]
     fn mutate<R: Rng>(&self, target: &mut Genome, rng: &mut R)
     {
         unimplemented!();
@@ -43,6 +46,7 @@ pub struct PolynomialBounded;
 
 impl Mutate for PolynomialBounded {
     #[allow(unused_variables)]
+    #[inline]
     fn mutate<R: Rng>(&self, target: &mut Genome, rng: &mut R)
     {
         unimplemented!();
@@ -54,6 +58,7 @@ pub struct UniformInt;
 
 impl Mutate for UniformInt {
     #[allow(unused_variables)]
+    #[inline]
     fn mutate<R: Rng>(&self, target: &mut Genome, rng: &mut R)
     {
         unimplemented!();

@@ -10,6 +10,7 @@ pub struct OnePoint;
 
 impl CrossOver for OnePoint {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -27,6 +28,7 @@ pub struct TwoPoint;
 
 impl CrossOver for TwoPoint {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -44,6 +46,7 @@ pub struct Uniform;
 
 impl CrossOver for Uniform {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -61,6 +64,7 @@ pub struct PartialyMatched;
 
 impl CrossOver for PartialyMatched {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -78,6 +82,7 @@ pub struct UniformPartialyMatched;
 
 impl CrossOver for UniformPartialyMatched {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -95,6 +100,7 @@ pub struct Ordered;
 
 impl CrossOver for Ordered {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -112,6 +118,7 @@ pub struct Blend;
 
 impl CrossOver for Blend {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -129,6 +136,7 @@ pub struct SimulatedBinaryBounded;
 
 impl CrossOver for SimulatedBinaryBounded {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
@@ -146,6 +154,7 @@ pub struct MessyOnePoint;
 
 impl CrossOver for MessyOnePoint {
     #[allow(unused_variables)]
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Genome,
