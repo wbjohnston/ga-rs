@@ -35,4 +35,3 @@ pub trait Mutate {
 pub trait Evaluate {
     fn evaluate<O: Ord>(&self, g: &Genome) -> O;
 }
-

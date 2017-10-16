@@ -4,4 +4,4 @@ pub mod primitives;
 
 pub mod ops;
 
-pub mod algorithms;
+pub mod algo;

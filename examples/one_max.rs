@@ -8,7 +8,7 @@ extern crate bit_vec;
 use bit_vec::BitVec;
 
 extern crate ga;
-use ga::ga::algorithms::simple;
+use ga::ga::algo::simple;
 use ga::ga::primitives::Genome;
 use ga::ga::ops::ToolBox;
 
