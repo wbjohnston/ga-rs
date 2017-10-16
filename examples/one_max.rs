@@ -19,7 +19,8 @@ const DEFAULT_CX_PB: f32 = 0.05;
 const DEFAULT_MUT_PB: f32 = 0.01;
 const DEFAULT_N_GEN: usize = 40;
 
-fn main() {
+fn main()
+{
     let select = Best;
     let cx = OnePoint;
     let muta = Gaussian;

@@ -15,7 +15,13 @@ pub struct Tournament {
 }
 
 impl Select for Tournament {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -24,7 +30,13 @@ impl Select for Tournament {
 pub struct Roulette;
 
 impl Select for Roulette {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -33,7 +45,13 @@ impl Select for Roulette {
 pub struct NSGA2;
 
 impl Select for NSGA2 {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -42,7 +60,13 @@ impl Select for NSGA2 {
 pub struct SPEA2;
 
 impl Select for SPEA2 {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -51,7 +75,13 @@ impl Select for SPEA2 {
 pub struct Random;
 
 impl Select for Random {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -60,7 +90,13 @@ impl Select for Random {
 pub struct Best;
 
 impl Select for Best {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -69,7 +105,13 @@ impl Select for Best {
 pub struct Worst;
 
 impl Select for Worst {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -78,7 +120,13 @@ impl Select for Worst {
 pub struct DoubleTournament; // TODO
 
 impl Select for DoubleTournament {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -87,7 +135,13 @@ impl Select for DoubleTournament {
 pub struct StochasticUniversalSampling;
 
 impl Select for StochasticUniversalSampling {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -96,7 +150,13 @@ impl Select for StochasticUniversalSampling {
 pub struct TournamentDCD;
 
 impl Select for TournamentDCD {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }
@@ -104,7 +164,13 @@ impl Select for TournamentDCD {
 pub struct Lexicase;
 
 impl Select for Lexicase {
-    fn select<R: Rng>(&self, population: &Population, k: usize, rng: &mut R) -> Population {
+    fn select<R: Rng>(
+        &self,
+        population: &Population,
+        k: usize,
+        rng: &mut R,
+    ) -> Population
+    {
         unimplemented!();
     }
 }

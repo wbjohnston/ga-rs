@@ -2,6 +2,7 @@
 
 use ga::traits::*;
 use ga::primitives::Population;
+use ga::primitives::ToolBox;
 
 use rand::Rng;
 
@@ -21,28 +22,29 @@ pub fn simple<S, C, M, R>(
     cx_pb: f32,
     mut_pb: f32,
     n_generations: usize,
-    select_op: &S,
-    cx_op: &C,
-    mut_op: &M,
+    toolbox: &ToolBox<S, C, M>,
     rng: &mut R,
 ) -> Population
 where
     S: Select,
-    C: Cross,
+    C: CrossOver,
     M: Mutate,
     R: Rng,
 {
     let mut curr_pop = pop.clone();
-    for _ in 0..n_generations {
+    for _ in 0..n_generations
+    {
         // select new individuals
-        curr_pop = select_op.select(&curr_pop, curr_pop.len(), rng);
+        curr_pop = toolbox.select(&curr_pop, curr_pop.len(), rng);
 
         // cross_over
         let mut offspring = vec![];
-        for g in curr_pop.iter() {
-            if rng.gen_weighted_bool((cx_pb * 100.0) as u32) {
+        for g in curr_pop.iter()
+        {
+            if rng.gen_weighted_bool((cx_pb * 100.0) as u32)
+            {
                 // TODO: select another genome to cross with
-                let (c1, c2) = cx_op.cross(g, g, rng);
+                let (c1, c2) = toolbox.crossover(g, g, rng);
                 offspring.push(c1);
                 offspring.push(c2);
             }
@@ -54,9 +56,11 @@ where
         curr_pop.extend(offspring.into_iter());
 
         // Mutate
-        for g in curr_pop.iter_mut() {
-            if rng.gen_weighted_bool((mut_pb * 100.00) as u32) {
-                mut_op.mutate(g, rng);
+        for g in curr_pop.iter_mut()
+        {
+            if rng.gen_weighted_bool((mut_pb * 100.00) as u32)
+            {
+                toolbox.mutate(g, rng);
             }
         }
     }
@@ -66,21 +70,18 @@ where
 
 /// TODO
 pub fn mu_plus_lambda<S, C, M, R>(
-    // there are definiitively too many arguments here
     pop: &Population,
     mu: usize,
     lambda: usize,
     cx_pb: f32,
     mut_pb: f32,
     generations: usize,
-    select_op: &S,
-    cx_op: &C,
-    mut_op: &M,
+    toolbox: &ToolBox<S, C, M>,
     rng: &mut R,
 ) -> Population
 where
     S: Select,
-    C: Cross,
+    C: CrossOver,
     M: Mutate,
     R: Rng,
 {
@@ -96,14 +97,12 @@ pub fn mu_comma_lambda<S, C, M, R>(
     cx_pb: f32,
     mut_pb: f32,
     generations: usize,
-    select_op: &S,
-    cx_op: &C,
-    mut_op: &M,
+    toolbox: &ToolBox<S, C, M>,
     rng: &mut R,
 ) -> Population
 where
     S: Select,
-    C: Cross,
+    C: CrossOver,
     M: Mutate,
     R: Rng,
 {

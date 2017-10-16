@@ -1,25 +1,37 @@
-//! Crossover operators for genetic algorithms
+//! CrossOverover operators for genetic algorithms
 
 use rand::Rng;
 
-use ga::traits::Cross;
+use ga::traits::CrossOver;
 use ga::primitives::Genome;
 
-/// Cross genomes at one point
+/// CrossOver genomes at one point
 pub struct OnePoint;
 
-impl Cross for OnePoint {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for OnePoint {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
 }
 
-/// Cross genomes at two points
+/// CrossOver genomes at two points
 pub struct TwoPoint;
 
-impl Cross for TwoPoint {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for TwoPoint {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
@@ -28,8 +40,14 @@ impl Cross for TwoPoint {
 /// Uniform cross-over
 pub struct Uniform;
 
-impl Cross for Uniform {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for Uniform {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
@@ -38,8 +56,14 @@ impl Cross for Uniform {
 /// TODO
 pub struct PartialyMatched;
 
-impl Cross for PartialyMatched {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for PartialyMatched {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
@@ -48,8 +72,14 @@ impl Cross for PartialyMatched {
 /// TODO
 pub struct UniformPartialyMatched;
 
-impl Cross for UniformPartialyMatched {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for UniformPartialyMatched {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
@@ -58,8 +88,14 @@ impl Cross for UniformPartialyMatched {
 /// TODO
 pub struct Ordered;
 
-impl Cross for Ordered {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for Ordered {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
@@ -68,8 +104,14 @@ impl Cross for Ordered {
 /// TODO
 pub struct Blend;
 
-impl Cross for Blend {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for Blend {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
@@ -78,8 +120,14 @@ impl Cross for Blend {
 /// TODO
 pub struct SimulatedBinaryBounded;
 
-impl Cross for SimulatedBinaryBounded {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for SimulatedBinaryBounded {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
@@ -88,8 +136,14 @@ impl Cross for SimulatedBinaryBounded {
 /// TODO
 pub struct MessyOnePoint;
 
-impl Cross for MessyOnePoint {
-    fn cross<R: Rng>(&self, g1: &Genome, g2: &Genome, rng: &mut R) -> (Genome, Genome) {
+impl CrossOver for MessyOnePoint {
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Genome,
+        g2: &Genome,
+        rng: &mut R,
+    ) -> (Genome, Genome)
+    {
         assert_eq!(g1.len(), g2.len());
         unimplemented!();
     }
