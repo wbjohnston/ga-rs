@@ -1,9 +1,7 @@
-//! Traits used in gentic algorithms
+
+use ga::primitives::{Genome, Population};
 
 use rand::Rng;
-
-use ga::primitives::Genome;
-use ga::primitives::Population;
 
 /// Implement on structs representing a parameterized cross operator
 pub trait CrossOver {
@@ -32,3 +30,9 @@ pub trait Mutate {
     /// Mutate target `Genome`
     fn mutate<R: Rng>(&self, target: &mut Genome, rng: &mut R);
 }
+
+/// Implement on structs representing a parameterized evaluate operator
+pub trait Evaluate {
+    fn evaluate<O: Ord>(&self, g: &Genome) -> O;
+}
+

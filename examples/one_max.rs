@@ -2,7 +2,7 @@
 use std::env::args;
 
 extern crate rand;
-use rand::{thread_rng, Rng};
+use rand::thread_rng;
 
 extern crate bit_vec;
 use bit_vec::BitVec;
@@ -19,6 +19,8 @@ use ga::ga::ops::mutation::Gaussian;
 const DEFAULT_CX_PB: f32 = 0.05;
 const DEFAULT_MUT_PB: f32 = 0.01;
 const DEFAULT_N_GEN: usize = 40;
+
+struct OneMaxEval;
 
 fn main()
 {

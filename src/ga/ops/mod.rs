@@ -1,6 +1,5 @@
 //! Operators for genetic algorithms
 
-use ga::traits::{CrossOver, Select, Mutate};
 use ga::primitives::{Genome, Population};
 
 use rand::Rng;
@@ -10,6 +9,9 @@ pub mod selection;
 pub mod crossover;
 
 pub mod mutation;
+
+pub mod traits;
+use self::traits::*;
 
 pub struct ToolBox<S, C, M>
 where

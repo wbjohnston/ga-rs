@@ -1,6 +1,6 @@
 //! Full genetic algorithms for selecting, crossing, and mutating a Population
 
-use ga::traits::*;
+use ga::ops::traits::*;
 use ga::primitives::Population;
 use ga::ops::ToolBox;
 

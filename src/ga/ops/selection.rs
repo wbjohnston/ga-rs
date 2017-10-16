@@ -3,7 +3,7 @@
 use rand::Rng;
 
 use ga::primitives::Population;
-use ga::traits::Select;
+use ga::ops::traits::Select;
 
 /*
  * Notes: How to handle multi-dimensional fitness?

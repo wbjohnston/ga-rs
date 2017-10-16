@@ -2,7 +2,7 @@
 
 use rand::Rng;
 
-use ga::traits::Mutate;
+use ga::ops::traits::Mutate;
 use ga::primitives::Genome;
 
 /// TODO

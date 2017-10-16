@@ -2,7 +2,7 @@
 
 use rand::Rng;
 
-use ga::traits::CrossOver;
+use ga::ops::traits::CrossOver;
 use ga::primitives::Genome;
 
 /// CrossOver genomes at one point
