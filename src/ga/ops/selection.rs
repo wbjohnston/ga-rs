@@ -10,11 +10,10 @@ use ga::traits::Select;
  */
 
 /// Select the most fit individuals by running a tournament
-pub struct Tournament {
-    size: usize,
-}
+pub struct Tournament;
 
 impl Select for Tournament {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -30,6 +29,7 @@ impl Select for Tournament {
 pub struct Roulette;
 
 impl Select for Roulette {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -45,6 +45,7 @@ impl Select for Roulette {
 pub struct NSGA2;
 
 impl Select for NSGA2 {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -60,6 +61,7 @@ impl Select for NSGA2 {
 pub struct SPEA2;
 
 impl Select for SPEA2 {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -75,6 +77,7 @@ impl Select for SPEA2 {
 pub struct Random;
 
 impl Select for Random {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -90,6 +93,7 @@ impl Select for Random {
 pub struct Best;
 
 impl Select for Best {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -105,6 +109,7 @@ impl Select for Best {
 pub struct Worst;
 
 impl Select for Worst {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -120,6 +125,7 @@ impl Select for Worst {
 pub struct DoubleTournament; // TODO
 
 impl Select for DoubleTournament {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -135,6 +141,7 @@ impl Select for DoubleTournament {
 pub struct StochasticUniversalSampling;
 
 impl Select for StochasticUniversalSampling {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -150,6 +157,7 @@ impl Select for StochasticUniversalSampling {
 pub struct TournamentDCD;
 
 impl Select for TournamentDCD {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,
@@ -164,6 +172,7 @@ impl Select for TournamentDCD {
 pub struct Lexicase;
 
 impl Select for Lexicase {
+    #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,
         population: &Population,

@@ -10,6 +10,7 @@ use bit_vec::BitVec;
 extern crate ga;
 use ga::ga::algorithms::simple;
 use ga::ga::primitives::Genome;
+use ga::ga::ops::ToolBox;
 
 use ga::ga::ops::selection::Best;
 use ga::ga::ops::crossover::OnePoint;
@@ -22,30 +23,21 @@ const DEFAULT_N_GEN: usize = 40;
 fn main()
 {
     let select = Best;
-    let cx = OnePoint;
-    let muta = Gaussian;
+    let crossover = OnePoint;
+    let mutation = Gaussian;
 
     let mut args = args();
 
     let n_gen = args.nth(1).unwrap().parse().unwrap_or(DEFAULT_N_GEN);
-
     let cx_pb = args.nth(2).unwrap().parse().unwrap_or(DEFAULT_CX_PB);
-
     let mut_pb = args.nth(3).unwrap().parse().unwrap_or(DEFAULT_MUT_PB);
+
+    let toolbox = ToolBox::new(select, crossover, mutation);
 
     let mut rng = thread_rng();
 
     let init_pop = vec![];
-    let pop = simple(
-        &init_pop,
-        cx_pb,
-        mut_pb,
-        n_gen,
-        &select,
-        &cx,
-        &muta,
-        &mut rng,
-    );
+    let pop = simple(&init_pop, cx_pb, mut_pb, n_gen, &toolbox, &mut rng);
 
     println!("{:?}", pop);
 }
