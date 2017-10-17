@@ -1,26 +1,16 @@
-# Genetic Programming Toolkit
-Multi-paradigm library for genetic programming
+# Petri: Evolutionary Computing Toolkit
+Tools for running evolutionary algorithms
 
-Please read the [API documentation on docs.rs](https://docs.rs/ga)
+Please read the [API documentation on docs.rs](https://docs.rs/petri)
 
 
 _Note_: This project is currently a work in progress. If somehow you stumble
 upon this library: you **should not** use this library as its incomplete and the
 API is **not stable**.
 
-![Travis Status](https://travis-ci.org/wbjohnston/ga-rs.svg?branch=master)
-[![Crates.io badge](https://img.shields.io/crates/v/ga.svg)](https://crates.io/crates/ge)
+![Travis Status](https://travis-ci.org/wbjohnston/petri.svg?branch=master)
+[![Crates.io badge](https://img.shields.io/crates/v/petri.svg)](https://crates.io/crates/ge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## Modules
-#### Algo (_WIP_)
-Genetic algorithms to operate on structs implementing the `traits::Genome` trait
-
-#### Primitives (_WIP_)
-Genetic algorithm primitives
-
-#### Traits (_WIP_)
-Traits for defining new Genetic primitives
 
 ## Contributing
 Please see [CONTRIBUTING.md](/CONTRIBUTING.md)
