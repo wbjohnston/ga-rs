@@ -1,27 +1,20 @@
-//! Genetic algorithm traits, primitives, and algorithms
+//! Evolutionary algorithm toolkit
+
+extern crate bit_vec;
+
+extern crate num;
 
 extern crate rand;
 
-#[cfg(feature = "ga")]
-extern crate bit_vec;
-
-#[cfg(any(feature = "lgp", feature = "cgp"))]
-extern crate petgraph;
-
-#[cfg(any(feature = "gp-par", feature = "ga-par"))]
-extern crate rayon;
-
-#[cfg(feature = "serde-g")]
 extern crate serde;
 
-#[cfg(feature = "tgp")]
-pub mod tgp;
+#[macro_use]
+extern crate serde_derive;
 
-#[cfg(feature = "lgp")]
-pub mod lgp;
+pub mod ops;
 
-#[cfg(feature = "ga")]
-pub mod ga;
+pub mod genome;
 
-#[cfg(feature = "cgp")]
-pub mod cgp;
+pub mod algo;
+
+pub mod individual;
