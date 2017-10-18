@@ -1,14 +1,8 @@
-//! Operators for evaluating genomes
 
-use genome::Genome;
 use individual::Individual;
+use genome::Genome;
 
-/// Operating for evaluating the fitness of an individual
-pub trait EvaluteOperator<It, O>
-where
-    It: Individual,
-    O: Ord,
-{
-    /// Evaluate the fitness of an individual
-    fn evaluate(&self, g: &It) -> O;
+pub trait EvaluateOperator<G: Genome, O: Ord + Clone> {
+    /// Calculate the fitness of a genome
+    fn evaluate(&self, indv: &Individual<G, O>) -> O;
 }

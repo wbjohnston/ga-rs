@@ -1,61 +1,49 @@
 //! Operators for crossing genomes
 
 use genome::Genome;
-use genome::BitString;
+use individual::Individual;
 
 use rand::Rng;
+use rand::distributions::IndependentSample;
+use rand::distributions::Range;
 
 /// Operator for crossing two genomes to crate offspring
-pub trait CrossoverOperator<Gr>
-where
-    Gr: Genome,
-{
+pub trait CrossoverOperator<G: Genome, O: Ord + Clone> {
     /// Cross two genomes to produce two children
-    fn crossover<R: Rng>(&self, g1: &Gr, g2: &Gr, rng: &mut R) -> (Gr, Gr);
+    fn crossover<R: Rng>(
+        &self,
+        i1: &Individual<G, O>,
+        i2: &Individual<G, O>,
+        rng: &mut R,
+    ) -> (Individual<G, O>, Individual<G, O>);
 }
 
-/// Cross two genomes at one point
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct OnePoint;
 
-impl OnePoint {
-    pub fn new() -> Self
-    {
-        Self {}
-    }
-}
-
-impl CrossoverOperator<BitString> for OnePoint {
-    #[allow(unused_variables)]
+impl<O: Ord + Clone> CrossoverOperator<Vec<u32>, O> for OnePoint {
+    /// Cross two genomes to produce two children
     fn crossover<R: Rng>(
         &self,
-        g1: &BitString,
-        g2: &BitString,
+        i1: &Individual<Vec<u32>, O>,
+        i2: &Individual<Vec<u32>, O>,
         rng: &mut R,
-    ) -> (BitString, BitString)
+    ) -> (Individual<Vec<u32>, O>, Individual<Vec<u32>, O>)
     {
-        unimplemented!();
-    }
-}
+        let g1 = i1.genome();
+        let g2 = i2.genome();
 
-/// Cross two genomes at one point
-pub struct TwoPoint;
+        let range = Range::new(0, g1.len());
 
-impl TwoPoint {
-    pub fn new() -> Self
-    {
-        Self {}
-    }
-}
+        let p = range.ind_sample(rng);
 
-impl CrossoverOperator<BitString> for TwoPoint {
-    #[allow(unused_variables)]
-    fn crossover<R: Rng>(
-        &self,
-        g1: &BitString,
-        g2: &BitString,
-        rng: &mut R,
-    ) -> (BitString, BitString)
-    {
-        unimplemented!();
+        let (mut c1l, c1r) = (g1[0..p].to_vec(), g1[p..g1.len()].to_vec());
+        let (mut c2l, c2r) = (g2[0..p].to_vec(), g2[p..g1.len()].to_vec());
+
+        c1l.extend(c2r);
+        c2l.extend(c1r);
+
+        (Individual::from(c1l), Individual::from(c2l))
     }
 }

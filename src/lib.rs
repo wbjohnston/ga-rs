@@ -1,9 +1,5 @@
 //! Evolutionary algorithm toolkit
 
-extern crate bit_vec;
-
-extern crate num;
-
 extern crate rand;
 
 extern crate serde;
