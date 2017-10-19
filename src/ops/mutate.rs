@@ -10,7 +10,7 @@ use rand::Rng;
 pub trait MutateOperator<G, C>
 where
     G: Genome<C>,
-    C: Clone + Sized
+    C: Clone + Sized,
 {
     /// Mutate an indiviudal
     fn mutate<R: Rng>(&self, indv: &G, rng: &mut R) -> G;
@@ -25,17 +25,17 @@ pub struct FlipBit {
 /// This operator will work on any genome with an invertible chromsome
 impl<C> MutateOperator<Vec<C>, C> for FlipBit
 where
-    C: Clone + Sized + Not<Output=C>
+    C: Clone + Sized + Not<Output = C>,
 {
     /// Mutate an indiviudal
-    fn mutate<R: Rng>(&self, indv: &Vec<C>, rng: &mut R) -> Vec<C> 
+    fn mutate<R: Rng>(&self, indv: &Vec<C>, rng: &mut R) -> Vec<C>
     {
         indv.iter()
             .cloned()
             .map(|x| {
                 let pb = (self.ind_pb * 100.0) as u32;
                 let should_mut = rng.gen_weighted_bool(pb);
-                if  should_mut { !x } else { x }
+                if should_mut { !x } else { x }
             })
             .collect()
     }

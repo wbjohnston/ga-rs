@@ -10,7 +10,16 @@ repository  = "https://github.com/wbjohnston/petri.git"
 
 [features]
 
+par = ["rayon"]
+
+gp = []
+
+ga = []
+
+default = ["ga"]
+
 [dependencies]
+rayon        = { version = "*", optional = true }
 rand         = "0.3.16"
 serde        = "1.0.15"
 serde_derive = "*"

@@ -9,7 +9,7 @@ pub trait SelectOperator<G, C, O>
 where
     G: Genome<C>,
     C: Clone + Sized,
-    O: Clone + Ord
+    O: Clone + Ord,
 {
     /// Select k genomes from a population
     fn select<R: Rng>(
@@ -23,10 +23,10 @@ where
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Best;
 
-impl<C, O> SelectOperator<Vec<C>, C, O> for Best 
+impl<C, O> SelectOperator<Vec<C>, C, O> for Best
 where
     C: Clone + Sized,
-    O: Clone + Ord
+    O: Clone + Ord,
 {
     /// Select k genomes from a population
     fn select<R: Rng>(

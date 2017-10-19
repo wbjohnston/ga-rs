@@ -10,7 +10,7 @@ use rand::distributions::Range;
 pub trait CrossoverOperator<G, C>
 where
     G: Genome<C>,
-    C: Clone + Sized
+    C: Clone + Sized,
 {
     /// Cross two genomes to produce two children
     fn crossover<R: Rng>(&self, i1: &G, i2: &G, rng: &mut R) -> (G, G);
@@ -22,11 +22,15 @@ pub struct OnePoint;
 
 impl<C> CrossoverOperator<Vec<C>, C> for OnePoint
 where
-    C: Clone + Sized
+    C: Clone + Sized,
 {
     /// Cross two genomes to produce two children
-    fn crossover<R: Rng>(&self, g1: &Vec<C>, g2: &Vec<C>, rng: &mut R) 
-        -> (Vec<C>, Vec<C>)
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Vec<C>,
+        g2: &Vec<C>,
+        rng: &mut R,
+    ) -> (Vec<C>, Vec<C>)
     {
         assert_eq!(g1.len(), g2.len());
         let range = Range::new(0, g1.len());

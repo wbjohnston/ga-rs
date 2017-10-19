@@ -1,5 +1,8 @@
 //! Evolutionary algorithm
 
+#[cfg(feature = "par")]
+use rayon::prelude::*;
+
 use std::marker::PhantomData;
 
 use rand::Rng;
@@ -17,7 +20,7 @@ pub trait EvolutionaryAlgorithm<
     SOp: SelectOperator<G, C, O>,
     COp: CrossoverOperator<G, C>,
     MOp: MutateOperator<G, C>,
-    EOp: EvaluateOperator<G, C, O>,
+    EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
 > {
@@ -41,7 +44,7 @@ pub struct Simple<
     SOp: SelectOperator<G, C, O>,
     COp: CrossoverOperator<G, C>,
     MOp: MutateOperator<G, C>,
-    EOp: EvaluateOperator<G, C, O>,
+    EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
 > {
@@ -58,7 +61,7 @@ pub struct Simple<
 
     rng: R,
 
-    _marker: PhantomData<(O, C)>
+    _marker: PhantomData<(O, C)>,
 }
 
 impl<
@@ -67,7 +70,7 @@ impl<
     SOp: SelectOperator<G, C, O>,
     COp: CrossoverOperator<G, C>,
     MOp: MutateOperator<G, C>,
-    EOp: EvaluateOperator<G, C, O>,
+    EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
 > Simple<G, C, SOp, COp, MOp, EOp, R, O> {
@@ -82,6 +85,8 @@ impl<
         rng: R,
     ) -> Self
     {
+        assert!(cx_pb + mut_pb <= 1.0);
+
         Self {
             select_op,
             crossover_op,
@@ -94,7 +99,7 @@ impl<
             generation: 0,
             max_generation,
             rng,
-            _marker: PhantomData
+            _marker: PhantomData,
         }
     }
 }
@@ -105,7 +110,7 @@ impl<
     SOp: SelectOperator<G, C, O>,
     COp: CrossoverOperator<G, C>,
     MOp: MutateOperator<G, C>,
-    EOp: EvaluateOperator<G, C, O>,
+    EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
 > EvolutionaryAlgorithm<G, C, SOp, COp, MOp, EOp, R, O>
@@ -124,14 +129,17 @@ impl<
         // evaluate
         let pop_with_fit: Vec<(O, G)> = pop.into_iter()
             .map(|x| {
-                let fitness = self.evaluate_op.evaluate(&x);
+                let fitness = (self.evaluate_op)(&x);
                 (fitness, x)
             })
             .collect();
 
         // select phase
-        let mut offspring =
-            self.select_op.select(&pop_with_fit, pop_with_fit.len(), &mut self.rng);
+        let mut offspring = self.select_op.select(
+            &pop_with_fit,
+            pop_with_fit.len(),
+            &mut self.rng,
+        );
 
         // mutate phase
         for i in 0..offspring.len()
