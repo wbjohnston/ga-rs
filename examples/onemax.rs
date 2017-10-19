@@ -18,7 +18,7 @@ type Fitness = u32;
 #[inline]
 fn fitness_fn(g: &Genome) -> Fitness
 {
-     g.iter().filter(|x| **x).count() as u32
+    g.iter().filter(|x| **x).count() as u32
 }
 
 fn main()

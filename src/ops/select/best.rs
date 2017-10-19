@@ -25,4 +25,3 @@ where
         c.into_iter().map(|x| x.1).take(k).collect()
     }
 }
-

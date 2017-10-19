@@ -1,5 +1,5 @@
 
-use ::Genome;
+use Genome;
 
 use rand::Rng;
 
