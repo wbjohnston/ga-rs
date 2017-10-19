@@ -7,7 +7,6 @@ use std::marker::PhantomData;
 
 use rand::Rng;
 
-use ops::evaluate::EvaluateOperator;
 use ops::select::SelectOperator;
 use ops::crossover::CrossoverOperator;
 use ops::mutate::MutateOperator;

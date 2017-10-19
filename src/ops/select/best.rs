@@ -1,26 +1,10 @@
-//! Operators for selecting genomes
-
 use rand::Rng;
 
 use genome::Genome;
 
-/// Operator for selecting genomes out of a population
-pub trait SelectOperator<G, C, O>
-where
-    G: Genome<C>,
-    C: Clone + Sized,
-    O: Clone + Ord,
-{
-    /// Select k genomes from a population
-    fn select<R: Rng>(
-        &self,
-        population: &Vec<(O, G)>,
-        k: usize,
-        rng: &mut R,
-    ) -> Vec<G>;
-}
+use super::SelectOperator;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Best;
 
 impl<C, O> SelectOperator<Vec<C>, C, O> for Best
@@ -41,3 +25,4 @@ where
         c.into_iter().map(|x| x.1).take(k).collect()
     }
 }
+
