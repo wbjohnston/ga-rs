@@ -10,6 +10,12 @@ pub use self::one_point::OnePoint;
 mod two_point;
 pub use self::two_point::TwoPoint;
 
+mod ordered;
+pub use self::ordered::Ordered;
+
+mod partially_matched;
+pub use self::partially_matched::PartiallyMatched;
+
 /// Operator for crossing two genomes to crate offspring
 pub trait CrossoverOperator<G, C>
 where
