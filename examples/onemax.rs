@@ -4,7 +4,6 @@ use rand::thread_rng;
 
 extern crate petri;
 use petri::genome::Genome;
-use petri::individual::Individual;
 
 use petri::algo::EvolutionaryAlgorithm;
 use petri::ops::select::Best;
@@ -14,15 +13,17 @@ use petri::ops::evaluate::EvaluateOperator;
 
 use petri::algo::Simple;
 
-type Genes = Vec<u32>;
+type Genes = Vec<Chromosome>;
+type Chromosome = u32;
+type Fitness = u32;
 
 struct OneMaxEval;
 
-impl EvaluateOperator<Genes, u32> for OneMaxEval {
+impl EvaluateOperator<Genes, Chromosome, Fitness> for OneMaxEval {
     /// Calculate the fitness of a genome
-    fn evaluate(&self, indv: &Individual<Genes, u32>) -> u32
+    fn evaluate(&self, g: &Genes) -> Fitness
     {
-        indv.genome().iter().map(|x| x.count_ones()).sum()
+        g.iter().map(|x| x.count_ones()).sum()
     }
 }
 
@@ -30,14 +31,14 @@ fn main()
 {
     let sel = Best;
     let cx = OnePoint;
-    let mt = FlipBit {ind_pb: 0.05};
+    let mt = FlipBit { ind_pb: 0.05 };
     let eval = OneMaxEval;
 
     let rng = thread_rng();
 
-    let init_fn = || Individual::from(vec![0, 0, 0, 0]);
+    let init_fn = || vec![0; 100];
 
-    let mut ea = Simple::new(sel, cx, mt, eval, 0.01, 0.05, 100_000, rng);
+    let mut ea = Simple::new(sel, cx, mt, eval, 0.01, 0.05, 300, rng);
 
     ea.initialize(5, init_fn);
 
@@ -48,7 +49,8 @@ fn main()
 
     let final_pop = ea.population();
 
-    for indv in final_pop {
+    for indv in final_pop
+    {
         println!("{:?}", indv);
     }
 }

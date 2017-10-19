@@ -2,34 +2,42 @@
 
 use rand::Rng;
 
-use individual::Individual;
 use genome::Genome;
 
-/// Operator for selecting individuals out of a population
-pub trait SelectOperator<G: Genome, O: Ord + Clone> {
-    /// Select k individuals from a population
+/// Operator for selecting genomes out of a population
+pub trait SelectOperator<G, C, O>
+where
+    G: Genome<C>,
+    C: Clone + Sized,
+    O: Clone + Ord
+{
+    /// Select k genomes from a population
     fn select<R: Rng>(
         &self,
-        population: &Vec<Individual<G, O>>,
+        population: &Vec<(O, G)>,
         k: usize,
         rng: &mut R,
-    ) -> Vec<Individual<G, O>>;
+    ) -> Vec<G>;
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Best;
 
-impl<G: Genome, O: Ord + Clone> SelectOperator<G, O> for Best {
-    /// Select k individuals from a population
+impl<C, O> SelectOperator<Vec<C>, C, O> for Best 
+where
+    C: Clone + Sized,
+    O: Clone + Ord
+{
+    /// Select k genomes from a population
     fn select<R: Rng>(
         &self,
-        population: &Vec<Individual<G, O>>,
+        pop_with_fit: &Vec<(O, Vec<C>)>,
         k: usize,
-        rng: &mut R,
-    ) -> Vec<Individual<G, O>>
+        _: &mut R,
+    ) -> Vec<Vec<C>>
     {
-        let mut c = population.clone();
-        c.sort_by_key(|x| x.fitness());
-        c.into_iter().take(k).collect()
+        let mut c = pop_with_fit.clone();
+        c.sort_by(|a, b| a.0.cmp(&b.0));
+        c.into_iter().map(|x| x.1).take(k).collect()
     }
 }

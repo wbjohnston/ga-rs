@@ -1,8 +1,12 @@
 
-use individual::Individual;
 use genome::Genome;
 
-pub trait EvaluateOperator<G: Genome, O: Ord + Clone> {
+pub trait EvaluateOperator<G, C, O>
+where
+    G: Genome<C>,
+    C: Clone + Sized,
+    O: Clone + Ord
+{
     /// Calculate the fitness of a genome
-    fn evaluate(&self, indv: &Individual<G, O>) -> O;
+    fn evaluate(&self, indv: &G) -> O;
 }

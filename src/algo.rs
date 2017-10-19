@@ -1,5 +1,7 @@
 //! Evolutionary algorithm
 
+use std::marker::PhantomData;
+
 use rand::Rng;
 
 use ops::evaluate::EvaluateOperator;
@@ -7,26 +9,26 @@ use ops::select::SelectOperator;
 use ops::crossover::CrossoverOperator;
 use ops::mutate::MutateOperator;
 
-use individual::Individual;
 use genome::Genome;
 
 pub trait EvolutionaryAlgorithm<
-    G: Genome,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G, O>,
-    MOp: MutateOperator<G, O>,
-    EOp: EvaluateOperator<G, O>,
+    G: Genome<C>,
+    C: Clone + Sized,
+    SOp: SelectOperator<G, C, O>,
+    COp: CrossoverOperator<G, C>,
+    MOp: MutateOperator<G, C>,
+    EOp: EvaluateOperator<G, C, O>,
     R: Rng,
     O: Ord + Clone,
 > {
     /// Initialize the algorithm by generating a population
-    fn initialize(&mut self, n: usize, init_fn: fn() -> Individual<G, O>);
+    fn initialize(&mut self, n: usize, init_fn: fn() -> G);
 
     /// Advance to next generation
-    fn next(&mut self) -> Vec<Individual<G, O>>;
+    fn next(&mut self) -> Vec<G>;
 
     /// Current generation
-    fn population(&self) -> Vec<Individual<G, O>>;
+    fn population(&self) -> Vec<G>;
 
     /// Is the evolutationary algorithm done?
     fn is_done(&self) -> bool;
@@ -34,11 +36,12 @@ pub trait EvolutionaryAlgorithm<
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Simple<
-    G: Genome,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G, O>,
-    MOp: MutateOperator<G, O>,
-    EOp: EvaluateOperator<G, O>,
+    G: Genome<C>,
+    C: Clone + Sized,
+    SOp: SelectOperator<G, C, O>,
+    COp: CrossoverOperator<G, C>,
+    MOp: MutateOperator<G, C>,
+    EOp: EvaluateOperator<G, C, O>,
     R: Rng,
     O: Ord + Clone,
 > {
@@ -49,22 +52,25 @@ pub struct Simple<
 
     mut_pb: f32,
     cx_pb: f32,
-    population: Vec<Individual<G, O>>,
+    population: Vec<G>,
     generation: usize,
     max_generation: usize,
 
     rng: R,
+
+    _marker: PhantomData<(O, C)>
 }
 
 impl<
-    G: Genome,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G, O>,
-    MOp: MutateOperator<G, O>,
-    EOp: EvaluateOperator<G, O>,
+    G: Genome<C>,
+    C: Clone + Sized,
+    SOp: SelectOperator<G, C, O>,
+    COp: CrossoverOperator<G, C>,
+    MOp: MutateOperator<G, C>,
+    EOp: EvaluateOperator<G, C, O>,
     R: Rng,
     O: Ord + Clone,
-> Simple<G, SOp, COp, MOp, EOp, R, O> {
+> Simple<G, C, SOp, COp, MOp, EOp, R, O> {
     pub fn new(
         select_op: SOp,
         crossover_op: COp,
@@ -88,41 +94,44 @@ impl<
             generation: 0,
             max_generation,
             rng,
+            _marker: PhantomData
         }
     }
 }
 
 impl<
-    G: Genome,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G, O>,
-    MOp: MutateOperator<G, O>,
-    EOp: EvaluateOperator<G, O>,
+    G: Genome<C>,
+    C: Clone + Sized,
+    SOp: SelectOperator<G, C, O>,
+    COp: CrossoverOperator<G, C>,
+    MOp: MutateOperator<G, C>,
+    EOp: EvaluateOperator<G, C, O>,
     R: Rng,
     O: Ord + Clone,
-> EvolutionaryAlgorithm<G, SOp, COp, MOp, EOp, R, O>
-    for Simple<G, SOp, COp, MOp, EOp, R, O> {
+> EvolutionaryAlgorithm<G, C, SOp, COp, MOp, EOp, R, O>
+    for Simple<G, C, SOp, COp, MOp, EOp, R, O> {
     /// Initialize the algorithm by generating a population
-    fn initialize(&mut self, n: usize, init_fn: (fn() -> Individual<G, O>))
+    fn initialize(&mut self, n: usize, init_fn: (fn() -> G))
     {
         self.population = (0..n).map(|_| init_fn()).collect()
     }
 
     /// Advance to next generation
-    fn next(&mut self) -> Vec<Individual<G, O>>
+    fn next(&mut self) -> Vec<G>
     {
-        let mut pop = self.population();
+        let pop = self.population();
 
-        // validate fitness
-        pop.iter_mut().filter(|x| !x.is_valid()).for_each(|x| {
-            let fitness = self.evaluate_op.evaluate(x);
-            x.validate(fitness);
-        });
-
+        // evaluate
+        let pop_with_fit: Vec<(O, G)> = pop.into_iter()
+            .map(|x| {
+                let fitness = self.evaluate_op.evaluate(&x);
+                (fitness, x)
+            })
+            .collect();
 
         // select phase
         let mut offspring =
-            self.select_op.select(&pop, pop.len(), &mut self.rng);
+            self.select_op.select(&pop_with_fit, pop_with_fit.len(), &mut self.rng);
 
         // mutate phase
         for i in 0..offspring.len()
@@ -153,14 +162,6 @@ impl<
             }
         }
 
-        // validate fitness of new offspring
-        offspring.iter_mut().filter(|x| !x.is_valid()).for_each(
-            |x| {
-                let fitness = self.evaluate_op.evaluate(x);
-                x.validate(fitness);
-            },
-        );
-
         self.population = offspring;
         self.generation += 1;
 
@@ -169,7 +170,7 @@ impl<
     }
 
     /// Current generation
-    fn population(&self) -> Vec<Individual<G, O>>
+    fn population(&self) -> Vec<G>
     {
         self.population.clone()
     }
