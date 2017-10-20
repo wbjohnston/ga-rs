@@ -22,8 +22,10 @@ where
         let mut cloned = g.clone();
         let pb = (self.ind_pb * 100.0) as u32;
 
-        for i in 0..g.len() {
-            if rng.gen_weighted_bool(pb) {
+        for i in 0..g.len()
+        {
+            if rng.gen_weighted_bool(pb)
+            {
                 cloned[i] = !cloned[i].clone();
             }
         }

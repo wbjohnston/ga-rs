@@ -6,8 +6,7 @@ use rand::Rng;
 
 /// TODO
 #[derive(Clone, Copy, Serialize, Deserialize)]
-pub struct ShuffleIndexes
-{
+pub struct ShuffleIndexes {
     pub ind_pb: f32,
 }
 
@@ -23,8 +22,10 @@ where
 
         let pb = (100. * self.ind_pb) as u32;
 
-        for i in 0..g.len() {
-            if rng.gen_weighted_bool(pb) {
+        for i in 0..g.len()
+        {
+            if rng.gen_weighted_bool(pb)
+            {
                 cloned[i] = shuffled[i].clone();
             }
         }
