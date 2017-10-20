@@ -1,8 +1,10 @@
+//! Random selection operator
 
 use Genome;
 use super::SelectOperator;
 use rand::Rng;
 
+/// TODO
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Random;
 

@@ -1,7 +1,6 @@
 //! Selection operators
 
 use Genome;
-
 use rand::Rng;
 
 mod best;
@@ -20,6 +19,9 @@ mod tournament;
 pub use self::tournament::Tournament;
 
 /// Operator for selecting genomes out of a population
+///
+/// # Arguments
+/// TODO
 pub trait SelectOperator<G, C, O>
 where
     G: Genome<C>,

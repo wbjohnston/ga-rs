@@ -1,8 +1,10 @@
+//! Best selection operator
 
 use rand::Rng;
 use genome::Genome;
 use super::SelectOperator;
 
+/// TODO
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Best;
 
