@@ -11,7 +11,7 @@ pub struct Uniform {
 
 impl<C> CrossoverOperator<Vec<C>, C> for Uniform
 where
-    C: Sized + Copy,
+    C: Sized + Clone,
 {
     fn crossover<R: Rng>(
         &self,
@@ -32,8 +32,8 @@ where
         {
             if rng.gen_weighted_bool(pb)
             {
-                let temp = g1[i];
-                g1[i] = g2[i];
+                let temp = g1[i].clone();
+                g1[i] = g2[i].clone();
                 g2[i] = temp;
             }
         }

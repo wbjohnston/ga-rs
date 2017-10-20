@@ -17,15 +17,17 @@ where
     C: Clone + Sized + Not<Output = C>,
 {
     /// Mutate an indiviudal
-    fn mutate<R: Rng>(&self, indv: &Vec<C>, rng: &mut R) -> Vec<C>
+    fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {
-        indv.iter()
-            .cloned()
-            .map(|x| {
-                let pb = (self.ind_pb * 100.0) as u32;
-                let should_mut = rng.gen_weighted_bool(pb);
-                if should_mut { !x } else { x }
-            })
-            .collect()
+        let mut cloned = g.clone();
+        let pb = (self.ind_pb * 100.0) as u32;
+
+        for i in 0..g.len() {
+            if rng.gen_weighted_bool(pb) {
+                cloned[i] = !cloned[i].clone();
+            }
+        }
+
+        cloned
     }
 }
