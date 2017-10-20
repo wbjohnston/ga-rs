@@ -10,6 +10,9 @@ pub use self::one_point::OnePoint;
 mod two_point;
 pub use self::two_point::TwoPoint;
 
+mod uniform;
+pub use self::uniform::Uniform;
+
 mod ordered;
 pub use self::ordered::Ordered;
 
@@ -23,5 +26,5 @@ where
     C: Clone + Sized,
 {
     /// Cross two genomes to produce two children
-    fn crossover<R: Rng>(&self, i1: &G, i2: &G, rng: &mut R) -> (G, G);
+    fn crossover<R: Rng>(&self, g1: &G, g2: &G, rng: &mut R) -> (G, G);
 }
