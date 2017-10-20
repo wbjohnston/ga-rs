@@ -29,6 +29,7 @@ where
 {
     /// Select k genomes from a population
     #[allow(unused_variables)]
+    #[inline]
     fn select<R: Rng>(
         &self,
         pop_with_fit: &Vec<(O, G)>,

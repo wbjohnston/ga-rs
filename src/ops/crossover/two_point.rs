@@ -10,6 +10,7 @@ pub struct TwoPoint;
 
 impl TwoPoint {
     /// Create a new OnePoint crossover operator
+    #[inline]
     pub fn new() -> Self
     {
         Self {/* No fields */}
@@ -20,6 +21,7 @@ impl<C> CrossoverOperator<Vec<C>, C> for TwoPoint
 where
     C: Clone + Sized,
 {
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Vec<C>,

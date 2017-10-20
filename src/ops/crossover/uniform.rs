@@ -16,6 +16,7 @@ impl<C> CrossoverOperator<Vec<C>, C> for Uniform
 where
     C: Sized + Clone,
 {
+    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Vec<C>,

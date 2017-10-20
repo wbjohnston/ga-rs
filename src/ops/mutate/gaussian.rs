@@ -15,6 +15,7 @@ where
 {
     /// Mutate an indiviudal
     #[allow(unused_variables)]
+    #[inline]
     fn mutate<R: Rng>(&self, indv: &Vec<C>, rng: &mut R) -> Vec<C>
     {
         unimplemented!();

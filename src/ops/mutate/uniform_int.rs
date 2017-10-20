@@ -12,6 +12,7 @@ where
     C: Clone + Sized,
 {
     /// Mutate an indiviudal
+    #[inline]
     #[allow(unused_variables)]
     fn mutate<R: Rng>(&self, indv: &Vec<C>, rng: &mut R) -> Vec<C>
     {

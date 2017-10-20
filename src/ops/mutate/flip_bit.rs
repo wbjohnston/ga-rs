@@ -13,6 +13,7 @@ pub struct FlipBit {
 
 impl FlipBit {
     /// Create a new FlipBit selection operator with a given probability
+    #[inline]
     pub fn with_pb(pb: f32) -> Self
     {
         assert!(
@@ -33,6 +34,7 @@ where
     C: Clone + Sized + Not<Output = C>,
 {
     /// Mutate an indiviudal
+    #[inline]
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {
         let mut cloned = g.clone();

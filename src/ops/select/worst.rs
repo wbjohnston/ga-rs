@@ -15,6 +15,7 @@ where
     O: Clone + Ord,
 {
     /// Select k genomes from a population
+    #[inline]
     fn select<R: Rng>(
         &self,
         pop_with_fit: &Vec<(O, G)>,
