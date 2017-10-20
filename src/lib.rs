@@ -1,7 +1,5 @@
 //! Evolutionary algorithm toolkit
 
-extern crate len_trait;
-
 extern crate rand;
 
 extern crate serde;
