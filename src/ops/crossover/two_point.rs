@@ -13,8 +13,12 @@ impl<C> CrossoverOperator<Vec<C>, C> for TwoPoint
 where
     C: Clone + Sized,
 {
-    fn crossover<R: Rng>( &self, g1: &Vec<C>, g2: &Vec<C>, rng: &mut R,)
-        -> (Vec<C>, Vec<C>)
+    fn crossover<R: Rng>(
+        &self,
+        g1: &Vec<C>,
+        g2: &Vec<C>,
+        rng: &mut R,
+    ) -> (Vec<C>, Vec<C>)
     {
         assert_eq!(g1.len(), g2.len());
 

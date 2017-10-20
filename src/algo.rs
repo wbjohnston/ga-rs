@@ -52,8 +52,8 @@ pub struct Simple<
     mutate_op: MOp,
     evaluate_op: EOp,
 
-    mut_pb: f32,
-    cx_pb: f32,
+    mut_pb: u32,
+    cx_pb: u32,
     population: Vec<G>,
     generation: usize,
     max_generation: usize,
@@ -85,6 +85,8 @@ impl<
     ) -> Self
     {
         assert!(cx_pb + mut_pb <= 1.0);
+        let cx_pb = (1.0 / cx_pb) as u32;
+        let mut_pb = (1.0 / mut_pb) as u32;
 
         Self {
             select_op,
@@ -143,7 +145,7 @@ impl<
         // mutate phase
         for i in 0..offspring.len()
         {
-            if self.rng.gen_weighted_bool((self.mut_pb * 100.0) as u32)
+            if self.rng.gen_weighted_bool(self.mut_pb)
             {
                 let mutated =
                     self.mutate_op.mutate(&offspring[i], &mut self.rng);
@@ -154,7 +156,7 @@ impl<
         // crossover phase
         for i in 0..(offspring.len() / 2)
         {
-            if self.rng.gen_weighted_bool((self.cx_pb * 100.0) as u32)
+            if self.rng.gen_weighted_bool(self.cx_pb)
             {
                 let (idx1, idx2) = (i * 2, (i * 2) + 1);
 

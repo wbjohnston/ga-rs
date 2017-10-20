@@ -10,13 +10,16 @@ repository  = "https://github.com/wbjohnston/petri.git"
 
 [features]
 
-par = ["rayon"]
+par     = ["rayon"]
 
-gp = []
+gp      = []
 
-ga = []
+ga      = []
 
 default = ["ga"]
+
+[dev-dependencies]
+clap         = "2.26.2"
 
 [dependencies]
 rayon        = { version = "0.8.2", optional = true }

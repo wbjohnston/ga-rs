@@ -3,6 +3,7 @@
 use Genome;
 use super::SelectOperator;
 use rand::Rng;
+use rand::distributions::{Range, IndependentSample};
 
 /// TODO
 #[derive(Clone, Copy, Serialize, Deserialize)]
@@ -22,8 +23,15 @@ where
         rng: &mut R,
     ) -> Vec<G>
     {
-        let mut c = pop_with_fit.clone();
-        rng.shuffle(&mut c);
-        c.into_iter().map(|x| x.1).take(k).collect()
+        let range = Range::new(0, pop_with_fit.len());
+        let mut chosen = vec![];
+
+        for _ in 0..k
+        {
+            let idx = range.ind_sample(rng);
+            chosen.push(pop_with_fit[idx].clone().1);
+        }
+
+        chosen
     }
 }

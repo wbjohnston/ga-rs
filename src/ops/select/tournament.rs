@@ -3,10 +3,14 @@
 use Genome;
 use super::SelectOperator;
 use rand::Rng;
+use rand::distributions::{Range, IndependentSample};
+
 
 /// TODO
 #[derive(Clone, Copy, Serialize, Deserialize)]
-pub struct Tournament;
+pub struct Tournament {
+    pub size: usize,
+}
 
 impl<G, C, O> SelectOperator<G, C, O> for Tournament
 where
@@ -23,6 +27,29 @@ where
         rng: &mut R,
     ) -> Vec<G>
     {
-        unimplemented!();
+        let mut chosen = vec![];
+        let range = Range::new(0, pop_with_fit.len());
+
+        for _ in 0..k
+        {
+            // run K rounds of the Tournament
+            let mut contestents = vec![];
+
+            for _ in 0..self.size
+            {
+                let idx = range.ind_sample(rng);
+                contestents.push(pop_with_fit[idx].clone());
+            }
+
+            let best = contestents
+                .into_iter()
+                .max_by(|a, b| a.0.cmp(&b.0))
+                .unwrap()
+                .1;
+
+            chosen.push(best);
+        }
+
+        chosen
     }
 }

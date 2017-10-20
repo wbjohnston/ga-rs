@@ -6,7 +6,7 @@ use rand::Rng;
 
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Uniform {
-    pub ind_pb: f32,
+    pub ind_pb: u32,
 }
 
 impl<C> CrossoverOperator<Vec<C>, C> for Uniform
@@ -25,12 +25,10 @@ where
         let mut g1 = g1.clone();
         let mut g2 = g2.clone();
 
-        let pb = (self.ind_pb * 100.) as u32;
-
         // swap chromosomes
         for i in 0..g1.len()
         {
-            if rng.gen_weighted_bool(pb)
+            if rng.gen_weighted_bool(self.ind_pb)
             {
                 let temp = g1[i].clone();
                 g1[i] = g2[i].clone();
