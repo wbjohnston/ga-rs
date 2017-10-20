@@ -14,10 +14,10 @@ mod uniform;
 pub use self::uniform::Uniform;
 
 mod ordered;
-pub use self::ordered::Ordered;
+// pub use self::ordered::Ordered;
 
 mod partially_matched;
-pub use self::partially_matched::PartiallyMatched;
+// pub use self::partially_matched::PartiallyMatched;
 
 /// Operator for crossing two genomes to crate offspring
 pub trait CrossoverOperator<G, C>

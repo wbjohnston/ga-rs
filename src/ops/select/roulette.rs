@@ -14,7 +14,6 @@ where
     O: Clone + Ord,
 {
     /// Select k genomes from a population
-    #[inline]
     #[allow(unused_variables)]
     fn select<R: Rng>(
         &self,

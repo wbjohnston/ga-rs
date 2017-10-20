@@ -12,7 +12,6 @@ pub struct ShuffleIndexes {
 
 impl ShuffleIndexes {
     /// Create a new ShuffleIndexes selection operator with a given probability
-    #[inline]
     pub fn with_pb(pb: f32) -> Self
     {
         assert!(
@@ -30,7 +29,6 @@ impl<C> MutateOperator<Vec<C>, C> for ShuffleIndexes
 where
     C: Clone + Sized,
 {
-    #[inline]
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {
         let (mut shuffled, mut cloned) = (g.clone(), g.clone());

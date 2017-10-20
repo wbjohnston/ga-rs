@@ -14,7 +14,7 @@ mod shuffle_indexes;
 pub use self::shuffle_indexes::ShuffleIndexes;
 
 mod uniform_int;
-pub use self::uniform_int::UniformInt;
+// pub use self::uniform_int::UniformInt;
 
 /// Operator for mutating a genome
 pub trait MutateOperator<G, C>

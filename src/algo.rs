@@ -24,7 +24,9 @@ pub trait EvolutionaryAlgorithm<
     O: Ord + Clone,
 > {
     /// Initialize the algorithm by generating a population
-    fn initialize(&mut self, n: usize, init_fn: fn() -> G);
+    fn initialize<F>(&mut self, n: usize, init_fn: F)
+    where
+        F: Fn() -> G;
 
     /// Advance to next generation
     fn next(&mut self) -> Vec<G>;
@@ -73,7 +75,6 @@ impl<
     R: Rng,
     O: Ord + Clone,
 > Simple<G, C, SOp, COp, MOp, EOp, R, O> {
-    #[inline]
     pub fn new(
         select_op: SOp,
         crossover_op: COp,
@@ -118,14 +119,14 @@ impl<
 > EvolutionaryAlgorithm<G, C, SOp, COp, MOp, EOp, R, O>
     for Simple<G, C, SOp, COp, MOp, EOp, R, O> {
     /// Initialize the algorithm by generating a population
-    #[inline]
-    fn initialize(&mut self, n: usize, init_fn: (fn() -> G))
+    fn initialize<F>(&mut self, n: usize, init_fn: F)
+    where
+        F: Fn() -> G,
     {
         self.population = (0..n).map(|_| init_fn()).collect()
     }
 
     /// Advance to next generation
-    #[inline]
     fn next(&mut self) -> Vec<G>
     {
         let pop = self.population();
@@ -182,14 +183,12 @@ impl<
     }
 
     /// Current generation
-    #[inline]
     fn population(&self) -> Vec<G>
     {
         self.population.clone()
     }
 
     /// Is the evolutationary algorithm done?
-    #[inline]
     fn is_done(&self) -> bool
     {
         self.generation >= self.max_generation

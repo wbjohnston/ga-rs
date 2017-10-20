@@ -12,7 +12,6 @@ pub struct OnePoint;
 
 impl OnePoint {
     /// Create a new OnePoint crossover operator
-    #[inline]
     pub fn new() -> Self
     {
         Self {/* No fields */}
@@ -24,7 +23,6 @@ where
     C: Clone + Sized,
 {
     /// Cross two genomes to produce two children
-    #[inline]
     fn crossover<R: Rng>(
         &self,
         g1: &Vec<C>,
