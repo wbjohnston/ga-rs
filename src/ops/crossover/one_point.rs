@@ -24,16 +24,19 @@ where
     ) -> (Vec<C>, Vec<C>)
     {
         assert_eq!(g1.len(), g2.len());
-        let range = Range::new(0, g1.len());
+        let p = Range::new(0, g1.len()).ind_sample(rng);
 
-        let p = range.ind_sample(rng) as usize;
+        let mut g1 = g1.clone();
+        let mut g2 = g2.clone();
 
-        let (mut c1l, c1r) = (g1[0..p].to_vec(), g1[p..g1.len()].to_vec());
-        let (mut c2l, c2r) = (g2[0..p].to_vec(), g2[p..g2.len()].to_vec());
+        for i in 0..p
+        {
+            // swap
+            let temp = g1[i].clone();
+            g1[i] = g2[i].clone();
+            g2[i] = temp;
+        }
 
-        c1l.extend(c2r);
-        c2l.extend(c1r);
-
-        (c1l, c2l)
+        (g1, g2)
     }
 }
