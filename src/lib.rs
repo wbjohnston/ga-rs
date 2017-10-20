@@ -1,4 +1,3 @@
-#![feature(proc_macro)]
 //! Evolutionary algorithm toolkit
 
 extern crate len_trait;

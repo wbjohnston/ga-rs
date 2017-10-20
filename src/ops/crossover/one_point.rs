@@ -42,10 +42,11 @@ where
 }
 
 #[cfg(test)]
-mod test
-{
+mod test {
     use super::*;
 
+    /// Test that if the operator is given two genomes of different lengths it
+    /// will panic
     #[test]
     #[should_panic]
     fn panics_on_different_len()
@@ -62,6 +63,25 @@ mod test
         cx.crossover(&g1, &g2, &mut rng);
     }
 
+    /// Test that the `OnePoint` operator swaps chromosomes correctly
+    ///
+    /// Given a genome of:
+    ///
+    /// ```
+    /// | A B C D E |
+    /// | F G H I J |
+    /// ```
+    ///
+    /// with a pivot point of 2 should result in:
+    ///
+    /// ```
+    ///       - Pivot
+    ///       |
+    ///       V
+    /// | A B H I J |
+    ///       | | |
+    /// | F G C D E |
+    /// ```
     #[test]
     fn crosses_correctly()
     {
@@ -82,17 +102,25 @@ mod test
         let cx = OnePoint;
 
         let (c1, c2) = cx.crossover(&g1, &g2, &mut rng);
-        
+
+        println!("Swap at index: {}", sampled_cx_point);
+        println!("G1: {:?}\nG2: {:?}\n", g1, g2);
+        println!("C1: {:?}\nC2: {:?}", c1, c2);
+
         // verify child crossover is correct
-        for i in 0..g1.len() {
-            if i < sampled_cx_point {
+        for i in 0..g1.len()
+        {
+            if i < sampled_cx_point
+            {
                 // first section of genome should stay the same
-                assert_eq!(c1[i], g1[i]);
-                assert_eq!(c2[i], g2[i]);
-            } else {
+                assert_eq!(g1[i], c1[i]);
+                assert_eq!(g2[i], c2[i]);
+            }
+            else
+            {
                 // second part of genome should be opposite
-                assert_eq!(c2[i], g1[i]);
-                assert_eq!(c1[i], g2[i]);
+                assert_eq!(g2[i], c1[i]);
+                assert_eq!(g1[i], c2[i]);
             }
         }
     }
