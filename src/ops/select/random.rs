@@ -24,8 +24,9 @@ where
     ) -> Vec<G>
     {
         let range = Range::new(0, pop_with_fit.len());
-        let mut chosen = vec![];
 
+        // randomly select k individuals
+        let mut chosen = vec![];
         for _ in 0..k
         {
             let idx = range.ind_sample(rng);

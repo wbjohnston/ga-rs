@@ -3,7 +3,6 @@
 // NOTE: this applies only to real valued repr's
 
 use super::MutateOperator;
-use Genome;
 use rand::Rng;
 
 /// TODO

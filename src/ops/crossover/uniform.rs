@@ -1,9 +1,12 @@
-
 use super::CrossoverOperator;
 
-use Genome;
+// use Genome;
 use rand::Rng;
 
+/// A crossover that uniformly swaps chromosomes of a genome.
+///
+/// This operator is paramaterized over the following:
+/// * `ind_pb`: probability a single chromsome will be swapped
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Uniform {
     pub ind_pb: u32,
@@ -20,7 +23,7 @@ where
         rng: &mut R,
     ) -> (Vec<C>, Vec<C>)
     {
-        assert_eq!(g1.len(), g2.len());
+        assert_eq!(g1.len(), g2.len(), "Genomes must be the same length");
 
         let mut g1 = g1.clone();
         let mut g2 = g2.clone();

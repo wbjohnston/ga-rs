@@ -1,15 +1,22 @@
 //! Single point crossover
 
-use genome::Genome;
-
 use rand::Rng;
 use rand::distributions::IndependentSample;
 use rand::distributions::Range;
 
 use super::CrossoverOperator;
 
+/// A Crossover operator that crosses two genomes at a single point
 #[derive(Debug, Serialize, Deserialize)]
 pub struct OnePoint;
+
+impl OnePoint {
+    /// Create a new OnePoint crossover operator
+    pub fn new() -> Self
+    {
+        Self {/* No fields */}
+    }
+}
 
 impl<C> CrossoverOperator<Vec<C>, C> for OnePoint
 where
@@ -23,7 +30,8 @@ where
         rng: &mut R,
     ) -> (Vec<C>, Vec<C>)
     {
-        assert_eq!(g1.len(), g2.len());
+        assert_eq!(g1.len(), g2.len(), "Genomes must be the same length");
+
         let p = Range::new(0, g1.len()).ind_sample(rng);
 
         let mut g1 = g1.clone();

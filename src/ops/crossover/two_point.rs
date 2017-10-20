@@ -1,13 +1,20 @@
 //! Two point crossover operator
 
-use Genome;
 use super::CrossoverOperator;
 use rand::distributions::{Range, IndependentSample};
 use rand::Rng;
 
-/// TODO
+/// A crossover operator that crosses two genomes at two points
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct TwoPoint;
+
+impl TwoPoint {
+    /// Create a new OnePoint crossover operator
+    pub fn new() -> Self
+    {
+        Self {/* No fields */}
+    }
+}
 
 impl<C> CrossoverOperator<Vec<C>, C> for TwoPoint
 where
@@ -20,7 +27,7 @@ where
         rng: &mut R,
     ) -> (Vec<C>, Vec<C>)
     {
-        assert_eq!(g1.len(), g2.len());
+        assert_eq!(g1.len(), g2.len(), "Genomes must be the same length");
 
         // sample two pivot points
         let range = Range::new(0, g1.len());

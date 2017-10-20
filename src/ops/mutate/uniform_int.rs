@@ -1,9 +1,9 @@
 //! Uniform Integer mutation operator
 
 use super::MutateOperator;
-use Genome;
 use rand::Rng;
 
+/// TODO
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct UniformInt;
 

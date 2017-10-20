@@ -64,9 +64,9 @@ fn main()
     let init_fn = || vec![false; 65];
 
     let mut ea = Simple::new(
-        Tournament { size: 10 },
+        Tournament::with_size(10),
         TwoPoint,
-        FlipBit { ind_pb: 20 },
+        FlipBit::with_pb(0.05),
         fitness_fn,
         0.02,
         0.05,

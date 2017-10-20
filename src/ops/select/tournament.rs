@@ -6,10 +6,19 @@ use rand::Rng;
 use rand::distributions::{Range, IndependentSample};
 
 
-/// TODO
+/// Selection operator that randomly samples a specified "tournament" of
+/// individuals k times, and returns the best individual from each tournament
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Tournament {
-    pub size: usize,
+    size: usize,
+}
+
+impl Tournament {
+    /// Create a new Tournament operator with a given size
+    pub fn with_size(size: usize) -> Self
+    {
+        Self { size }
+    }
 }
 
 impl<G, C, O> SelectOperator<G, C, O> for Tournament
