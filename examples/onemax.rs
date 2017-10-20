@@ -78,7 +78,7 @@ fn main()
         )
         .arg(
             Arg::with_name("flip-pb")
-                .long("mutate-pb")
+                .long("flip-pb")
                 .takes_value(true)
                 .help("Probability a chromsome will be flipped during mutation")
                 .default_value("0.02"),
