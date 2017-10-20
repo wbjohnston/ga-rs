@@ -5,7 +5,9 @@ use super::SelectOperator;
 use rand::Rng;
 use rand::distributions::{Range, IndependentSample};
 
-/// TODO
+/// Selection operator that randomly select k individuals from a population
+///
+/// This operator can select a genome multiple times
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Random;
 

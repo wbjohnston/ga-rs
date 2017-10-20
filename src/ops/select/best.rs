@@ -4,7 +4,7 @@ use rand::Rng;
 use genome::Genome;
 use super::SelectOperator;
 
-/// TODO
+/// Selction operator that selects the k best individual from a population
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Best;
 
@@ -14,7 +14,6 @@ where
     C: Clone + Sized,
     O: Clone + Ord,
 {
-    /// Select k genomes from a population
     fn select<R: Rng>(
         &self,
         pop_with_fit: &Vec<(O, G)>,

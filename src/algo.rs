@@ -13,6 +13,7 @@ use ops::mutate::MutateOperator;
 
 use genome::Genome;
 
+/// An evolutationary algorithm
 pub trait EvolutionaryAlgorithm<
     G: Genome<C>,
     C: Clone + Sized,
@@ -23,7 +24,7 @@ pub trait EvolutionaryAlgorithm<
     R: Rng,
     O: Ord + Clone,
 > {
-    /// Initialize the algorithm by generating a population
+    /// Initialize the algorithm by generating a population using a generator fn
     fn initialize<F>(&mut self, n: usize, init_fn: F)
     where
         F: Fn() -> G;
@@ -38,6 +39,11 @@ pub trait EvolutionaryAlgorithm<
     fn is_done(&self) -> bool;
 }
 
+/// The simplest possible evolutationary algorithm
+///
+/// It's important to use a Selection operator that can select duplicate
+/// individuals. Otherwise the selection operator will be useless because it
+/// always selects as many individuals as are currently in the population
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Simple<
     G: Genome<C>,
@@ -75,6 +81,7 @@ impl<
     R: Rng,
     O: Ord + Clone,
 > Simple<G, C, SOp, COp, MOp, EOp, R, O> {
+    /// Create a new Simple EvolutionaryAlgorithm
     pub fn new(
         select_op: SOp,
         crossover_op: COp,
@@ -118,7 +125,6 @@ impl<
     O: Ord + Clone,
 > EvolutionaryAlgorithm<G, C, SOp, COp, MOp, EOp, R, O>
     for Simple<G, C, SOp, COp, MOp, EOp, R, O> {
-    /// Initialize the algorithm by generating a population
     fn initialize<F>(&mut self, n: usize, init_fn: F)
     where
         F: Fn() -> G,
@@ -126,7 +132,6 @@ impl<
         self.population = (0..n).map(|_| init_fn()).collect()
     }
 
-    /// Advance to next generation
     fn next(&mut self) -> Vec<G>
     {
         let pop = self.population();
@@ -182,13 +187,11 @@ impl<
         self.population()
     }
 
-    /// Current generation
     fn population(&self) -> Vec<G>
     {
         self.population.clone()
     }
 
-    /// Is the evolutationary algorithm done?
     fn is_done(&self) -> bool
     {
         self.generation >= self.max_generation
