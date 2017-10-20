@@ -1,24 +1,24 @@
+
 use rand::Rng;
-
 use genome::Genome;
-
 use super::SelectOperator;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Best;
 
-impl<C, O> SelectOperator<Vec<C>, C, O> for Best
+impl<G, C, O> SelectOperator<G, C, O> for Best
 where
+    G: Genome<C>,
     C: Clone + Sized,
     O: Clone + Ord,
 {
     /// Select k genomes from a population
     fn select<R: Rng>(
         &self,
-        pop_with_fit: &Vec<(O, Vec<C>)>,
+        pop_with_fit: &Vec<(O, G)>,
         k: usize,
         _: &mut R,
-    ) -> Vec<Vec<C>>
+    ) -> Vec<G>
     {
         let mut c = pop_with_fit.clone();
         c.sort_by(|a, b| a.0.cmp(&b.0));
