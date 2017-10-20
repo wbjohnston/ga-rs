@@ -9,7 +9,7 @@ upon this library: you **should not** use this library as its incomplete and the
 API is **not stable**.
 
 ![Travis Status](https://travis-ci.org/wbjohnston/petri.svg?branch=master)
-[![Crates.io badge](https://img.shields.io/crates/v/petri.svg)](https://crates.io/crates/ge)
+[![Crates.io badge](https://img.shields.io/crates/v/petri.svg)](https://crates.io/crates/petri)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Contributing
