@@ -22,6 +22,7 @@ where
     G: Genome<C>,
     C: Clone + Sized,
 {
+    // TODO(will), make operator work in place
     /// Mutate an indiviudal
     fn mutate<R: Rng>(&self, indv: &G, rng: &mut R) -> G;
 }

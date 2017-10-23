@@ -19,7 +19,7 @@ impl FlipBit {
             pb >= 0.0 && pb <= 1.0,
             "Probability must be a value between 0.0 and 1.0"
         );
-        //
+
         // conert to u32 for use with gen_weighted_bool
         let pb = (1.0 / pb) as u32;
 

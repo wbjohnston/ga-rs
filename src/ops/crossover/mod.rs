@@ -25,6 +25,7 @@ where
     G: Genome<C>,
     C: Clone + Sized,
 {
+    // TODO(will): make this operator work in place
     /// Cross two genomes to produce two children
     fn crossover<R: Rng>(&self, g1: &G, g2: &G, rng: &mut R) -> (G, G);
 }

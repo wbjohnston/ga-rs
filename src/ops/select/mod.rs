@@ -21,13 +21,13 @@ pub use self::tournament::Tournament;
 /// Operator for selecting genomes out of a population
 ///
 /// # Arguments
-/// TODO
 pub trait SelectOperator<G, C, O>
 where
     G: Genome<C>,
     C: Clone + Sized,
     O: Clone + Ord,
 {
+    // TODO(will): make this operate in place
     /// Select k genomes from a population
     fn select<R: Rng>(
         &self,

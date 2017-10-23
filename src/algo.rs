@@ -93,7 +93,7 @@ impl<
         rng: R,
     ) -> Self
     {
-        assert!(cx_pb + mut_pb <= 1.0);
+        assert!(cx_pb + mut_pb <= 1.0 && cx_pb + mut_pb >= 0.0);
         let cx_pb = (1.0 / cx_pb) as u32;
         let mut_pb = (1.0 / mut_pb) as u32;
 
