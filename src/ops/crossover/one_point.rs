@@ -52,26 +52,6 @@ where
 #[cfg(test)]
 mod test {
     use super::*;
-    use rand::thread_rng;
-
-    use test::{Bencher, black_box};
-
-    #[bench]
-    fn bench_cross(b: &mut Bencher)
-    {
-        let op = OnePoint::new();
-        let genome = black_box(vec![1, 2, 3, 4, 5, 6]);
-
-        let mut rng = thread_rng();
-
-        b.iter(|| {
-            let op = op.clone();
-            let g1 = genome.clone();
-            let g2 = genome.clone();
-
-            op.crossover(&g1, &g2, &mut rng);
-        });
-    }
 
     /// Test that if the operator is given two genomes of different lengths it
     /// will panic

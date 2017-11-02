@@ -53,24 +53,6 @@ where
 mod test {
     use super::*;
 
-    use rand::thread_rng;
-    use test::{Bencher, black_box};
-
-    #[bench]
-    fn bench_mutation(b: &mut Bencher)
-    {
-        let op = ShuffleIndexes::with_pb(1.0);
-        let genome = black_box(vec![1, 2, 3, 4, 5, 6]);
-        let mut rng = thread_rng();
-
-        b.iter(|| {
-            let op = op.clone();
-            let g = genome.clone();
-
-            op.mutate(&g, &mut rng);
-        });
-    }
-
     /// Test that the operator can only be created with a valid probability
     #[test]
     #[should_panic]

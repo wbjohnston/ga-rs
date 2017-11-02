@@ -1,7 +1,4 @@
 //! Evolutionary algorithm toolkit
-#![feature(test)]
-extern crate test;
-
 extern crate bit_vec;
 
 extern crate rand;
