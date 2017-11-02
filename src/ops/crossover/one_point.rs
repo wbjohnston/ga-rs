@@ -50,8 +50,7 @@ where
 }
 
 #[cfg(test)]
-mod test 
-{
+mod test {
     use super::*;
     use rand::thread_rng;
 
