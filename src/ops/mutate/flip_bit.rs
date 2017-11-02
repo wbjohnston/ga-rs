@@ -35,17 +35,10 @@ where
     /// Mutate an indiviudal
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {
-        let mut cloned = g.clone();
-
-        for c in &mut cloned
-        {
-            if rng.gen_weighted_bool(self.pb)
-            {
-                *c = !(*c).clone();
-            }
-        }
-
-        cloned
+        g.iter()
+            .cloned()
+            .map(|x| if rng.gen_weighted_bool(self.pb) { !x } else { x })
+            .collect()
     }
 }
 
