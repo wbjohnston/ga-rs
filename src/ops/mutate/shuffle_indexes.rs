@@ -31,17 +31,41 @@ where
 {
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {
-        let (mut shuffled, mut cloned) = (g.clone(), g.clone());
-        rng.shuffle(&mut shuffled);
+        // create a map to shuffle indexes with
+        let mut idxs: Vec<_> = (0..g.len()).collect();
+        rng.shuffle(&mut idxs);
+
+        let mut cloned = g.clone();
 
         for i in 0..g.len()
         {
             if rng.gen_weighted_bool(self.pb)
             {
-                cloned[i] = shuffled[i].clone();
+                cloned[i] = g[idxs[i]].clone();
             }
         }
 
         cloned
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    /// Test that the operator can only be created with a valid probability
+    #[test]
+    #[should_panic]
+    fn panics_on_lt_0()
+    {
+        ShuffleIndexes::with_pb(-0.001);
+    }
+
+    /// Test that the operator can only be created with a valid probability
+    #[test]
+    #[should_panic]
+    fn panics_on_gt_1()
+    {
+        ShuffleIndexes::with_pb(1000.0);
     }
 }
