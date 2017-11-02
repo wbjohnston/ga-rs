@@ -25,9 +25,9 @@ impl ShuffleIndexes {
     }
 }
 
-impl<C> MutateOperator<Vec<C>, C> for ShuffleIndexes
+impl<C> MutateOperator<Vec<C>> for ShuffleIndexes
 where
-    C: Clone + Sized,
+    C: Clone,
 {
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {

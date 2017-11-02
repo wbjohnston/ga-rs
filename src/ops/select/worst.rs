@@ -1,6 +1,7 @@
 //! Worst selection operator
 
-use Genome;
+use traits::Sequence;
+
 use super::SelectOperator;
 use rand::Rng;
 
@@ -8,10 +9,9 @@ use rand::Rng;
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Worst;
 
-impl<G, C, O> SelectOperator<G, C, O> for Worst
+impl<G, O> SelectOperator<G, O> for Worst
 where
-    G: Genome<C>,
-    C: Clone + Sized,
+    G: Sequence,
     O: Clone + Ord,
 {
     /// Select k genomes from a population

@@ -28,9 +28,9 @@ impl FlipBit {
 }
 
 // This operator will work on any genome with an invertible chromsome
-impl<C> MutateOperator<Vec<C>, C> for FlipBit
+impl<C> MutateOperator<Vec<C>> for FlipBit
 where
-    C: Clone + Sized + Not<Output = C>,
+    C: Clone + Not<Output = C>,
 {
     /// Mutate an indiviudal
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>

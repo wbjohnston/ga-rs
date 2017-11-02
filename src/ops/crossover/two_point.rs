@@ -16,7 +16,7 @@ impl TwoPoint {
     }
 }
 
-impl<C> CrossoverOperator<Vec<C>, C> for TwoPoint
+impl<C> CrossoverOperator<Vec<C>> for TwoPoint
 where
     C: Clone + Sized,
 {

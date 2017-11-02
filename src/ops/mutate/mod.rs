@@ -1,6 +1,6 @@
 //! Mutation operators
 
-use Genome;
+use traits::Sequence;
 
 use rand::Rng;
 
@@ -17,10 +17,9 @@ mod uniform_int;
 // pub use self::uniform_int::UniformInt;
 
 /// Operator for mutating a genome
-pub trait MutateOperator<G, C>
+pub trait MutateOperator<G>
 where
-    G: Genome<C>,
-    C: Clone + Sized,
+    G: Sequence,
 {
     // TODO(will), make operator work in place
     /// Mutate an indiviudal

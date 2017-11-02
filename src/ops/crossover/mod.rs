@@ -1,7 +1,5 @@
 //! Crossover operators
-
-use Genome;
-
+use traits::Sequence;
 use rand::Rng;
 
 mod one_point;
@@ -20,10 +18,9 @@ mod partially_matched;
 // pub use self::partially_matched::PartiallyMatched;
 
 /// Operator for crossing two genomes to crate offspring
-pub trait CrossoverOperator<G, C>
+pub trait CrossoverOperator<G>
 where
-    G: Genome<C>,
-    C: Clone + Sized,
+    G: Sequence,
 {
     // TODO(will): make this operator work in place
     /// Cross two genomes to produce two children

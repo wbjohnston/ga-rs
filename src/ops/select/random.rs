@@ -1,6 +1,7 @@
 //! Random selection operator
 
-use Genome;
+use traits::Sequence;
+
 use super::SelectOperator;
 use rand::Rng;
 use rand::distributions::{Range, IndependentSample};
@@ -11,10 +12,9 @@ use rand::distributions::{Range, IndependentSample};
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Random;
 
-impl<G, C, O> SelectOperator<G, C, O> for Random
+impl<G, O> SelectOperator<G, O> for Random
 where
-    G: Genome<C>,
-    C: Clone + Sized,
+    G: Sequence,
     O: Clone + Ord,
 {
     /// Select k genomes from a population

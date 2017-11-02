@@ -7,9 +7,9 @@ use rand::Rng;
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct UniformInt;
 
-impl<C> MutateOperator<Vec<C>, C> for UniformInt
+impl<C> MutateOperator<Vec<C>> for UniformInt
 where
-    C: Clone + Sized,
+    C: Clone
 {
     /// Mutate an indiviudal
     #[allow(unused_variables)]

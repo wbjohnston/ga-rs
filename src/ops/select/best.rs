@@ -1,17 +1,17 @@
 //! Best selection operator
 
 use rand::Rng;
-use genome::Genome;
 use super::SelectOperator;
+
+use traits::Sequence;
 
 /// Selction operator that selects the k best individual from a population
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Best;
 
-impl<G, C, O> SelectOperator<G, C, O> for Best
+impl<G, O> SelectOperator<G, O> for Best
 where
-    G: Genome<C>,
-    C: Clone + Sized,
+    G: Sequence,
     O: Clone + Ord,
 {
     fn select<R: Rng>(

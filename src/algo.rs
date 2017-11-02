@@ -11,15 +11,14 @@ use ops::select::SelectOperator;
 use ops::crossover::CrossoverOperator;
 use ops::mutate::MutateOperator;
 
-use genome::Genome;
+use traits::Sequence;
 
 /// An evolutationary algorithm
 pub trait EvolutionaryAlgorithm<
-    G: Genome<C>,
-    C: Clone + Sized,
-    SOp: SelectOperator<G, C, O>,
-    COp: CrossoverOperator<G, C>,
-    MOp: MutateOperator<G, C>,
+    G: Sequence,
+    SOp: SelectOperator<G, O>,
+    COp: CrossoverOperator<G>,
+    MOp: MutateOperator<G>,
     EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
@@ -46,11 +45,10 @@ pub trait EvolutionaryAlgorithm<
 /// always selects as many individuals as are currently in the population
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Simple<
-    G: Genome<C>,
-    C: Clone + Sized,
-    SOp: SelectOperator<G, C, O>,
-    COp: CrossoverOperator<G, C>,
-    MOp: MutateOperator<G, C>,
+    G: Sequence,
+    SOp: SelectOperator<G, O>,
+    COp: CrossoverOperator<G>,
+    MOp: MutateOperator<G>,
     EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
@@ -68,19 +66,18 @@ pub struct Simple<
 
     rng: R,
 
-    _marker: PhantomData<(O, C)>,
+    _marker: PhantomData<(O)>,
 }
 
 impl<
-    G: Genome<C>,
-    C: Clone + Sized,
-    SOp: SelectOperator<G, C, O>,
-    COp: CrossoverOperator<G, C>,
-    MOp: MutateOperator<G, C>,
+    G: Sequence,
+    SOp: SelectOperator<G, O>,
+    COp: CrossoverOperator<G>,
+    MOp: MutateOperator<G>,
     EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
-> Simple<G, C, SOp, COp, MOp, EOp, R, O> {
+> Simple<G, SOp, COp, MOp, EOp, R, O> {
     /// Create a new Simple EvolutionaryAlgorithm
     pub fn new(
         select_op: SOp,
@@ -115,16 +112,15 @@ impl<
 }
 
 impl<
-    G: Genome<C>,
-    C: Clone + Sized,
-    SOp: SelectOperator<G, C, O>,
-    COp: CrossoverOperator<G, C>,
-    MOp: MutateOperator<G, C>,
+    G: Sequence,
+    SOp: SelectOperator<G, O>,
+    COp: CrossoverOperator<G>,
+    MOp: MutateOperator<G>,
     EOp: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
-> EvolutionaryAlgorithm<G, C, SOp, COp, MOp, EOp, R, O>
-    for Simple<G, C, SOp, COp, MOp, EOp, R, O> {
+> EvolutionaryAlgorithm<G, SOp, COp, MOp, EOp, R, O>
+    for Simple<G, SOp, COp, MOp, EOp, R, O> {
     fn initialize<F>(&mut self, n: usize, init_fn: F)
     where
         F: Fn() -> G,

@@ -9,9 +9,9 @@ use rand::Rng;
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Gaussian;
 
-impl<C> MutateOperator<Vec<C>, C> for Gaussian
+impl<C> MutateOperator<Vec<C>> for Gaussian
 where
-    C: Clone + Sized,
+    C: Clone,
 {
     /// Mutate an indiviudal
     #[allow(unused_variables)]

@@ -12,7 +12,7 @@ pub struct Uniform {
     pub ind_pb: u32,
 }
 
-impl<C> CrossoverOperator<Vec<C>, C> for Uniform
+impl<C> CrossoverOperator<Vec<C>> for Uniform
 where
     C: Sized + Clone,
 {

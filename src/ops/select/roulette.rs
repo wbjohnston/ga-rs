@@ -1,16 +1,16 @@
 
-use Genome;
 use super::SelectOperator;
+
+use traits::Sequence;
 use rand::Rng;
 
-/// TODO
+/// TODO(will): description
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Roulette;
 
-impl<G, C, O> SelectOperator<G, C, O> for Roulette
+impl<G, O> SelectOperator<G, O> for Roulette
 where
-    G: Genome<C>,
-    C: Clone + Sized,
+    G: Sequence,
     O: Clone + Ord,
 {
     /// Select k genomes from a population

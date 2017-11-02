@@ -1,6 +1,6 @@
 //! Tournament selection operator
 
-use Genome;
+use traits::Sequence;
 use super::SelectOperator;
 use rand::Rng;
 use rand::distributions::{Range, IndependentSample};
@@ -21,10 +21,9 @@ impl Tournament {
     }
 }
 
-impl<G, C, O> SelectOperator<G, C, O> for Tournament
+impl<G, O> SelectOperator<G, O> for Tournament
 where
-    G: Genome<C>,
-    C: Clone + Sized,
+    G: Sequence,
     O: Clone + Ord,
 {
     /// Select k genomes from a population
