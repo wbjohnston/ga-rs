@@ -9,7 +9,7 @@ pub struct UniformInt;
 
 impl<C> MutateOperator<Vec<C>> for UniformInt
 where
-    C: Clone
+    C: Clone,
 {
     /// Mutate an indiviudal
     #[allow(unused_variables)]
