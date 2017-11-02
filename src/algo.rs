@@ -43,7 +43,7 @@ pub trait EvolutionaryAlgorithm<
 /// It's important to use a Selection operator that can select duplicate
 /// individuals. Otherwise the selection operator will be useless because it
 /// always selects as many individuals as are currently in the population
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Simple<
     G: Sequence,
     SOp: SelectOperator<G, O>,
