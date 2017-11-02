@@ -56,7 +56,7 @@ mod test {
     /// Test that the operator can only be created with a valid probability
     #[test]
     #[should_panic]
-    fn panics_on_lt_0()
+    fn test_panics_on_lt_0()
     {
         ShuffleIndexes::with_pb(-0.001);
     }
@@ -64,7 +64,7 @@ mod test {
     /// Test that the operator can only be created with a valid probability
     #[test]
     #[should_panic]
-    fn panics_on_gt_1()
+    fn test_panics_on_gt_1()
     {
         ShuffleIndexes::with_pb(1000.0);
     }

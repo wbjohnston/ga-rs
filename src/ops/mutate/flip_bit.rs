@@ -58,7 +58,7 @@ mod test {
     /// less than 0.0 causes a panic
     #[test]
     #[should_panic]
-    fn panics_on_lt_0()
+    fn test_panics_on_lt_0()
     {
         FlipBit::with_pb(-0.001);
     }
@@ -67,14 +67,14 @@ mod test {
     /// more than 1.0 causes a panic
     #[test]
     #[should_panic]
-    fn panics_on_gt_1()
+    fn test_panics_on_gt_1()
     {
         FlipBit::with_pb(1.001);
     }
 
     /// Test that the bitflip operator works correctly
     #[test]
-    fn mutates_correctly()
+    fn test_mutates_correctly()
     {
         use rand::{StdRng, SeedableRng};
 

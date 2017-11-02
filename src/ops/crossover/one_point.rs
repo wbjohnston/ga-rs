@@ -7,7 +7,7 @@ use rand::distributions::Range;
 use super::CrossoverOperator;
 
 /// A Crossover operator that crosses two genomes at a single point
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub struct OnePoint;
 
 impl OnePoint {
@@ -50,14 +50,36 @@ where
 }
 
 #[cfg(test)]
-mod test {
+mod test 
+{
     use super::*;
+    use rand::thread_rng;
+
+    use test::Bencher;
+    use test::black_box;
+
+    #[bench]
+    fn bench_cross(b: &mut Bencher)
+    {
+        let op = OnePoint::new();
+        let genome = black_box(vec![1, 2, 3, 4, 5, 6]);
+
+        let mut rng = thread_rng();
+
+        b.iter(|| {
+            let op = op.clone();
+            let g1 = genome.clone();
+            let g2 = genome.clone();
+
+            op.crossover(&g1, &g2, &mut rng);
+        });
+    }
 
     /// Test that if the operator is given two genomes of different lengths it
     /// will panic
     #[test]
     #[should_panic]
-    fn panics_on_different_len()
+    fn test_panics_on_different_len()
     {
         use rand::thread_rng;
 
@@ -91,7 +113,7 @@ mod test {
     /// | F G C D E |
     /// ```
     #[test]
-    fn crosses_correctly()
+    fn test_crosses_correctly()
     {
         use rand::{StdRng, SeedableRng};
         use rand::distributions::{Range, IndependentSample};
