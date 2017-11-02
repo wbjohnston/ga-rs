@@ -7,7 +7,7 @@ use rand::distributions::Range;
 use super::CrossoverOperator;
 
 /// A Crossover operator that crosses two genomes at a single point
-#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Default, Serialize, Deserialize)]
 pub struct OnePoint;
 
 impl OnePoint {

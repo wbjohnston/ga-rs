@@ -5,16 +5,8 @@ use rand::distributions::{Range, IndependentSample};
 use rand::Rng;
 
 /// A crossover operator that crosses two genomes at two points
-#[derive(Clone, Copy, Serialize, Deserialize)]
+#[derive(Clone, Copy, Default, Serialize, Deserialize)]
 pub struct TwoPoint;
-
-impl TwoPoint {
-    /// Create a new OnePoint crossover operator
-    pub fn new() -> Self
-    {
-        Self {/* No fields */}
-    }
-}
 
 impl<C> CrossoverOperator<Vec<C>> for TwoPoint
 where

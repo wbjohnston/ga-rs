@@ -1,4 +1,4 @@
-//! FlipBit mutation operator
+//! `FlipBit` mutation operator
 
 use std::ops::Not;
 use rand::Rng;
@@ -37,11 +37,11 @@ where
     {
         let mut cloned = g.clone();
 
-        for i in 0..g.len()
+        for c in &mut cloned
         {
             if rng.gen_weighted_bool(self.pb)
             {
-                cloned[i] = !cloned[i].clone();
+                *c = !(*c).clone();
             }
         }
 

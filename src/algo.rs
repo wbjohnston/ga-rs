@@ -148,13 +148,11 @@ impl<
         );
 
         // mutate phase
-        for i in 0..offspring.len()
+        for indv in &mut offspring
         {
             if self.rng.gen_weighted_bool(self.mut_pb)
             {
-                let mutated =
-                    self.mutate_op.mutate(&offspring[i], &mut self.rng);
-                offspring[i] = mutated;
+                *indv = self.mutate_op.mutate(indv, &mut self.rng);
             }
         }
 
