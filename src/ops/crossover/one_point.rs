@@ -55,8 +55,7 @@ mod test
     use super::*;
     use rand::thread_rng;
 
-    use test::Bencher;
-    use test::black_box;
+    use test::{Bencher, black_box};
 
     #[bench]
     fn bench_cross(b: &mut Bencher)
