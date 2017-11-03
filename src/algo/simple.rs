@@ -9,7 +9,7 @@ use rand::Rng;
 
 use genomes::Sequence;
 
-// TODO(will): create a `State` struct to hold runtime state of algorithm, 
+// TODO(will): create a `State` struct to hold runtime state of algorithm,
 //      implement serialize and deserialize on this. should be shared between
 //      differente algorithm implementations
 
@@ -19,7 +19,7 @@ use genomes::Sequence;
 /// individuals. Otherwise the selection operator will be useless because it
 /// always selects as many individuals as are currently in the population
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Simple<G, S, C, M, E, R, O> 
+pub struct Simple<G, S, C, M, E, R, O>
 where
     G: Sequence,
     S: SelectOperator<G, O>,
@@ -88,8 +88,8 @@ where
     }
 }
 
-impl<G, S, C, M, E, R, O> EvolutionaryAlgorithm<G, S, C, M, E, R, O> 
-for Simple<G, S, C, M, E, R, O> 
+impl<G, S, C, M, E, R, O> EvolutionaryAlgorithm<G, S, C, M, E, R, O>
+    for Simple<G, S, C, M, E, R, O>
 where
     G: Sequence,
     S: SelectOperator<G, O>,

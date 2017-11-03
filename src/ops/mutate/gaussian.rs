@@ -24,8 +24,7 @@ where
     }
 }
 
-impl MutateOperator<BitVec> for Gaussian
-{
+impl MutateOperator<BitVec> for Gaussian {
     /// Mutate an indiviudal
     #[allow(unused_variables)]
     fn mutate<R: Rng>(&self, indv: &BitVec, rng: &mut R) -> BitVec

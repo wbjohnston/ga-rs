@@ -8,7 +8,7 @@ use ops::traits::CrossoverOperator;
 use ops::traits::MutateOperator;
 
 /// An evolutationary algorithm
-pub trait EvolutionaryAlgorithm<G, S, C, M, E, R, O> 
+pub trait EvolutionaryAlgorithm<G, S, C, M, E, R, O>
 where
     G: Sequence,
     S: SelectOperator<G, O>,
