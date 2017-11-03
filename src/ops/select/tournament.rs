@@ -1,7 +1,7 @@
 //! Tournament selection operator
 
-use traits::Sequence;
-use super::SelectOperator;
+use genomes::Sequence;
+use ops::traits::SelectOperator;
 use rand::Rng;
 use rand::distributions::{Range, IndependentSample};
 

@@ -1,6 +1,6 @@
 //! Two point crossover operator
 
-use super::CrossoverOperator;
+use ops::traits::CrossoverOperator;
 use rand::distributions::{Range, IndependentSample};
 use rand::Rng;
 

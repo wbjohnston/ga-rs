@@ -1,9 +1,9 @@
 //! Best selection operator
 
 use rand::Rng;
-use super::SelectOperator;
+use ops::traits::SelectOperator;
 
-use traits::Sequence;
+use genomes::Sequence;
 
 /// Selction operator that selects the k best individual from a population
 #[derive(Debug, Clone, Serialize, Deserialize)]

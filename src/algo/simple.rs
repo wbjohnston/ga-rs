@@ -1,43 +1,17 @@
-//! Evolutionary algorithm
-
-#[cfg(feature = "par")]
-use rayon::prelude::*;
+//! Simplest genetic algorithm
 
 use std::marker::PhantomData;
 
+use algo::EvolutionaryAlgorithm;
+use ops::traits::{SelectOperator, CrossoverOperator, MutateOperator};
+
 use rand::Rng;
 
-use ops::select::SelectOperator;
-use ops::crossover::CrossoverOperator;
-use ops::mutate::MutateOperator;
+use genomes::Sequence;
 
-use traits::Sequence;
-
-/// An evolutationary algorithm
-pub trait EvolutionaryAlgorithm<G, S, C, M, E, R, O> 
-where
-    G: Sequence,
-    S: SelectOperator<G, O>,
-    C: CrossoverOperator<G>,
-    M: MutateOperator<G>,
-    E: Fn(&G) -> O,
-    R: Rng,
-    O: Ord + Clone,
-{
-    /// Initialize the algorithm by generating a population using a generator fn
-    fn initialize<F>(&mut self, n: usize, init_fn: F)
-    where
-        F: Fn() -> G;
-
-    /// Advance to next generation
-    fn next(&mut self) -> Vec<G>;
-
-    /// Current generation
-    fn population(&self) -> Vec<G>;
-
-    /// Is the evolutationary algorithm done?
-    fn is_done(&self) -> bool;
-}
+// TODO(will): create a `State` struct to hold runtime state of algorithm, 
+//      implement serialize and deserialize on this. should be shared between
+//      differente algorithm implementations
 
 /// The simplest possible evolutationary algorithm
 ///
@@ -194,10 +168,4 @@ where
     {
         self.generation >= self.max_generation
     }
-}
-
-#[cfg(test)]
-mod test
-{
-    // TODO(will): write tests
 }

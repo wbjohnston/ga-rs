@@ -1,6 +1,6 @@
 //! Shuffle indexes mutation operator
 
-use super::MutateOperator;
+use ops::traits::MutateOperator;
 use rand::Rng;
 
 /// A mutation operator that swaps chromosomes of a genome with a given

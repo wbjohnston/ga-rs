@@ -1,4 +1,4 @@
-use super::CrossoverOperator;
+use ops::traits::CrossoverOperator;
 
 // use Genome;
 use rand::Rng;

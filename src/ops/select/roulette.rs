@@ -1,7 +1,7 @@
 
-use super::SelectOperator;
+use ops::traits::SelectOperator;
 
-use traits::Sequence;
+use genomes::Sequence;
 use rand::Rng;
 
 /// TODO(will): description

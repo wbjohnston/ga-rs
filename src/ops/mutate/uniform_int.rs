@@ -1,6 +1,6 @@
 //! Uniform Integer mutation operator
 
-use super::MutateOperator;
+use ops::traits::MutateOperator;
 use rand::Rng;
 
 /// TODO

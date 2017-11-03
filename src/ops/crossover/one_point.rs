@@ -4,7 +4,7 @@ use rand::Rng;
 use rand::distributions::IndependentSample;
 use rand::distributions::Range;
 
-use super::CrossoverOperator;
+use ops::traits::CrossoverOperator;
 
 /// A Crossover operator that crosses two genomes at a single point
 #[derive(Debug, Copy, Clone, Default, Serialize, Deserialize)]

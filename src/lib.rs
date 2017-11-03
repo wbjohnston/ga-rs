@@ -15,4 +15,4 @@ pub mod ops;
 
 pub mod algo;
 
-pub mod traits;
+pub mod genomes;

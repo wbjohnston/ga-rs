@@ -1,7 +1,4 @@
 //! Crossover operators
-use traits::Sequence;
-use rand::Rng;
-
 mod one_point;
 pub use self::one_point::OnePoint;
 
@@ -17,12 +14,3 @@ mod ordered;
 mod partially_matched;
 // pub use self::partially_matched::PartiallyMatched;
 
-/// Operator for crossing two genomes to crate offspring
-pub trait CrossoverOperator<G>
-where
-    G: Sequence,
-{
-    // TODO(will): make this operator work in place
-    /// Cross two genomes to produce two children
-    fn crossover<R: Rng>(&self, g1: &G, g2: &G, rng: &mut R) -> (G, G);
-}

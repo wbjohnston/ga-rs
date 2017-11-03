@@ -1,8 +1,8 @@
 //! Random selection operator
 
-use traits::Sequence;
+use genomes::Sequence;
 
-use super::SelectOperator;
+use ops::traits::SelectOperator;
 use rand::Rng;
 use rand::distributions::{Range, IndependentSample};
 

@@ -1,8 +1,8 @@
 //! Worst selection operator
 
-use traits::Sequence;
+use genomes::Sequence;
 
-use super::SelectOperator;
+use ops::traits::SelectOperator;
 use rand::Rng;
 
 /// Selection operator that selects `k` individuals with the lowest fitness

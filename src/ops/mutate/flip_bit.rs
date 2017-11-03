@@ -2,7 +2,7 @@
 
 use std::ops::Not;
 use rand::Rng;
-use super::MutateOperator;
+use ops::traits::MutateOperator;
 
 /// A selection operator that performs an bitflip operator on each chromosome
 /// of a genome with a given probability
