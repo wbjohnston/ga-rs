@@ -14,15 +14,16 @@ use ops::mutate::MutateOperator;
 use traits::Sequence;
 
 /// An evolutationary algorithm
-pub trait EvolutionaryAlgorithm<
+pub trait EvolutionaryAlgorithm<G, S, C, M, E, R, O> 
+where
     G: Sequence,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G>,
-    MOp: MutateOperator<G>,
-    EOp: Fn(&G) -> O,
+    S: SelectOperator<G, O>,
+    C: CrossoverOperator<G>,
+    M: MutateOperator<G>,
+    E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
-> {
+{
     /// Initialize the algorithm by generating a population using a generator fn
     fn initialize<F>(&mut self, n: usize, init_fn: F)
     where
@@ -44,19 +45,20 @@ pub trait EvolutionaryAlgorithm<
 /// individuals. Otherwise the selection operator will be useless because it
 /// always selects as many individuals as are currently in the population
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Simple<
+pub struct Simple<G, S, C, M, E, R, O> 
+where
     G: Sequence,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G>,
-    MOp: MutateOperator<G>,
-    EOp: Fn(&G) -> O,
+    S: SelectOperator<G, O>,
+    C: CrossoverOperator<G>,
+    M: MutateOperator<G>,
+    E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
-> {
-    select_op: SOp,
-    crossover_op: COp,
-    mutate_op: MOp,
-    evaluate_op: EOp,
+{
+    select_op: S,
+    crossover_op: C,
+    mutate_op: M,
+    evaluate_op: E,
 
     mut_pb: u32,
     cx_pb: u32,
@@ -69,21 +71,22 @@ pub struct Simple<
     _marker: PhantomData<(O)>,
 }
 
-impl<
+impl<G, S, C, M, E, R, O> Simple<G, S, C, M, E, R, O>
+where
     G: Sequence,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G>,
-    MOp: MutateOperator<G>,
-    EOp: Fn(&G) -> O,
+    S: SelectOperator<G, O>,
+    C: CrossoverOperator<G>,
+    M: MutateOperator<G>,
+    E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
-> Simple<G, SOp, COp, MOp, EOp, R, O> {
+{
     /// Create a new Simple EvolutionaryAlgorithm
     pub fn new(
-        select_op: SOp,
-        crossover_op: COp,
-        mutate_op: MOp,
-        evaluate_op: EOp,
+        select_op: S,
+        crossover_op: C,
+        mutate_op: M,
+        evaluate_op: E,
         mut_pb: f32,
         cx_pb: f32,
         max_generation: usize,
@@ -111,16 +114,17 @@ impl<
     }
 }
 
-impl<
+impl<G, S, C, M, E, R, O> EvolutionaryAlgorithm<G, S, C, M, E, R, O> 
+for Simple<G, S, C, M, E, R, O> 
+where
     G: Sequence,
-    SOp: SelectOperator<G, O>,
-    COp: CrossoverOperator<G>,
-    MOp: MutateOperator<G>,
-    EOp: Fn(&G) -> O,
+    S: SelectOperator<G, O>,
+    C: CrossoverOperator<G>,
+    M: MutateOperator<G>,
+    E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
-> EvolutionaryAlgorithm<G, SOp, COp, MOp, EOp, R, O>
-    for Simple<G, SOp, COp, MOp, EOp, R, O> {
+{
     fn initialize<F>(&mut self, n: usize, init_fn: F)
     where
         F: Fn() -> G,
@@ -190,4 +194,10 @@ impl<
     {
         self.generation >= self.max_generation
     }
+}
+
+#[cfg(test)]
+mod test
+{
+    // TODO(will): write tests
 }
