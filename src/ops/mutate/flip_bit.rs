@@ -1,18 +1,21 @@
 //! `FlipBit` mutation operator
 
 use std::ops::Not;
-use rand::Rng;
 use ops::traits::MutateOperator;
+
+use rand::Rng;
+
+use serde::{Serialize, Deserialize};
 
 /// A selection operator that performs an bitflip operator on each chromosome
 /// of a genome with a given probability
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone)]
 pub struct FlipBit {
     pb: u32,
 }
 
 impl FlipBit {
-    /// Create a new FlipBit selection operator with a given probability
+    /// Create a new `FlipBit` selection operator with a given probability
     pub fn with_pb(pb: f32) -> Self
     {
         assert!(
@@ -20,7 +23,7 @@ impl FlipBit {
             "Probability must be a value between 0.0 and 1.0"
         );
 
-        // conert to u32 for use with gen_weighted_bool
+        // convert to u32 for use with gen_weighted_bool
         let pb = (1.0 / pb) as u32;
 
         Self { pb }
@@ -28,11 +31,14 @@ impl FlipBit {
 }
 
 // This operator will work on any genome with an invertible chromsome
-impl<C> MutateOperator<Vec<C>> for FlipBit
+impl<'a, C> MutateOperator<'a, Vec<C>> for FlipBit
 where
-    C: Clone + Not<Output = C>,
+    C: Clone
+        + Not<Output = C>
+        + Serialize
+        + Deserialize<'a>,
 {
-    /// Mutate an indiviudal
+    /// Mutate an individual
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {
         g.iter()

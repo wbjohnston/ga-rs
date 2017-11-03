@@ -6,12 +6,12 @@ use ops::traits::SelectOperator;
 use rand::Rng;
 
 /// Selection operator that selects `k` individuals with the lowest fitness
-#[derive(Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct Worst;
 
-impl<G, O> SelectOperator<G, O> for Worst
+impl<'a, G, O> SelectOperator<'a, G, O> for Worst
 where
-    G: Sequence,
+    G: Sequence<'a>,
     O: Clone + Ord,
 {
     /// Select k genomes from a population

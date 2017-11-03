@@ -4,13 +4,17 @@ use ops::traits::CrossoverOperator;
 use rand::distributions::{Range, IndependentSample};
 use rand::Rng;
 
+use serde::{Serialize, Deserialize};
+
 /// A crossover operator that crosses two genomes at two points
-#[derive(Clone, Copy, Default, Serialize, Deserialize)]
+#[derive(Clone, Copy, Default)]
 pub struct TwoPoint;
 
-impl<C> CrossoverOperator<Vec<C>> for TwoPoint
+impl<'a, C> CrossoverOperator<'a, Vec<C>> for TwoPoint
 where
-    C: Clone + Sized,
+    C: Clone
+        + Serialize
+        + Deserialize<'a>,
 {
     fn crossover<R: Rng>(
         &self,

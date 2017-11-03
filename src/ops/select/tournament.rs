@@ -8,7 +8,7 @@ use rand::distributions::{Range, IndependentSample};
 
 /// Selection operator that randomly samples a specified "tournament" of
 /// individuals k times, and returns the best individual from each tournament
-#[derive(Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct Tournament {
     size: usize,
 }
@@ -21,9 +21,9 @@ impl Tournament {
     }
 }
 
-impl<G, O> SelectOperator<G, O> for Tournament
+impl<'a, G, O> SelectOperator<'a, G, O> for Tournament
 where
-    G: Sequence,
+    G: Sequence<'a>,
     O: Clone + Ord,
 {
     /// Select k genomes from a population

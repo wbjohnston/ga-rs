@@ -6,21 +6,25 @@ use rand::distributions::Range;
 
 use ops::traits::CrossoverOperator;
 
+use serde::{Serialize, Deserialize};
+
 /// A Crossover operator that crosses two genomes at a single point
-#[derive(Debug, Copy, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, Default)]
 pub struct OnePoint;
 
 impl OnePoint {
-    /// Create a new OnePoint crossover operator
+    /// Create a new `OnePoint` crossover operator
     pub fn new() -> Self
     {
         Self {/* No fields */}
     }
 }
 
-impl<C> CrossoverOperator<Vec<C>> for OnePoint
+impl<'a, C> CrossoverOperator<'a, Vec<C>> for OnePoint
 where
-    C: Clone + Sized,
+    C: Clone
+        + Serialize
+        + Deserialize<'a>,
 {
     /// Cross two genomes to produce two children
     fn crossover<R: Rng>(

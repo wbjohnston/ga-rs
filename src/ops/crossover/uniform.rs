@@ -1,20 +1,37 @@
 use ops::traits::CrossoverOperator;
 
-// use Genome;
 use rand::Rng;
+use serde::{Serialize, Deserialize};
 
 /// A crossover that uniformly swaps chromosomes of a genome.
 ///
 /// This operator is paramaterized over the following:
-/// * `ind_pb`: probability a single chromsome will be swapped
-#[derive(Clone, Copy, Serialize, Deserialize)]
+/// * `ind_pb`: probability a single chromosome will be swapped
+#[derive(Clone, Copy)]
 pub struct Uniform {
-    pub ind_pb: u32,
+    pb: u32,
 }
 
-impl<C> CrossoverOperator<Vec<C>> for Uniform
+impl Uniform {
+    /// Create a new `Uniform` Crossover operator with a given probability
+    pub fn with_pb(pb: f32) -> Self
+    {
+        assert!(
+            pb >= 0.0 && pb <= 1.0,
+            "Probability must be a value between 0.0 and 1.0"
+        );
+
+        // convert to u32 for use with gen_weighted_bool
+        let pb = (1.0 / pb) as u32;
+
+        Self { pb }
+    }
+}
+impl<'a, C> CrossoverOperator<'a, Vec<C>> for Uniform
 where
-    C: Sized + Clone,
+    C: Clone
+        + Serialize
+        + Deserialize<'a>,
 {
     fn crossover<R: Rng>(
         &self,
@@ -31,7 +48,7 @@ where
         // swap chromosomes
         for i in 0..g1.len()
         {
-            if rng.gen_weighted_bool(self.ind_pb)
+            if rng.gen_weighted_bool(self.pb)
             {
                 let temp = g1[i].clone();
                 g1[i] = g2[i].clone();

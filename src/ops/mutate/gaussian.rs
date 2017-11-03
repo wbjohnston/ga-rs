@@ -4,30 +4,22 @@
 
 use ops::traits::MutateOperator;
 
-use bit_vec::BitVec;
-
 use rand::Rng;
 
+use serde::{Serialize, Deserialize};
+
 /// TODO
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct Gaussian;
 
-impl<C> MutateOperator<Vec<C>> for Gaussian
+impl<'a, C> MutateOperator<'a, Vec<C>> for Gaussian
 where
-    C: Clone,
+    C: Clone
+        + Serialize
+        + Deserialize<'a>,
 {
-    /// Mutate an indiviudal
     #[allow(unused_variables)]
     fn mutate<R: Rng>(&self, indv: &Vec<C>, rng: &mut R) -> Vec<C>
-    {
-        unimplemented!();
-    }
-}
-
-impl MutateOperator<BitVec> for Gaussian {
-    /// Mutate an indiviudal
-    #[allow(unused_variables)]
-    fn mutate<R: Rng>(&self, indv: &BitVec, rng: &mut R) -> BitVec
     {
         unimplemented!();
     }

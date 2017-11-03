@@ -5,13 +5,13 @@ use ops::traits::SelectOperator;
 
 use genomes::Sequence;
 
-/// Selction operator that selects the k best individual from a population
-#[derive(Debug, Clone, Serialize, Deserialize)]
+/// Selection operator that selects the k best individual from a population
+#[derive(Debug, Copy, Clone)]
 pub struct Best;
 
-impl<G, O> SelectOperator<G, O> for Best
+impl<'a, G, O> SelectOperator<'a, G, O> for Best
 where
-    G: Sequence,
+    G: Sequence<'a>,
     O: Clone + Ord,
 {
     fn select<R: Rng>(

@@ -18,13 +18,13 @@ use genomes::Sequence;
 /// It's important to use a Selection operator that can select duplicate
 /// individuals. Otherwise the selection operator will be useless because it
 /// always selects as many individuals as are currently in the population
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Simple<G, S, C, M, E, R, O>
+#[derive(Debug, Clone)]
+pub struct Simple<'a, G, S, C, M, E, R, O>
 where
-    G: Sequence,
-    S: SelectOperator<G, O>,
-    C: CrossoverOperator<G>,
-    M: MutateOperator<G>,
+    G: Sequence<'a>,
+    S: SelectOperator<'a, G, O>,
+    C: CrossoverOperator<'a, G>,
+    M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
@@ -42,20 +42,20 @@ where
 
     rng: R,
 
-    _marker: PhantomData<(O)>,
+    _marker: PhantomData<(&'a u8, O)>,
 }
 
-impl<G, S, C, M, E, R, O> Simple<G, S, C, M, E, R, O>
+impl<'a, G, S, C, M, E, R, O> Simple<'a, G, S, C, M, E, R, O>
 where
-    G: Sequence,
-    S: SelectOperator<G, O>,
-    C: CrossoverOperator<G>,
-    M: MutateOperator<G>,
+    G: Sequence<'a>,
+    S: SelectOperator<'a, G, O>,
+    C: CrossoverOperator<'a, G>,
+    M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,
 {
-    /// Create a new Simple EvolutionaryAlgorithm
+/// Create a new Simple EvolutionaryAlgorithm
     pub fn new(
         select_op: S,
         crossover_op: C,
@@ -88,13 +88,13 @@ where
     }
 }
 
-impl<G, S, C, M, E, R, O> EvolutionaryAlgorithm<G, S, C, M, E, R, O>
-    for Simple<G, S, C, M, E, R, O>
+impl<'a, G, S, C, M, E, R, O> EvolutionaryAlgorithm<'a, G, S, C, M, E, R, O>
+    for Simple<'a, G, S, C, M, E, R, O>
 where
-    G: Sequence,
-    S: SelectOperator<G, O>,
-    C: CrossoverOperator<G>,
-    M: MutateOperator<G>,
+    G: Sequence<'a>,
+    S: SelectOperator<'a, G, O>,
+    C: CrossoverOperator<'a, G>,
+    M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,

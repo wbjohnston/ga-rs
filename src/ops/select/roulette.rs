@@ -5,12 +5,12 @@ use genomes::Sequence;
 use rand::Rng;
 
 /// TODO(will): description
-#[derive(Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct Roulette;
 
-impl<G, O> SelectOperator<G, O> for Roulette
+impl<'a, G, O> SelectOperator<'a, G, O> for Roulette
 where
-    G: Sequence,
+    G: Sequence<'a>,
     O: Clone + Ord,
 {
     /// Select k genomes from a population

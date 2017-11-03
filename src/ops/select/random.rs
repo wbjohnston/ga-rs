@@ -9,12 +9,12 @@ use rand::distributions::{Range, IndependentSample};
 /// Selection operator that randomly select k individuals from a population
 ///
 /// This operator can select a genome multiple times
-#[derive(Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct Random;
 
-impl<G, O> SelectOperator<G, O> for Random
+impl<'a, G, O> SelectOperator<'a, G, O> for Random
 where
-    G: Sequence,
+    G: Sequence<'a>,
     O: Clone + Ord,
 {
     /// Select k genomes from a population

@@ -2,16 +2,18 @@
 
 use ops::traits::MutateOperator;
 use rand::Rng;
+use serde::{Serialize, Deserialize};
 
 /// A mutation operator that swaps chromosomes of a genome with a given
 /// probability
-#[derive(Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct ShuffleIndexes {
     pb: u32,
 }
 
 impl ShuffleIndexes {
-    /// Create a new ShuffleIndexes selection operator with a given probability
+    /// Create a new `ShuffleIndexes` selection operator with a given
+    /// probability
     pub fn with_pb(pb: f32) -> Self
     {
         assert!(
@@ -25,9 +27,9 @@ impl ShuffleIndexes {
     }
 }
 
-impl<C> MutateOperator<Vec<C>> for ShuffleIndexes
+impl<'a, C> MutateOperator<'a, Vec<C>> for ShuffleIndexes
 where
-    C: Clone,
+    C: Clone + Serialize + Deserialize<'a>,
 {
     fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C>
     {

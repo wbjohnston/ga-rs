@@ -1,12 +1,13 @@
+//! Traits for implementing genetic operators
 
 use genomes::Sequence;
 
 use rand::Rng;
 
 /// Operator for selecting genomes out of a population
-pub trait SelectOperator<G, O>
+pub trait SelectOperator<'a, G, O>
 where
-    G: Sequence,
+    G: Sequence<'a>,
     O: Clone + Ord,
 {
     // TODO(will): make this operate in place
@@ -21,9 +22,9 @@ where
 }
 
 /// Operator for mutating a genome
-pub trait MutateOperator<G>
+pub trait MutateOperator<'a, G>
 where
-    G: Sequence,
+    G: Sequence<'a>,
 {
     // TODO(will), make operator work in place
     // TODO(will): Make this return "number of mutations(usize)"
@@ -32,9 +33,9 @@ where
 }
 
 /// Operator for crossing two genomes to crate offspring
-pub trait CrossoverOperator<G>
+pub trait CrossoverOperator<'a, G>
 where
-    G: Sequence,
+    G: Sequence<'a>,
 {
     // TODO(will): make this operator work in place
     // TODO(will): Make this return meaningful information after doing above

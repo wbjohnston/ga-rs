@@ -1,3 +1,4 @@
+//! Traits for implementing evolutationary algorithms
 
 use rand::Rng;
 
@@ -8,12 +9,12 @@ use ops::traits::CrossoverOperator;
 use ops::traits::MutateOperator;
 
 /// An evolutationary algorithm
-pub trait EvolutionaryAlgorithm<G, S, C, M, E, R, O>
+pub trait EvolutionaryAlgorithm<'a, G, S, C, M, E, R, O>
 where
-    G: Sequence,
-    S: SelectOperator<G, O>,
-    C: CrossoverOperator<G>,
-    M: MutateOperator<G>,
+    G: Sequence<'a>,
+    S: SelectOperator<'a, G, O>,
+    C: CrossoverOperator<'a, G>,
+    M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
     O: Ord + Clone,

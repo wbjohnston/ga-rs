@@ -2,16 +2,19 @@
 
 use ops::traits::MutateOperator;
 use rand::Rng;
+use serde::{Serialize, Deserialize};
 
 /// TODO
-#[derive(Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct UniformInt;
 
-impl<C> MutateOperator<Vec<C>> for UniformInt
+impl<'a, C> MutateOperator<'a, Vec<C>> for UniformInt
 where
-    C: Clone,
+    C: Clone
+        + Serialize
+        + Deserialize<'a>,
 {
-    /// Mutate an indiviudal
+    /// Mutate an individual
     #[allow(unused_variables)]
     fn mutate<R: Rng>(&self, indv: &Vec<C>, rng: &mut R) -> Vec<C>
     {
