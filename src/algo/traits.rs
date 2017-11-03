@@ -2,6 +2,8 @@
 
 use rand::Rng;
 
+use serde::{Serialize, Deserialize};
+
 use genomes::Sequence;
 
 use ops::traits::SelectOperator;
@@ -17,7 +19,7 @@ where
     M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
-    O: Ord + Clone,
+    O: Ord + Clone + Serialize + Deserialize<'a>,
 {
     /// Initialize the algorithm by generating a population using a generator fn
     fn initialize<F>(&mut self, n: usize, init_fn: F)

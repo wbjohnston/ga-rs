@@ -2,6 +2,8 @@
 
 use std::marker::PhantomData;
 
+use serde::{Serialize, Deserialize};
+
 use algo::EvolutionaryAlgorithm;
 use ops::traits::{SelectOperator, CrossoverOperator, MutateOperator};
 
@@ -27,7 +29,7 @@ where
     M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
-    O: Ord + Clone,
+    O: Ord + Clone + Serialize + Deserialize<'a>,
 {
     select_op: S,
     crossover_op: C,
@@ -53,7 +55,7 @@ where
     M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
-    O: Ord + Clone,
+    O: Ord + Clone + Serialize + Deserialize<'a>,
 {
     /// Create a new `Simple` genetic algorithm runner
     pub fn new(
@@ -100,7 +102,7 @@ where
     M: MutateOperator<'a, G>,
     E: Fn(&G) -> O,
     R: Rng,
-    O: Ord + Clone,
+    O: Ord + Clone + Serialize + Deserialize<'a>,
 {
     fn initialize<F>(&mut self, n: usize, init_fn: F)
     where
