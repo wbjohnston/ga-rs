@@ -37,7 +37,14 @@ where
     {
         g.iter()
             .cloned()
-            .map(|x| if rng.gen_weighted_bool(self.pb) { !x } else { x })
+            .map(|x| if rng.gen_weighted_bool(self.pb)
+            {
+                !x
+            }
+            else
+            {
+                x
+            })
             .collect()
     }
 }

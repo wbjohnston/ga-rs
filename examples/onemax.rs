@@ -127,14 +127,13 @@ fn main()
     let rng = thread_rng();
 
     let init_fn = {
-        let n = n_bits.clone();
-        move || vec![false; n]
+        move || vec![false; n_bits]
     };
 
     let mut ea = Simple::new(
         // operators
         Tournament::with_size(tourn_size), // Select
-        TwoPoint, // Crossover
+        TwoPoint::default(), // Crossover
         FlipBit::with_pb(flip_pb), // Mutation
         fitness_fn, // Fitness
         mut_pb,
