@@ -42,7 +42,7 @@ where
 
     rng: R,
 
-    _marker: PhantomData<(&'a u8, O)>,
+    _marker: PhantomData<(&'a (), O)>,
 }
 
 impl<'a, G, S, C, M, E, R, O> Simple<'a, G, S, C, M, E, R, O>
@@ -55,7 +55,7 @@ where
     R: Rng,
     O: Ord + Clone,
 {
-/// Create a new Simple EvolutionaryAlgorithm
+    /// Create a new `Simple` genetic algorithm runner
     pub fn new(
         select_op: S,
         crossover_op: C,
@@ -67,7 +67,10 @@ where
         rng: R,
     ) -> Self
     {
-        assert!(cx_pb + mut_pb <= 1.0 && cx_pb + mut_pb >= 0.0);
+        assert!(
+            cx_pb + mut_pb <= 1.0 && cx_pb + mut_pb >= 0.0,
+            "Probability must be a value between 0.0 and 1.0"
+        );
         let cx_pb = (1.0 / cx_pb) as u32;
         let mut_pb = (1.0 / mut_pb) as u32;
 

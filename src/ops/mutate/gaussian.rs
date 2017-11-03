@@ -1,12 +1,12 @@
 //! Gaussian mutate operator
 
-// NOTE: this applies only to real valued repr's
-
-use ops::traits::MutateOperator;
+use serde::{Serialize, Deserialize};
 
 use rand::Rng;
 
-use serde::{Serialize, Deserialize};
+use ops::traits::MutateOperator;
+
+// NOTE(will): this applies only to real valued repr's
 
 /// TODO
 #[derive(Debug, Clone, Copy)]

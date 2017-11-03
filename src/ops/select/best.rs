@@ -6,7 +6,7 @@ use ops::traits::SelectOperator;
 use genomes::Sequence;
 
 /// Selection operator that selects the k best individual from a population
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Default)]
 pub struct Best;
 
 impl<'a, G, O> SelectOperator<'a, G, O> for Best

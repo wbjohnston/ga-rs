@@ -7,7 +7,7 @@ use serde::{Serialize, Deserialize};
 ///
 /// This operator is paramaterized over the following:
 /// * `ind_pb`: probability a single chromosome will be swapped
-#[derive(Clone, Copy)]
+#[derive(Debug, Clone, Copy)]
 pub struct Uniform {
     pb: u32,
 }

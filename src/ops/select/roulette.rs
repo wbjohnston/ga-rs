@@ -5,7 +5,7 @@ use genomes::Sequence;
 use rand::Rng;
 
 /// TODO(will): description
-#[derive(Debug, Clone, Copy)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct Roulette;
 
 impl<'a, G, O> SelectOperator<'a, G, O> for Roulette

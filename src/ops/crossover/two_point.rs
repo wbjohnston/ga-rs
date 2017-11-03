@@ -7,7 +7,7 @@ use rand::Rng;
 use serde::{Serialize, Deserialize};
 
 /// A crossover operator that crosses two genomes at two points
-#[derive(Clone, Copy, Default)]
+#[derive(Debug, Clone, Copy, Default)]
 pub struct TwoPoint;
 
 impl<'a, C> CrossoverOperator<'a, Vec<C>> for TwoPoint

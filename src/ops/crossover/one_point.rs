@@ -12,14 +12,6 @@ use serde::{Serialize, Deserialize};
 #[derive(Debug, Copy, Clone, Default)]
 pub struct OnePoint;
 
-impl OnePoint {
-    /// Create a new `OnePoint` crossover operator
-    pub fn new() -> Self
-    {
-        Self {/* No fields */}
-    }
-}
-
 impl<'a, C> CrossoverOperator<'a, Vec<C>> for OnePoint
 where
     C: Clone

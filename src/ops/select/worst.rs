@@ -6,7 +6,7 @@ use ops::traits::SelectOperator;
 use rand::Rng;
 
 /// Selection operator that selects `k` individuals with the lowest fitness
-#[derive(Debug, Clone, Copy)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct Worst;
 
 impl<'a, G, O> SelectOperator<'a, G, O> for Worst
