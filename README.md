@@ -12,6 +12,53 @@ API is **not stable**.
 [![Crates.io badge](https://img.shields.io/crates/v/petri.svg)](https://crates.io/crates/petri)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Usage
+```rust
+// Import what algorithms we're going to use
+use petri::algo::{Simple, EvolutionaryAlgorithm};
+use petri::ops::select::Tournament;
+use petri::ops::crossover::TwoPoint;
+use petri::ops::mutate::FlipBit;
+
+use rand::thread_rng;
+
+// Create the fitness function to evaluate a genome with
+fn fitness_fn(genome: &Vec<bool>) -> u32
+{
+    let mut ones = 0;
+    for c in genome {
+        if c {
+            ones += 1;
+        }
+    }
+
+    ones
+}
+
+// Create the runner
+let mut gen_runner = Simple::new(
+    Tournament::with_size(3),
+    TwoPoint::default(),
+    FlipBit::with_pb(0.02),
+    fitness_fn,
+    0.01,
+    0.05,
+    300,
+    thread_rng()
+);
+
+// Initialize population
+gen_runner.initialize(300, || vec![false; 100]);
+
+// run the algorithm
+while !gen_runner.is_done() {
+    let _ = gen_runner.next();
+}
+
+// View our final population
+println!("{:?}", gen_runner.population());
+```
+
 ## Contributing
 Please see [CONTRIBUTING.md](/CONTRIBUTING.md)
 
