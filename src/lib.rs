@@ -1,18 +1,12 @@
-//! Evolutionary algorithm toolkit
-extern crate bit_vec;
+//! An evolutionary computing toolkit
 
 extern crate rand;
-
 extern crate serde;
-
 #[macro_use]
 extern crate serde_derive;
+extern crate num_traits;
 
-#[cfg(feature = "par")]
-extern crate rayon;
-
-pub mod ops;
-
-pub mod algo;
-
-pub mod genomes;
+pub mod runner;
+pub mod crossover;
+pub mod mutate;
+pub mod select;

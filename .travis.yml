@@ -1,8 +1,12 @@
+sudo: false
 language: rust
 rust:
   - stable
   - nightly
   - beta
+
+cache: 
+  cargo: true
 
 notifications:
   email:
@@ -10,7 +14,8 @@ notifications:
 
 env:
   global:
-  - RUSTFLAGS="-C link-dead-code"
+    - RUSTFLAGS="-C link-dead-code"
+    - TRAVIS_CARGO_NIGHTLY_FEATURE=nightly
 
 addons:
   apt:
@@ -18,31 +23,8 @@ addons:
       - libcurl4-openssl-dev
       - libelf-dev
       - libdw-dev
-      - cmake
-      - gcc
-      - binutils-dev
-      - libiberty-dev
+      - binutils-dev 
 
-before_script:
-    - |
-        pip install 'travis-cargo<0.2' --user &&
-        export PATH=$HOME/.local/bin:$PATH
-
-after_success:
-  # Upload docs to github pages
-  - cargo doc --no-deps && travis-cargo --only stable doc-upload
-
-  - | # Upload coverage report to Codecov
-      wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&
-      tar xzf master.tar.gz &&
-      cd kcov-master &&
-      mkdir build &&
-      cd build &&
-      cmake .. &&
-      make &&
-      make install DESTDIR=../../kcov-build &&
-      cd ../.. &&
-      rm -rf kcov-master &&
-      for file in target/debug/petri-*[^\.d]; do mkdir -p "target/cov/$(basename $file)"; ./kcov-build/usr/local/bin/kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
-      bash <(curl -s https://codecov.io/bash) &&
-      echo "Uploaded code coverage"
+before_script: sh ci/before_script.sh
+script: sh ci/script.sh
+after_success: sh ci/after_success.sh
