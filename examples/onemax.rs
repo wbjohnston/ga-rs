@@ -13,7 +13,7 @@ use rand::thread_rng;
 /// Genome evaluation function, counts the number of true values in the genome
 fn evaulate(g: &Vec<bool>) -> usize
 {
-    g.iter().filter(|&x| *x == true).count()
+    g.iter().filter(|&x| *x).count()
 }
 
 fn main()
@@ -26,8 +26,8 @@ fn main()
         20,
         20,
         thread_rng(),
-        1000,
-        || vec![false; 100]
+        100,
+        || vec![false; 1000]
     );
 
     for _ in 0..100
@@ -36,7 +36,7 @@ fn main()
         println!(
             "{}: {:?}",
             runner.generation(),
-            runner.fitnesses().iter().max()
+            runner.fitnesses().iter().max().unwrap()
         );
     }
 }

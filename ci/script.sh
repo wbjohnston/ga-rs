@@ -4,4 +4,4 @@ set -ex
 cargo build
 cargo test
 cargo bench
-cargo doc
+cargo doc --no-deps

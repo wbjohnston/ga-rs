@@ -40,3 +40,6 @@ impl<C: Clone + Not<Output = C>> MutateOp<Vec<C>> for BitFlip {
             .collect()
     }
 }
+
+#[cfg(test)]
+mod test {}

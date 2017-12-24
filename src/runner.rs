@@ -39,15 +39,15 @@ where
     O: Ord + Clone + Zero,
     R: Rng,
 {
-/// Create a new runner and intialize the initial population using
-/// a function
+    /// Create a new runner and intialize the initial population using
+    /// a function
     pub fn initialize_with_fn<F>(
         select: S,
         mutate: M,
         crossover: C,
         evaluate: E,
-cx_pb: u32, // TODO(will): use f32 to make it more easy to use
-mut_pb: u32, // TODO(will): ^ same
+        cx_pb: u32, // TODO(will): use f32 to make it more easy to use
+        mut_pb: u32, // TODO(will): ^ same
         rng: R,
         size: usize,
         f: F
@@ -55,7 +55,7 @@ mut_pb: u32, // TODO(will): ^ same
     where
         F: Fn() -> G
     {
-// TODO(will): add way to specify terminating condition
+        // TODO(will): add way to specify terminating condition
         Self {
             select,
             crossover,
@@ -72,7 +72,7 @@ mut_pb: u32, // TODO(will): ^ same
         }
     }
 
-/// Return the fitnesses of all individuals
+    /// Return the fitnesses of all individuals
     pub fn fitnesses(&self) -> Vec<O>
     {
         self.state
@@ -83,7 +83,7 @@ mut_pb: u32, // TODO(will): ^ same
             .collect()
     }
 
-/// Return the current population
+    /// Return the current population
     pub fn population(&self) -> Vec<G>
     {
         self.state
@@ -94,32 +94,32 @@ mut_pb: u32, // TODO(will): ^ same
             .collect()
     }
 
-/// Return the size of the population
+    /// Return the size of the population
     pub fn size(&self) -> usize
     {
         self.state.population.len()
     }
 
-/// Return the current generation number
+    /// Return the current generation number
     pub fn generation(&self) -> usize
     {
         self.state.generation
     }
 
-/// Advance the algorithm one generation
+    /// Advance the algorithm one generation
     pub fn advance(&mut self)
     {
         self.validate();
 
-// select step
+        // select step
         self.state.population = {
             let pop = self.state.population.as_slice();
             self.select.select(pop, pop.len(), &mut self.state.rng)
         };
 
-// mutate step
+        // mutate step
         {
-// scope so that iterator doesn't live for too long
+            // scope so that iterator doesn't live for too long
             let iter = self.state.population.iter_mut().enumerate();
             for (i, &mut (ref mut indv, _)) in iter
             {
@@ -131,7 +131,7 @@ mut_pb: u32, // TODO(will): ^ same
             }
         }
 
-// crossover step
+        // crossover step
         let mut other_idx: Vec<usize> = (0..self.size()).collect();
         self.state.rng.shuffle(&mut other_idx);
         let pair_iter = (0..self.size()).zip(other_idx);
@@ -140,7 +140,7 @@ mut_pb: u32, // TODO(will): ^ same
         {
             if self.state.rng.gen_weighted_bool(self.cx_pb)
             {
-// generate children
+                // generate children
                 let (c1, c2) = {
                     let p1 = &self.state.population[idx1].0;
                     let p2 = &self.state.population[idx2].0;
@@ -148,11 +148,11 @@ mut_pb: u32, // TODO(will): ^ same
                     self.crossover.crossover(p1, p2, &mut self.state.rng)
                 };
 
-// update children
+                // update children
                 self.state.population[idx1].0 = c1;
                 self.state.population[idx2].0 = c2;
 
-// invalidate the children
+                // invalidate the children
                 self.state.invalid.insert(idx1);
                 self.state.invalid.insert(idx2);
             }
@@ -161,12 +161,12 @@ mut_pb: u32, // TODO(will): ^ same
         self.state.generation += 1;
     }
 
-/// Validate all individuals in the population and return the number of
-/// individuals that did not have a valid fitness
+    /// Validate all individuals in the population and return the number of
+    /// individuals that did not have a valid fitness
     fn validate(&mut self) -> usize
     {
-// we're _going_ to evaluate all of the genomes that have an index in
-// the invalid hashset
+        // we're _going_ to evaluate all of the genomes that have an index in
+        // the invalid hashset
         let validated = self.state.invalid.len();
 
         for i in &self.state.invalid
