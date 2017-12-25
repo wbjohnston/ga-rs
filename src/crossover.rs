@@ -14,26 +14,19 @@ pub trait CrossoverOp<G> {
 pub struct OnePoint;
 
 impl<C: Clone> CrossoverOp<Vec<C>> for OnePoint {
-    #[allow(unused_variables)]
-    fn crossover<R: Rng>(
-        &self,
-        g1: &Vec<C>,
-        g2: &Vec<C>,
-        rng: &mut R,
-    ) -> (Vec<C>, Vec<C>)
-    {
+    fn crossover<R: Rng>(&self, g1: &Vec<C>, g2: &Vec<C>, rng: &mut R) -> (Vec<C>, Vec<C>) {
         assert_eq!(g1.len(), g2.len());
         let size = g1.len();
 
         let cx_point = Range::new(0, size).ind_sample(rng);
 
-        // first half of crossed genome
-        let mut c1 = g1[0..cx_point].to_vec();
-        let mut c2 = g2[0..cx_point].to_vec();
+        let mut c1 = g1.clone();
+        let mut c2 = g2.clone();
 
-        // append second half of crossed genome
-        c1.extend_from_slice(&g2[cx_point..size]);
-        c2.extend_from_slice(&g1[cx_point..size]);
+        for i in cx_point..size {
+            c1[i] = g2[i].clone();
+            c2[i] = g1[i].clone();
+        }
 
         (c1, c2)
     }
@@ -44,14 +37,23 @@ impl<C: Clone> CrossoverOp<Vec<C>> for OnePoint {
 pub struct TwoPoint;
 
 impl<C: Clone> CrossoverOp<Vec<C>> for TwoPoint {
-    #[allow(unused_variables)]
-    fn crossover<R: Rng>(
-        &self,
-        g1: &Vec<C>,
-        g2: &Vec<C>,
-        rng: &mut R,
-    ) -> (Vec<C>, Vec<C>)
-    {
-        unimplemented!();
+    fn crossover<R: Rng>(&self, g1: &Vec<C>, g2: &Vec<C>, rng: &mut R) -> (Vec<C>, Vec<C>) {
+        assert_eq!(g1.len(), g2.len());
+        let size = g1.len();
+        let range = Range::new(0, size);
+
+        // get crossover points
+        let (p1, p2) = (range.ind_sample(rng), range.ind_sample(rng));
+        let (cx1, cx2) = if p1 < p2 { (p1, p2) } else { (p2, p1) };
+
+        let mut c1 = g1.clone();
+        let mut c2 = g2.clone();
+
+        for i in cx1..cx2 {
+            c1[i] = g2[i].clone();
+            c2[i] = g1[i].clone();
+        }
+
+        (c1, c2)
     }
 }

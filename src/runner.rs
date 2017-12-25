@@ -1,4 +1,4 @@
-//! Genetic algorithm runners
+//! Genetic algorithm runners and supporting data structures
 
 use std::collections::HashSet;
 use select::SelectOp;
@@ -26,7 +26,8 @@ where
     evaluate: E,
     cx_pb: u32,
     mut_pb: u32, // 1 out n chance
-    state: State<G, O, R>, // TODO(will): this should be option.
+    rng: R,
+    state: State<G, O>,
 }
 
 impl<S, M, C, E, G, O, R> SimpleGARunner<S, M, C, E, G, O, R>
@@ -46,14 +47,14 @@ where
         mutate: M,
         crossover: C,
         evaluate: E,
-        cx_pb: u32, // TODO(will): use f32 to make it more easy to use
-        mut_pb: u32, // TODO(will): ^ same
+        cx_pb: f32,
+        mut_pb: f32,
         rng: R,
         size: usize,
-        f: F
+        f: F,
     ) -> Self
     where
-        F: Fn() -> G
+        F: Fn() -> G,
     {
         // TODO(will): add way to specify terminating condition
         Self {
@@ -61,20 +62,19 @@ where
             crossover,
             mutate,
             evaluate,
-            cx_pb,
-            mut_pb,
+            cx_pb: (1.0 / cx_pb) as u32,
+            mut_pb: (1.0 / mut_pb) as u32,
+            rng,
             state: State {
                 invalid: HashSet::new(),
                 generation: 0,
                 population: (0..size).map(|_| (f(), O::zero())).collect(),
-                rng: rng
-            }
+            },
         }
     }
 
     /// Return the fitnesses of all individuals
-    pub fn fitnesses(&self) -> Vec<O>
-    {
+    pub fn fitnesses(&self) -> Vec<O> {
         self.state
             .population
             .iter()
@@ -84,8 +84,7 @@ where
     }
 
     /// Return the current population
-    pub fn population(&self) -> Vec<G>
-    {
+    pub fn population(&self) -> Vec<G> {
         self.state
             .population
             .iter()
@@ -94,38 +93,39 @@ where
             .collect()
     }
 
-    /// Return the size of the population
-    pub fn size(&self) -> usize
+    /// Returns a reference to the runnner state
+    pub fn state(&self) -> &State<G, O>
     {
+        &self.state
+    }
+
+    /// Return the size of the population
+    pub fn size(&self) -> usize {
         self.state.population.len()
     }
 
     /// Return the current generation number
-    pub fn generation(&self) -> usize
-    {
+    pub fn generation(&self) -> usize {
         self.state.generation
     }
 
-    /// Advance the algorithm one generation
-    pub fn advance(&mut self)
-    {
+    /// Advance the algorithm state one generation
+    pub fn advance(&mut self) {
         self.validate();
 
         // select step
         self.state.population = {
             let pop = self.state.population.as_slice();
-            self.select.select(pop, pop.len(), &mut self.state.rng)
+            self.select.select(pop, pop.len(), &mut self.rng)
         };
 
         // mutate step
         {
             // scope so that iterator doesn't live for too long
             let iter = self.state.population.iter_mut().enumerate();
-            for (i, &mut (ref mut indv, _)) in iter
-            {
-                if self.state.rng.gen_weighted_bool(self.mut_pb)
-                {
-                    *indv = self.mutate.mutate(indv, &mut self.state.rng);
+            for (i, &mut (ref mut indv, _)) in iter {
+                if self.rng.gen_weighted_bool(self.mut_pb) {
+                    *indv = self.mutate.mutate(indv, &mut self.rng);
                     self.state.invalid.insert(i);
                 }
             }
@@ -133,19 +133,17 @@ where
 
         // crossover step
         let mut other_idx: Vec<usize> = (0..self.size()).collect();
-        self.state.rng.shuffle(&mut other_idx);
+        self.rng.shuffle(&mut other_idx);
         let pair_iter = (0..self.size()).zip(other_idx);
 
-        for (idx1, idx2) in pair_iter
-        {
-            if self.state.rng.gen_weighted_bool(self.cx_pb)
-            {
+        for (idx1, idx2) in pair_iter {
+            if self.rng.gen_weighted_bool(self.cx_pb) {
                 // generate children
                 let (c1, c2) = {
                     let p1 = &self.state.population[idx1].0;
                     let p2 = &self.state.population[idx2].0;
 
-                    self.crossover.crossover(p1, p2, &mut self.state.rng)
+                    self.crossover.crossover(p1, p2, &mut self.rng)
                 };
 
                 // update children
@@ -161,16 +159,14 @@ where
         self.state.generation += 1;
     }
 
-    /// Validate all individuals in the population and return the number of
-    /// individuals that did not have a valid fitness
-    fn validate(&mut self) -> usize
-    {
+    /// Validate all individuals in the population and return the number of individuals that did 
+    /// not have a valid fitness
+    fn validate(&mut self) -> usize {
         // we're _going_ to evaluate all of the genomes that have an index in
         // the invalid hashset
         let validated = self.state.invalid.len();
 
-        for i in &self.state.invalid
-        {
+        for i in &self.state.invalid {
             let &mut (ref mut g, ref mut fit) = &mut self.state.population[*i];
             *fit = (self.evaluate)(g);
         }
@@ -182,9 +178,8 @@ where
 
 /// An evoluationary algorithm state
 #[derive(Debug, Clone, Serialize, Deserialize)]
-struct State<G: Clone, O: Ord + Clone, R: Rng> {
+pub struct State<G: Clone, O: Ord + Clone> {
     invalid: HashSet<usize>,
     generation: usize,
     population: Vec<(G, O)>,
-    rng: R,
 }
