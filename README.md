@@ -8,7 +8,7 @@ upon this library: you **should not** use this library as its incomplete and the
 API is **not stable**.
 
 [![Travis Status](https://travis-ci.org/wbjohnston/petri.svg?branch=master)](https://travis-ci.org/wbjohnston/petri)
-[![codecov](https://codecov.io/gh/wbjohnston/petri/branch/master/graph/badge.svg)](https://codecov.io/gh/wbjohnston/petri)
+[![Coverage Status](https://coveralls.io/repos/github/wbjohnston/petri/badge.svg?branch=master)](https://coveralls.io/github/wbjohnston/petri?branch=master)
 [![Crates.io badge](https://img.shields.io/crates/v/petri.svg)](https://crates.io/crates/petri)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
