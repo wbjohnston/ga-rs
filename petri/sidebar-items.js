@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["crossover","Crossover genetic operators and traits"],["mutate","Mutation genetic operators and traits"],["runner","Genetic algorithm runners and supporting data structures"],["select","Selection genetic operators and traits"]]});

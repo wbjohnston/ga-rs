@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BitFlip","A mutation genetic operator that will randomly invert the bits of each chromosome of a genome"]],"trait":[["MutateOp","A mutation genetic operator"]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["OnePoint","A crossover genetic operator that randomly crosses two genomes at one index"],["TwoPoint","A crossover genetic operator that randomly crosses two genomes at two indexes"]],"trait":[["CrossoverOp","A crossover genetic operator"]]});

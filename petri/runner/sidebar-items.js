@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SimpleGARunner","A Simple Genetic algorithm runner"],["State","An evoluationary algorithm state"]]});
