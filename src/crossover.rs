@@ -11,13 +11,13 @@ pub trait CrossoverOp<G> {
     fn crossover<R: Rng>(&self, g1: &G, g2: &G, rng: &mut R) -> (G, G);
 }
 
-/// A one point crossover genetic operator
+/// A crossover genetic operator that randomly crosses two genomes at one index
 #[derive(Debug, Copy, Clone)]
 pub struct OnePoint;
 
 impl<C: Clone> CrossoverOp<Vec<C>> for OnePoint {
     fn crossover<R: Rng>(&self, g1: &Vec<C>, g2: &Vec<C>, rng: &mut R) -> (Vec<C>, Vec<C>) {
-        assert_eq!(g1.len(), g2.len());
+        assert_eq!(g1.len(), g2.len(), "Genomes must have same length");
         let size = g1.len();
 
         let cx_point = Range::new(0, size).ind_sample(rng);
@@ -34,7 +34,7 @@ impl<C: Clone> CrossoverOp<Vec<C>> for OnePoint {
     }
 }
 
-/// A two point crossover genetic operator
+/// A crossover genetic operator that randomly crosses two genomes at two indexes
 #[derive(Debug, Copy, Clone)]
 pub struct TwoPoint;
 
@@ -161,3 +161,24 @@ mod test {
         }
     }
 }
+
+#[cfg(all(feature="nightly", test))]
+mod bench
+{
+    use super::*;
+    use test::Bencher;
+    use rand::{XorShiftRng, SeedableRng};
+
+    #[bench]
+    fn onepoint_100_xorshift(b: &mut Bencher)
+    {
+        let mut rng = XorShiftRng::from_seed([1, 2, 3, 4]);
+        let genome_1: Vec<u32> = (0..100).collect();
+        let genome_2: Vec<u32> = (100..200).collect();
+
+        b.iter(|| {
+            let _ = OnePoint.crossover(&genome_1, &genome_2, &mut rng);
+        });
+    }
+}
+

@@ -1,7 +1,7 @@
 //! An evolutionary computing toolkit
 #![cfg_attr(feature="nightly", feature(test))]
 
-#[cfg(feature = "nightly")] // feature gate test crate
+#[cfg(feature="nightly")]
 extern crate test;
 
 extern crate rand;

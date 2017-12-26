@@ -8,8 +8,12 @@ license     = "MIT"
 readme      = "README.md"
 repository  = "https://github.com/wbjohnston/petri.git"
 
+#[[bench]]
+#name = "onemax"
+#harness = false
+
 [[bench]]
-name = "onemax"
+name = "select"
 harness = false
 
 [features]
