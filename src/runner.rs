@@ -40,8 +40,10 @@ where
     O: Ord + Clone + Zero,
     R: Rng,
 {
-    /// Create a new runner and intialize the initial population using
-    /// a function
+    /// Create a new runner and intialize the initial population using a function
+    ///
+    /// # Panics
+    /// panics if either `mut_pb` or `cx_pb` are not a value between `0.0` and `1.0`
     pub fn initialize_with_fn<F>(
         select: S,
         mutate: M,
@@ -56,7 +58,14 @@ where
     where
         F: Fn() -> G,
     {
-        // TODO(will): add way to specify terminating condition
+        assert!(
+            cx_pb <= 1.0 && cx_pb >= 0.0,
+            "mutation probability must be a value between 0.0 and 1.0"
+        );
+        assert!(
+            mut_pb <= 1.0 && mut_pb >= 0.0,
+            "mutation probability must be a value between 0.0 and 1.0"
+        );
         Self {
             select,
             crossover,
@@ -73,6 +82,80 @@ where
         }
     }
 
+    /// Create a new runner with a given internal state
+    ///
+    /// # Panics
+    /// panics if either `mut_pb` or `cx_pb` are not a value between `0.0` and `1.0`
+    pub fn initialize_with_state(
+        select: S,
+        mutate: M,
+        crossover: C,
+        evaluate: E,
+        cx_pb: f32,
+        mut_pb: f32,
+        rng: R,
+        state: State<G, O>,
+    ) -> Self {
+        assert!(
+            cx_pb <= 1.0 && cx_pb >= 0.0,
+            "mutation probability must be a value between 0.0 and 1.0"
+        );
+        assert!(
+            mut_pb <= 1.0 && mut_pb >= 0.0,
+            "mutation probability must be a value between 0.0 and 1.0"
+        );
+        Self {
+            select,
+            mutate,
+            crossover,
+            evaluate,
+            cx_pb: (1.0 / cx_pb) as u32,
+            mut_pb: (1.0 / mut_pb) as u32,
+            rng,
+            state,
+        }
+    }
+
+    /// Create anew runner using an individiual to initialize the population
+    ///
+    /// # Panics
+    /// panics if either `mut_pb` or `cx_pb` are not a value between `0.0` and `1.0`
+    pub fn initialize_with_individual(
+        select: S,
+        mutate: M,
+        crossover: C,
+        evaluate: E,
+        cx_pb: f32,
+        mut_pb: f32,
+        rng: R,
+        size: usize,
+        individual: G,
+    ) -> Self {
+        assert!(
+            cx_pb <= 1.0 && cx_pb >= 0.0,
+            "mutation probability must be a value between 0.0 and 1.0"
+        );
+        assert!(
+            mut_pb <= 1.0 && mut_pb >= 0.0,
+            "mutation probability must be a value between 0.0 and 1.0"
+        );
+
+        Self {
+            select,
+            mutate,
+            crossover,
+            evaluate,
+            cx_pb: (1.0 / cx_pb) as u32,
+            mut_pb: (1.0 / mut_pb) as u32,
+            rng,
+            state: State {
+                invalid: HashSet::new(),
+                generation: 0,
+                population: vec![(individual.clone(), O::zero()); size],
+            },
+        }
+    }
+
     /// Return the fitnesses of all individuals
     pub fn fitnesses(&self) -> Vec<O> {
         self.state
@@ -85,7 +168,7 @@ where
 
     /// Return the current population
     pub fn population(&self) -> Vec<G> {
-        self.state
+        self.state // extract each individual out of the population
             .population
             .iter()
             .cloned()
@@ -94,8 +177,7 @@ where
     }
 
     /// Returns a reference to the runnner state
-    pub fn state(&self) -> &State<G, O>
-    {
+    pub fn state(&self) -> &State<G, O> {
         &self.state
     }
 
@@ -159,11 +241,10 @@ where
         self.state.generation += 1;
     }
 
-    /// Validate all individuals in the population and return the number of individuals that did 
+    /// Validate all individuals in the population and return the number of individuals that did
     /// not have a valid fitness
     fn validate(&mut self) -> usize {
-        // we're _going_ to evaluate all of the genomes that have an index in
-        // the invalid hashset
+        // we're _going_ to evaluate all of the genomes that have an index in the invalid hashset
         let validated = self.state.invalid.len();
 
         for i in &self.state.invalid {
@@ -177,9 +258,10 @@ where
 }
 
 /// An evoluationary algorithm state
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[cfg_attr(feature = "serde_support", derive(Serialize, Deserialize))]
+#[derive(Debug, Clone)]
 pub struct State<G: Clone, O: Ord + Clone> {
     invalid: HashSet<usize>,
     generation: usize,
-    population: Vec<(G, O)>,
+    population: Vec<(G, O)>, // TODO(will): reverse order to (O, G) for easier sorting
 }

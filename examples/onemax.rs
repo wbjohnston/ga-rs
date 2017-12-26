@@ -16,6 +16,8 @@ fn evaulate(g: &Vec<bool>) -> usize {
 }
 
 fn main() {
+    let n_codons = 100;
+
     let mut runner = SimpleGARunner::initialize_with_fn(
         Tournament::with_size(5),
         BitFlip::with_pb(0.01),
@@ -24,16 +26,14 @@ fn main() {
         0.05,
         0.01,
         thread_rng(),
-        10,
-        || vec![false; 100]
+        100,
+        || vec![false; n_codons]
     );
 
-    for _ in 0..100 {
+    let mut best_fitness = 0;
+    while best_fitness < n_codons {
         runner.advance();
-        println!(
-            "{}: {:?}",
-            runner.generation(),
-            runner.fitnesses().iter().max().unwrap()
-        );
+        best_fitness = *runner.fitnesses().iter().max().unwrap();
+        println!("{}: {:?}", runner.generation(), best_fitness);
     }
 }
