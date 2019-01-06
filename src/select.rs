@@ -1,161 +1,59 @@
 //! Selection genetic operators and traits
 
+use bit_vec::BitVec;
 use rand::Rng;
-use rand::distributions::{IndependentSample, Range};
+use rand::seq::SliceRandom;
 
-/// A genetic selection operator
-pub trait SelectOp<G, O: Ord + Clone> {
-    /// Return k individuals from a population
-    ///
-    /// # Panics
-    /// panics if `k` is greater than the length of `population`
-    fn select<R: Rng>(&self, population: &[(G, O)], k: usize, rng: &mut R) -> Vec<(G, O)>;
-}
-
-/// A selection genetic operator that runs tournaments and selects the best individual from each
+/// A selection operator for genetic algorithms
 ///
-/// This operator can select the same individual multiple times
-#[derive(Debug, Copy, Clone)]
-pub struct Tournament {
-    size: usize,
+/// Given a population, will output the population that will be provided as input
+/// for the next generation
+#[derive(Debug, Clone, Copy)]
+pub enum SelectOperator {
+    Tournament { size: usize },
 }
 
-impl Tournament {
-    /// Create a tournament operator with specified size
-    pub fn with_size(size: usize) -> Tournament {
-        Tournament { size }
-    }
-}
-
-impl<G: Clone, O: Ord + Clone> SelectOp<G, O> for Tournament {
-    fn select<R: Rng>(&self, population: &[(G, O)], k: usize, rng: &mut R) -> Vec<(G, O)> {
-        assert!(k <= population.len());
-        let mut selected = vec![];
-
-        for _ in 0..k {
-            let tourn = Random.select(population, self.size, rng);
-            let best = tourn.iter().cloned().max_by(|a, b| a.1.cmp(&b.1)).unwrap();
-            selected.push(best);
+impl SelectOperator {
+    pub fn select<R, O>(&self, population: Vec<(O, BitVec)>, rng: &mut R) -> Vec<(O, BitVec)>
+    where
+        R: Rng,
+        O: Ord + Clone
+    {
+        match *self {
+            SelectOperator::Tournament { size } => {
+                // for each round take the best candidate in each round
+                (0..population.len()).map(|_| population.choose_multiple(rng, size).cloned())
+                .map(|round| round.max().unwrap()) // choose the best from the round
+                .collect()
+            }
         }
-
-        selected
     }
+
 }
-
-
-/// A selection genetic operator that randomly selects individuals.
-///
-/// This operator can select the same individual multiple times
-#[derive(Debug, Copy, Clone)]
-pub struct Random;
-
-impl<G: Clone, O: Ord + Clone> SelectOp<G, O> for Random {
-    fn select<R: Rng>(&self, population: &[(G, O)], k: usize, rng: &mut R) -> Vec<(G, O)> {
-        assert!(k <= population.len());
-        let mut selected = vec![];
-        let range = Range::new(0, population.len());
-
-        for _ in 0..k {
-            selected.push(population[range.ind_sample(rng)].clone());
-        }
-
-        selected
-    }
-}
-
-/// A selection genetic operator that selects the best individuals from the population
-#[derive(Debug, Copy, Clone)]
-pub struct Best;
-
-impl<G: Clone, O: Ord + Clone> SelectOp<G, O> for Best {
-    fn select<R: Rng>(&self, population: &[(G, O)], k: usize, _rng: &mut R) -> Vec<(G, O)> {
-        assert!(k <= population.len());
-        let mut population = population.to_vec();
-        population.sort_by(|a, b| a.1.cmp(&b.1));
-        population[0..k].to_vec()
-    }
-}
-
 
 #[cfg(test)]
 mod test {
     use super::*;
 
-    use rand::XorShiftRng;
-
-    /// `Tournament::select` should panic if k is larger than the size of the population
     #[test]
-    #[should_panic]
-    fn tournament_panics_with_invalid_k()
-    {
-        let pop = vec![(0, 0), (1, 0), (3, 0)];
-        let mut rng = XorShiftRng::new_unseeded();
-        Tournament::with_size(3).select(&pop, 5, &mut rng);
-    }
+    fn tournament_selects_equal_candidates() {
+        let population = vec![
+            (1, BitVec::new()),
+            (2, BitVec::new()),
+            (3, BitVec::new()),
+            (4, BitVec::new()),
+            (5, BitVec::new()),
+            (6, BitVec::new()),
+            (7, BitVec::new()),
+            (8, BitVec::new()),
+            (9, BitVec::new()),
+        ];
 
-}
+        let mut rng = rand::thread_rng();
+        let op = SelectOperator::Tournament { size: 5 };
+        let next_gen = op.select(population.clone(), &mut rng);
 
-#[cfg(all(feature="nightly", test))]
-mod bench {
-    use super::*;
-    use rand::{SeedableRng, XorShiftRng};
-    use test::Bencher;
-
-    // NOTE: all benchmarks include the instantiation of the XorShiftRng. If this wasn't the case
-    // different rounds of the benchmark would take different execution paths, leading to 
-    // an unrepresentative increase in runtime variance.
-
-    fn generate_population(size: usize, n_chromosomes: usize) -> Vec<(Vec<bool>, usize)>
-    {
-        let mut population: Vec<(Vec<bool>, usize)> = vec![];
-        let mut rng = XorShiftRng::from_seed([1, 2, 3, 4]);
-
-        for _ in 0..size {
-            let individual: Vec<bool> = rng.gen_iter::<bool>().take(n_chromosomes).collect();
-            let fitness = individual.iter().filter(|&x| *x).count();
-
-            population.push((individual, fitness));
-        }
-
-        population
-    }
-
-    /// Bench the `Tournament`  operator with a population size of 100
-    #[bench]
-    fn tournament_100_xorshift(b: &mut Bencher)
-    {
-        let population = generate_population(100, 100);
-        let selector = Tournament::with_size(3);
-
-        b.iter(|| {
-            let mut rng = XorShiftRng::from_seed([1, 2, 3, 4]);
-           selector.select(&population, population.len(), &mut rng)
-       });
-    }
-
-    /// Bench the `Random` operator with a population size of a 100
-    #[bench]
-    fn random_100_xorshift(b: &mut Bencher)
-    {
-        let population = generate_population(100, 100);
-        let selector = Random;
-
-        b.iter(|| {
-            let mut rng = XorShiftRng::from_seed([1, 2, 3, 4]);
-            selector.select(&population, population.len(), &mut rng)
-        });
-    }
-
-    /// Bench the `Best` operator with a population size of a 100
-    #[bench]
-    fn best_100_xorshift(b: &mut Bencher)
-    {
-        let population = generate_population(100, 100);
-        let selector = Best;
-
-        b.iter(|| {
-            let mut rng = XorShiftRng::from_seed([1, 2, 3, 4]);
-            selector.select(&population, population.len(), &mut rng)
-        });
+        assert_eq!(population.len(), next_gen.len());
+        println!("BEFORE:\n{:?}\nAFTER:\n{:?}", population, next_gen);
     }
 }

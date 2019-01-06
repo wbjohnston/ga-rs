@@ -1,56 +1,20 @@
 //! Mutation genetic operators and traits
 
+use bit_vec::BitVec;
 use rand::Rng;
-use std::ops::Not;
 
-/// A mutation genetic operator
-pub trait MutateOp<G> {
-    /// Return a mutated version of a genome
-    fn mutate<R: Rng>(&self, g: &G, rng: &mut R) -> G;
+#[derive(Debug, Clone, Copy)]
+pub enum MutateOperator {
+    BitFlip { indv_pb: f64 },
 }
 
-/// A mutation genetic operator that will randomly invert the bits of each chromosome of a genome
-#[derive(Debug, Copy, Clone)]
-pub struct BitFlip {
-    indv_pb: u32,
-}
-
-impl BitFlip {
-    /// Create a Bitflip operator with a specified per chromosome mutation probability
-    pub fn with_pb(indv_pb: f32) -> Self {
-        Self { indv_pb: (1.0 / indv_pb) as u32 }
-    }
-}
-impl<C: Clone + Not<Output = C>> MutateOp<Vec<C>> for BitFlip {
-    fn mutate<R: Rng>(&self, g: &Vec<C>, rng: &mut R) -> Vec<C> {
-        g.iter()
-            .cloned()
-            .map(|c| if rng.gen_weighted_bool(self.indv_pb) {
-                !c
-            } else {
-                c
-            })
-            .collect()
-    }
-}
-
-#[cfg(test)]
-mod test {}
-
-#[cfg(all(feature="nightly", test))]
-mod bench 
-{
-    use super::*;
-    use test::Bencher;
-    use rand::{XorShiftRng, SeedableRng};
-
-    #[bench]
-    fn bitflip_100_xorshift(b: &mut Bencher)
-    {
-        let mut rng = XorShiftRng::from_seed([1, 2, 3, 4]);
-        let genome: Vec<u32> = (0..100).collect();
-        b.iter(|| {
-            let _ = BitFlip::with_pb(0.1).mutate(&genome, &mut rng); 
-        });
+impl MutateOperator {
+    pub fn mutate<R: Rng>(&self, genome: BitVec, rng: &mut R) -> BitVec {
+        match *self {
+            MutateOperator::BitFlip { indv_pb } => genome
+                .into_iter()
+                .map(|bit| if rng.gen_bool(indv_pb) { !bit } else { bit })
+                .collect(),
+        }
     }
 }
